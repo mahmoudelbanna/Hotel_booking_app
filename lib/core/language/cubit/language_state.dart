@@ -27,4 +27,14 @@ class LanguageState extends Equatable {
       "countryCode": countryCode,
     };
   }
+
+  LanguageState copyWith({
+    String? countryCode,
+    String? languageCode,
+  }) {
+    return LanguageState(
+      countryCode: countryCode ?? this.countryCode,
+      languageCode: languageCode ?? this.languageCode,
+    );
+  }
 }
