@@ -1,41 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'core/injection/injection.dart' as di;
+import 'hotel_booking_app.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/// Initializes the app by setting up the hydrated storage directory,
+/// initializing the dependencies, setting up the bloc observer, and
+/// running the app.
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Flutter Demo Home Page'),
-      ),
-      body: Center(
-        child: const Text('Init Flutter App'),
-      ),
-    );
-  }
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory:
+        HydratedStorageDirectory((await getTemporaryDirectory()).path),
+  );
+  di.init();
+  Bloc.observer = const AppBlocObserver();
+  
+  runApp(
+    const MyApp(),
+  );
 }
