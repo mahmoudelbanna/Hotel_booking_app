@@ -26,9 +26,4 @@ void init() {
   getIt.registerLazySingleton<InternetConnectionChecker>(
     () => InternetConnectionChecker.instance,
   );
-
-  //! core  -- language
-  getIt.registerFactory<LanguageCubit>(
-    () => LanguageCubit(),
-  );
 }

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<InternetCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt<LanguageCubit>(),
+          create: (context) => LanguageCubit(),
         ),
       ],
       child: MyAppView(appRouter: _appRouter),

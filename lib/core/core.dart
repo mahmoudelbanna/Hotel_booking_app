@@ -4,3 +4,4 @@ export 'app/app.dart';
 export 'injection/injection_container.dart';
 export 'language/language.dart';
 export 'app_router/router.dart';
+export 'utils/utils.dart';
