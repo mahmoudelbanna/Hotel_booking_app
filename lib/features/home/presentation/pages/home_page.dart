@@ -23,7 +23,8 @@ class HomePage extends StatelessWidget {
       routes: routes,
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavBar(
-          tabsRouter: tabsRouter,
+          onTap: tabsRouter.setActiveIndex,
+          currentIndex: tabsRouter.activeIndex,
         );
       },
     );

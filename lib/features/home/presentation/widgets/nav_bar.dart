@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../hotel_booking_app.dart';
@@ -6,10 +5,12 @@ import '../../../../hotel_booking_app.dart';
 class NavBar extends StatelessWidget {
   const NavBar({
     super.key,
-    required this.tabsRouter,
+    required this.onTap,
+    required this.currentIndex,
   });
 
-  final TabsRouter tabsRouter;
+  final NavBarOnTap onTap;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class NavBar extends StatelessWidget {
       backgroundColor: Colors.white,
       selectedItemColor: Colors.blue,
       unselectedItemColor: Colors.grey,
-      currentIndex: tabsRouter.activeIndex,
-      onTap: tabsRouter.setActiveIndex,
+      currentIndex: currentIndex,
+      onTap: onTap,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: const Icon(Icons.home),

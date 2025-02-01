@@ -1,0 +1,1 @@
+typedef NavBarOnTap = void Function(int);
