@@ -1,3 +1,7 @@
 {
-  "appTitle": "Hotel-Buchungs-App"
+  "appTitle": "Hotel-Buchungs-App",
+  "overview": "Übersicht",
+  "hotels": "Hotels",
+  "favorites": "Favoriten",
+  "account": "Konto"
 }

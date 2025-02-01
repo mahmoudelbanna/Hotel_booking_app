@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../hotel_booking_app.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+ const  MyApp({super.key});
+
+  static final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<LanguageCubit>(),
         ),
       ],
-      child: MyAppView(),
+      child: MyAppView(appRouter: _appRouter),
     );
   }
 }
