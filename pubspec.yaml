@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_route: ^9.3.0+1
+  collection: ^1.19.0
   connectivity_plus: ^6.1.2
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
@@ -36,9 +37,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
+  flutter_localizations:
+    sdk: flutter
   get_it: ^8.0.3
   hydrated_bloc: ^10.0.0
   internet_connection_checker: ^3.0.1
+  intl: any
   path_provider: ^2.1.5
 
 dev_dependencies:
@@ -56,6 +60,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
