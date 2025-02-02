@@ -39,4 +39,17 @@ class Hotel extends Equatable {
   String toString() {
     return 'Hotel(id: $id, name: $name, destination: $destination, category: $category, categoryType: $categoryType, images: $images, bestOffer: $bestOffer, ratingInfo: $ratingInfo)';
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      kHotelId: id,
+      kHotelName: name,
+      kDestination: destination,
+      kCategory: category,
+      kCategoryType: categoryType,
+      kImages: images.map((x) => x.toMap()).toList(),
+      kBestOffer: bestOffer.toMap(),
+      kRatingInfo: ratingInfo.toMap(),
+    };
+  }
 }

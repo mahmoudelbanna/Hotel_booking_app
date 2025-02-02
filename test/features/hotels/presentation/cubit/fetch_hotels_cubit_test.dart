@@ -15,6 +15,9 @@ void main() {
     mockGetHotels = MockGetHotels();
     cubit = FetchHotelsCubit(usecase: mockGetHotels);
   });
+  tearDown(() {
+    cubit.close();
+  });
 
   test('initialState should be FetchHotelsLoading', () {
     // assert
