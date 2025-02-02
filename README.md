@@ -1,16 +1,35 @@
-# hotel_booking_app
+# Hotel Booking App
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+The **Hotel Booking App** is a **Flutter-based** mobile application designed for seamless **hotel room booking** across **iOS and Android** platforms. It follows **Clean Architecture**, ensuring a structured, maintainable, and scalable codebase.
 
-This project is a starting point for a Flutter application.
+## Key Features
 
-A few resources to get you started if this is your first Flutter project:
+- **🛠️ State Management:** Uses the **BLoC pattern** for efficient state handling.
+- **💾 Local Storage:** Implements **hydrated_bloc** and **path_provider** for local data management.
+- **🔗 Dependency Injection:** Utilizes a structured DI system for better modularity.
+- **📱 Cross-Platform Compatibility:** Works seamlessly on both **iOS** and **Android**.
+- **🎨 User-Friendly UI:** Designed for an intuitive and engaging user experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app follows **Clean Architecture**, dividing the codebase into distinct layers for better maintainability:
+
+### **1️⃣ Presentation Layer**
+
+- **Pages and Widgets:** Handles UI components and user interactions.
+- **BLoC (Business Logic Component):** Manages app state and business logic.
+- **Dependency Injection:** Handles the dependencies required for this layer.
+
+### **2️⃣ Domain Layer**
+
+- **Entities:** Represents the core business models.
+- **Use Cases:** Encapsulates business logic and rules.
+- **Repositories (Interfaces):** Defines contracts for data operations.
+
+### **3️⃣ Data Layer**
+
+- **Data Sources:** Fetches data from APIs, databases, or local storage.
+- **Models:** Defines data structures for API communication.
+- **Repository Implementations:** Provides actual data handling logic.
