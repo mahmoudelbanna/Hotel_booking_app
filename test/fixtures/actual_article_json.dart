@@ -179,5 +179,5 @@ Map<String, dynamic> actualArticlesJsonToMap = {
         "score-description": "Ausgezeichnet"
       }
     }
-  ]
+  ],
 };

@@ -1,92 +1,99 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/actual_article_json.dart';
+
 import 'remote_data_source_test.mocks.dart';
 
 @GenerateMocks([Dio])
-main() {
+void main() {
   late HotelsRemoteDataSourceImpl dataSource;
   late MockDio mockDio;
 
-  setUp(() async {
+  setUp(() {
     mockDio = MockDio();
     dataSource = HotelsRemoteDataSourceImpl(dio: mockDio);
   });
 
-  final RequestOptions requestOptions = RequestOptions();
-  final String actualArticlesJson =
-      fixture('hotels.json'); // Ensure this is a valid JSON string
+  final RequestOptions requestOptions = RequestOptions(path: '');
+
   final url = kGetHotelsUrl;
 
-  // Mock success
+  // ✅ Mock successful response
   void setUpMockHttpClientSuccess200() {
     when(mockDio.get(any)).thenAnswer(
-      (_) async => Response(
-        requestOptions: requestOptions,
-        data: actualArticlesJson,
-        statusCode: 200,
-      ),
+      (_) async {
+        return Response(
+          requestOptions: requestOptions,
+          data: actualArticlesJsonToMap, // Use the correct parsed Map
+          statusCode: 200,
+        );
+      },
     );
   }
 
-  // Mock failure
+  // ✅ Mock failure response
   void setUpMockHttpClientFailure400() {
     when(mockDio.get(any)).thenAnswer(
-      (_) async => Response(
-        requestOptions: requestOptions,
-        data: actualArticlesJson,
-        statusCode: 400,
-      ),
+      (_) async {
+        return Response(
+          requestOptions: requestOptions,
+          data: {"error": "Bad Request"},
+          statusCode: 400,
+        );
+      },
     );
   }
 
   group('call dio.get', () {
     test('should call dio.get', () async {
-      // arrange
+      // Arrange
       setUpMockHttpClientSuccess200();
-      // act
+
+      // Act
       await dataSource.getHotels();
-      // assert
-      verify(mockDio.get(url));
+
+      // Assert
+      verify(mockDio.get(url)).called(1);
     });
   });
 
   group('should return List<HotelModel> when the response code is 200', () {
     final List<HotelModel> tHotelModels =
-        (json.decode(actualArticlesJson)['hotels'] as List)
+        (actualArticlesJsonToMap['hotels'] as List)
             .map((hotel) => HotelModel.fromJson(hotel))
             .toList();
 
     test(
         'should return List<HotelModel> when the response code is 200 (success)',
         () async {
-      // arrange
+      // Arrange
       setUpMockHttpClientSuccess200();
-      // act
+
+      // Act
       final result = await dataSource.getHotels();
-      print('Result received: $result'); // Debug output to see result
-      // assert
+
+      // Assert
       expect(result, equals(tHotelModels));
     });
   });
 
-  group('should throw a ServerException when the response code is 404 or other',
+  group('should throw a ServerException when the response code is 400 or other',
       () {
     test(
-        'should throw a ServerException when the response code is 404 or other',
+        'should throw a ServerException when the response code is 400 or other',
         () async {
-      // arrange
+      // Arrange
       setUpMockHttpClientFailure400();
-      // act
+
+      // Act
       final call = dataSource.getHotels();
-      // assert
-      expect(call, throwsA(TypeMatcher<ServerException>()));
+
+      // Assert
+      expect(call, throwsA(isA<ServerException>()));
     });
   });
 }
