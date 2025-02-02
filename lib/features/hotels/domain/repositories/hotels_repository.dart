@@ -3,5 +3,5 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 
 abstract class HotelsRepository {
-  Future<Either<Failure, List<HotelModel>>> getHotels();
+  Future<Either<Failure, List<Hotel>>> getHotels();
 }
