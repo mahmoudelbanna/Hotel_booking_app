@@ -21,10 +21,5 @@ final class FetchHotelsSuccess extends FetchHotelsState {
 }
 
 final class FetchHotelsFailure extends FetchHotelsState {
-  final String message;
-
-  const FetchHotelsFailure({required this.message});
-
-  @override
-  List<Object> get props => [message];
+  const FetchHotelsFailure();
 }

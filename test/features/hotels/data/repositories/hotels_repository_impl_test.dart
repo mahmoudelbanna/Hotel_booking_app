@@ -44,8 +44,7 @@ void main() {
 
       // Assert
       verify(mockRemoteDataSource.getHotels()).called(1);
-      expect(result,
-          Left(ServerFailure(errorMessage: 'This is a server exception')));
+      expect(result, const Left(ServerFailure()));
     });
 
     test('should return Left(ServerFailure) when an unknown exception occurs',
@@ -58,8 +57,7 @@ void main() {
 
       // Assert
       verify(mockRemoteDataSource.getHotels()).called(1);
-      expect(result,
-          Left(ServerFailure(errorMessage: 'This is a server exception')));
+      expect(result, const Left(ServerFailure()));
     });
   });
 }

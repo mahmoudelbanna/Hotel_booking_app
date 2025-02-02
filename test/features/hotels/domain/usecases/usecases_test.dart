@@ -40,8 +40,7 @@ void main() {
     'should return Failure when repository fails',
     () async {
       // arrange
-      final tFailure =
-          ServerFailure(errorMessage: 'This is a server exception');
+      final tFailure = const ServerFailure();
       when(mockHotelsRepository.getHotels())
           .thenAnswer((_) async => Left(tFailure));
 
