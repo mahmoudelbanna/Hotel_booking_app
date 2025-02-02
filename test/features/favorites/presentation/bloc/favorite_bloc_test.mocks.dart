@@ -5,6 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
+import 'package:hotel_booking_app/features/favorites/domain/usecases/toggle_favorite.dart'
+    as _i4;
 import 'package:hydrated_bloc/src/hydrated_storage.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -69,4 +71,30 @@ class MockStorage extends _i1.Mock implements _i2.Storage {
             returnValueForMissingStub: _i3.Future<void>.value(),
           )
           as _i3.Future<void>);
+}
+
+/// A class which mocks [ToggleFavoriteUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockToggleFavoriteUseCase extends _i1.Mock
+    implements _i4.ToggleFavoriteUseCase {
+  MockToggleFavoriteUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  Map<String, dynamic> call({
+    required Map<String, dynamic>? currentFavorites,
+    required String? hotelId,
+    required Map<String, dynamic>? hotelData,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [], {
+              #currentFavorites: currentFavorites,
+              #hotelId: hotelId,
+              #hotelData: hotelData,
+            }),
+            returnValue: <String, dynamic>{},
+          )
+          as Map<String, dynamic>);
 }

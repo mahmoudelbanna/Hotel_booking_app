@@ -48,4 +48,12 @@ void init() {
       dio: getIt(),
     ),
   );
+  //!Favorites
+  getIt.registerLazySingleton<FavoriteBloc>(
+    () => FavoriteBloc(toggleFavoriteUseCase: getIt()),
+  );
+  
+  getIt.registerLazySingleton<ToggleFavoriteUseCase>(
+    () => ToggleFavoriteUseCase(),
+  );
 }

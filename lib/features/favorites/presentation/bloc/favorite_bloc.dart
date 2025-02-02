@@ -1,23 +1,25 @@
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
+import '../../../../hotel_booking_app.dart';
+
 part 'favorite_event.dart';
 part 'favorite_state.dart';
 
 class FavoriteBloc extends HydratedBloc<FavoriteEvent, FavoriteState> {
-  FavoriteBloc() : super(FavoriteState.initial()) {
+  final ToggleFavoriteUseCase toggleFavoriteUseCase;
+
+  FavoriteBloc({required this.toggleFavoriteUseCase})
+      : super(FavoriteState.initial()) {
     on<ToggleFavorite>(_onToggleFavorite);
   }
 
   void _onToggleFavorite(ToggleFavorite event, Emitter<FavoriteState> emit) {
-    final updatedFavorites = Map<String, dynamic>.from(state.favorites);
-
-    if (updatedFavorites.containsKey(event.hotelId)) {
-      updatedFavorites.remove(event.hotelId);
-    } else {
-      updatedFavorites[event.hotelId] = event.hotelData;
-    }
-
+    final updatedFavorites = toggleFavoriteUseCase(
+      currentFavorites: state.favorites,
+      hotelId: event.hotelId,
+      hotelData: event.hotelData,
+    );
     emit(FavoriteState(favorites: updatedFavorites));
   }
 
