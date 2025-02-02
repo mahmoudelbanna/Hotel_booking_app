@@ -5,7 +5,7 @@ import '../../../../hotel_booking_app.dart';
 class RatingInfo extends Equatable {
   final int recommendationRate;
   final int reviewsCount;
-  final int score;
+  final double score;
   final String scoreDescription;
 
   const RatingInfo({

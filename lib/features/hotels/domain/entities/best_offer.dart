@@ -10,6 +10,7 @@ class BestOffer extends Equatable {
     required this.travelPrice,
     required this.flightIncluded,
     required this.room,
+    required this.travelDate,
   });
 
   final int originalTravelPrice;
@@ -18,6 +19,7 @@ class BestOffer extends Equatable {
   final int travelPrice;
   final bool flightIncluded;
   final Room room;
+  final TravelDate travelDate;
 
   @override
   List<Object?> get props => [
@@ -27,11 +29,12 @@ class BestOffer extends Equatable {
         travelPrice,
         flightIncluded,
         room,
+        travelDate,
       ];
 
   @override
   String toString() {
-    return 'BestOffer(originalTravelPrice: $originalTravelPrice, simplePricePerPerson: $simplePricePerPerson, total: $total, travelPrice: $travelPrice, flightIncluded: $flightIncluded, room: $room)';
+    return 'BestOffer(originalTravelPrice: $originalTravelPrice, simplePricePerPerson: $simplePricePerPerson, total: $total, travelPrice: $travelPrice, flightIncluded: $flightIncluded, room: $room, travelDate: $travelDate)';
   }
 
   Map<String, dynamic> toMap() {
@@ -42,7 +45,7 @@ class BestOffer extends Equatable {
       kTravelPrice: travelPrice,
       kFlightIncluded: flightIncluded,
       kRooms: room.toMap(),
-
+      kTravelDate: travelDate.toMap(),
     };
   }
 }

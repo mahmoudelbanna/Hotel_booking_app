@@ -8,6 +8,7 @@ class BestOfferModel extends BestOffer {
     required super.travelPrice,
     required super.flightIncluded,
     required super.room,
+    required super.travelDate,
   });
 
   factory BestOfferModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +19,7 @@ class BestOfferModel extends BestOffer {
       travelPrice: json[kTravelPrice],
       flightIncluded: json[kFlightIncluded],
       room: RoomModel.fromJson(json[kRooms]),
+      travelDate: TravelDateModel.fromJson(json[kTravelDate]),
     );
   }
 
@@ -29,6 +31,7 @@ class BestOfferModel extends BestOffer {
       kTravelPrice: travelPrice,
       kFlightIncluded: flightIncluded,
       kRooms: room.toMap(),
+      kTravelDate: travelDate.toMap(),
     };
   }
 }

@@ -10,10 +10,10 @@ class RatingInfoModel extends RatingInfo {
 
   factory RatingInfoModel.fromJson(Map<String, dynamic> json) {
     return RatingInfoModel(
-      score: json[kScore],
-      scoreDescription: json[kScoreDescription],
-      reviewsCount: json[kReviewsCount],
       recommendationRate: json[kRecommendationRate],
+      reviewsCount: json[kReviewsCount],
+      score: json[kScore] == 0 ? 0.0 : (json[kScore] == 3 ? 3.0 : json[kScore]),
+      scoreDescription: json[kScoreDescription],
     );
   }
 

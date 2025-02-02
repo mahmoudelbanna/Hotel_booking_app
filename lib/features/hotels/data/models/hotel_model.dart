@@ -14,7 +14,7 @@ class HotelModel extends Hotel {
 
   factory HotelModel.fromJson(Map<String, dynamic> json) {
     return HotelModel(
-      id: json[kId],
+      id: json[kHotelId],
       name: json[kHotelName],
       destination: json[kDestination],
       category: json[kCategory],
@@ -29,7 +29,7 @@ class HotelModel extends Hotel {
 
   Map<String, dynamic> toJson() {
     return {
-      kId: id,
+      kHotelId: id,
       kHotelName: name,
       kDestination: destination,
       kCategory: category,
