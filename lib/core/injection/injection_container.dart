@@ -26,4 +26,26 @@ void init() {
   getIt.registerLazySingleton<InternetConnectionChecker>(
     () => InternetConnectionChecker.instance,
   );
+
+  //!Hotels
+  //!GetHotels
+  //!FetchHotelsCubit
+  getIt.registerFactory<FetchHotelsCubit>(
+    () => FetchHotelsCubit(usecase: getIt()),
+  );
+  getIt.registerLazySingleton<GetHotels>(
+    () => GetHotels(repository: getIt()),
+  );
+
+  getIt.registerLazySingleton<HotelsRepository>(
+    () => HotelsRepositoryImpl(
+      remoteDataSource: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<HotelsRemoteDataSource>(
+    () => HotelsRemoteDataSourceImpl(
+      dio: getIt(),
+    ),
+  );
 }
