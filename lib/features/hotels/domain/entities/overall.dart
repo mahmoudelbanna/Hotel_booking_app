@@ -5,20 +5,20 @@ import '../../../../hotel_booking_app.dart';
 class Overall extends Equatable {
   const Overall({
     required this.boarding,
-    required this.kRoomsOverallName,
+    required this.roomsOverallName,
     required this.adultCount,
     required this.childrenCount,
   });
 
   final String boarding;
-  final String kRoomsOverallName;
+  final String roomsOverallName;
   final int adultCount;
   final int childrenCount;
 
   @override
   List<Object?> get props => [
         boarding,
-        kRoomsOverallName,
+        roomsOverallName,
         adultCount,
         childrenCount,
       ];
@@ -31,7 +31,7 @@ class Overall extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       kBoarding: boarding,
-      kRoomsOverallName: kRoomsOverallName,
+      kRoomsOverallName: roomsOverallName,
       kAdultCount: adultCount,
       kChildrenCount: childrenCount,
     };
