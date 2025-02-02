@@ -5,7 +5,7 @@ import '../../../../hotel_booking_app.dart';
 class RatingInfo extends Equatable {
   final int recommendationRate;
   final int reviewsCount;
-  final double score;
+  final num score; //! return from Api int and double, defines as num
   final String scoreDescription;
 
   const RatingInfo({

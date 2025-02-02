@@ -12,7 +12,7 @@ class RatingInfoModel extends RatingInfo {
     return RatingInfoModel(
       recommendationRate: json[kRecommendationRate],
       reviewsCount: json[kReviewsCount],
-      score: json[kScore] == 0 ? 0.0 : (json[kScore] == 3 ? 3.0 : json[kScore]),
+      score: json[kScore], //! return from Api int and double, defines as num
       scoreDescription: json[kScoreDescription],
     );
   }
