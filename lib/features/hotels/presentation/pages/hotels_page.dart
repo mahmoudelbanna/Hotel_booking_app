@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../hotel_booking_app.dart';
 
@@ -19,7 +20,16 @@ class HotelsPage extends StatelessWidget {
           value: getIt<FavoriteBloc>(),
         ),
       ],
-      child: const HotelsView(),
+      child: BlocBuilder<InternetCubit, InternetState>(
+        builder: (context, state) {
+          if (state is InternetLoading) {
+            return const LoadingWidget();
+          } else if (state is InternetDisconnected) {
+            return const NoConnectionHomeErrorLoading();
+          }
+          return const HotelsView();
+        },
+      ),
     );
   }
 }

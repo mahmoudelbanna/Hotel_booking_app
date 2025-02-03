@@ -12,17 +12,7 @@ class HotelsView extends StatelessWidget {
     return BlocBuilder<FetchHotelsCubit, FetchHotelsState>(
       builder: (context, state) {
         if (state is FetchHotelsLoading) {
-          return Center(
-            child: Skeletonizer(
-              enabled: true,
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return HotelCard(hotel: Hotel.empty());
-                },
-              ),
-            ),
-          );
+          return const LoadingWidget();
         } else if (state is FetchHotelsSuccess) {
           return HotelCardsList(hotels: state.hotels);
           
