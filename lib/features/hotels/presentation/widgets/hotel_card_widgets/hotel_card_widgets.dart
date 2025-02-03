@@ -12,5 +12,5 @@ export 'room_desc.dart';
 export 'room_type.dart';
 export 'price_widget.dart';
 export 'room_desc_duration.dart';
-export 'image_favorite_widget.dart';
+export 'image_favorite_icon_widget.dart';
 export 'content_widget.dart';

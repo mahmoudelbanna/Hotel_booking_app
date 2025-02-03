@@ -16,13 +16,15 @@ class FavoritesView extends StatelessWidget {
           return const Center(child: Text("No favorites yet"));
         }
 
-        return ListView.builder(
-          itemCount: favoriteHotels.length,
-          itemBuilder: (context, index) {
-            final hotel = favoriteHotels[index];
-
-            return FavoriteHotelCard(hotel: hotel);
-          },
+        return Scrollbar(
+          child: ListView.builder(
+            itemCount: favoriteHotels.length,
+            itemBuilder: (context, index) {
+              final hotel = favoriteHotels[index];
+          
+              return FavoriteHotelCard(hotel: hotel);
+            },
+          ),
         );
       },
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../hotel_booking_app.dart';
 
-class ImageFavoriteWidget extends StatelessWidget {
-  const ImageFavoriteWidget({
+class ImageFavoriteIconWidget extends StatelessWidget {
+  const ImageFavoriteIconWidget({
     super.key,
     required this.hotel,
   });

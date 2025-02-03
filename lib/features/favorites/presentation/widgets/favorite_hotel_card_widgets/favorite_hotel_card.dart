@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../../hotel_booking_app.dart';
 
-class HotelCard extends StatelessWidget {
-  const HotelCard({
+class FavoriteHotelCard extends StatelessWidget {
+  const FavoriteHotelCard({
     super.key,
     required this.hotel,
   });
 
-  final Hotel hotel;
+  final dynamic hotel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,11 @@ class HotelCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 10,
           children: [
-            ImageFavoriteIconWidget(hotel: hotel),
-            ContentWidget(hotel: hotel),
+            FavoriteHotelImageFavoriteIconWidget(hotel: hotel),
+            FavoriteHotelContentWidget(hotel: hotel),
           ],
         ),
       ),
     );
   }
 }
-

@@ -12,5 +12,7 @@
   "children": "children",
   "flightIncluded": " | flight included",
   "toOffers": "To offers",
-  "ab": "from"
+  "ab": "from",
+  "toHotel": "To hotel",
+  "reviews": "reviews"
 }
