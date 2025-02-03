@@ -3,5 +3,14 @@
   "overview": "Overview",
   "hotels": "Hotels",
   "favorites": "Favorites",
-  "account": "Account"
+  "account": "Account",
+  "noHotelsFound": "No hotels found",
+  "hotelsFound": "hotels found",
+  "days": "days",
+  "nights": "nights",
+  "adults": "adults",
+  "children": "children",
+  "flightIncluded": " | flight included",
+  "toOffers": "To offers",
+  "ab": "from"
 }

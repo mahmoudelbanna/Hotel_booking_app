@@ -3,5 +3,14 @@
   "overview": "Übersicht",
   "hotels": "Hotels",
   "favorites": "Favoriten",
-  "account": "Konto"
+  "account": "Konto",
+  "noHotelsFound": "Keine Hotels gefunden",
+  "hotelsFound": "Hotels gefunden",
+  "days": "Tage",
+  "nights": "Nächte",
+  "adults": "Erw.",
+  "children": "Kinder",
+  "flightIncluded": " | inkl. Flug",
+  "toOffers": "Zu den Angeboten",
+  "ab": "ab"
 }

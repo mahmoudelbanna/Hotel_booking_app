@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../hotel_booking_app.dart';
 
 @RoutePage()
 class FavoritesPage extends StatelessWidget {
@@ -7,8 +10,9 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Favorites Page'),
+    return BlocProvider.value(
+      value: getIt.get<FavoriteBloc>(),
+      child: const FavoritesView(),
     );
   }
 }

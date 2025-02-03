@@ -10,6 +10,15 @@ class Overall extends Equatable {
     required this.childrenCount,
   });
 
+  factory Overall.empty() {
+    return const Overall(
+      boarding: '',
+      roomsOverallName: '',
+      adultCount: 0,
+      childrenCount: 0,
+    );
+  }
+
   final String boarding;
   final String roomsOverallName;
   final int adultCount;

@@ -13,6 +13,18 @@ class BestOffer extends Equatable {
     required this.travelDate,
   });
 
+  factory BestOffer.empty() {
+    return BestOffer(
+      originalTravelPrice: 0,
+      simplePricePerPerson: 0,
+      total: 0,
+      travelPrice: 0,
+      flightIncluded: false,
+      room: Room.empty(),
+      travelDate: TravelDate.empty(),
+    );
+  }
+
   final int originalTravelPrice;
   final int simplePricePerPerson;
   final int total;

@@ -7,6 +7,10 @@ class Room extends Equatable {
     required this.overall,
   });
 
+  factory Room.empty() {
+    return Room(overall: Overall.empty());
+  }
+
   final Overall overall;
 
   @override

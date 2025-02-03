@@ -8,6 +8,10 @@ class TravelDate extends Equatable {
     required this.nights,
   });
 
+  factory TravelDate.empty() {
+    return const TravelDate(days: 0, nights: 0);
+  }
+
   final int days;
   final int nights;
 

@@ -45,6 +45,7 @@ dependencies:
   internet_connection_checker: ^3.0.1
   intl: any
   path_provider: ^2.1.5
+  skeletonizer: ^1.4.3
 
 dev_dependencies:
   auto_route_generator: ^9.3.1

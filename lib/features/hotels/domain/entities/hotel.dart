@@ -23,6 +23,19 @@ class Hotel extends Equatable {
     required this.ratingInfo,
   });
 
+  factory Hotel.empty() {
+    return  Hotel(
+      id: '',
+      name: '',
+      destination: '',
+      category: 0,
+      categoryType: '',
+      images: [],
+      bestOffer: BestOffer.empty(),
+      ratingInfo: RatingInfo.empty(),
+    );
+  }
+
   @override
   List<Object?> get props => [
         id,
