@@ -25,13 +25,12 @@ class HotelsView extends StatelessWidget {
           );
         } else if (state is FetchHotelsSuccess) {
           return HotelCardsList(hotels: state.hotels);
+          
         } else if (state is FetchHotelsFailure) {
-          return Center(
-            child: Text('error'),
-          );
+          return const ErrorFetchHotelsWidget();
         }
 
-        return const Center(child: Text("No hotels available"));
+        return const EmptyListWidget();
       },
     );
   }

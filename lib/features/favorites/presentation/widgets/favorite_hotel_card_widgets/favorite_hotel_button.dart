@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../hotel_booking_app.dart';
@@ -10,27 +9,9 @@ class FavoriteHotelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(12),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.orange,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8)),
-          padding: EdgeInsets.symmetric(vertical: 12),
-        ),
-        onPressed: () {
-          // Handle navigation or booking
-        },
-        child: Text(
-          context.l10n.toHotel,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-        ),
-      ),
+    return Button(
+      onPressed: () {},
+      text: context.l10n.toHotel,
     );
   }
 }

@@ -13,7 +13,7 @@ class FavoritesView extends StatelessWidget {
         final favoriteHotels = state.favorites.values.toList();
 
         if (favoriteHotels.isEmpty) {
-          return const Center(child: Text("No favorites yet"));
+          return const EmptyListWidget();
         }
 
         return Scrollbar(

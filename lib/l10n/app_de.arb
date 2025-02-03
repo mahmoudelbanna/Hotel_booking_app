@@ -14,5 +14,8 @@
   "toOffers": "Zu den Angeboten",
   "ab": "ab",
   "toHotel": "Zum Hotel",
-  "reviews": "Bew."
+  "reviews": "Bew.",
+  "retry": "Erneut versuchen",
+  "somethingWentWrong": "Etwas ist schief gelaufen,\n bitte drücke den Button um es erneut zu versuchen",
+  "emptyList": "Ihre Favoritenliste ist leer"
 }

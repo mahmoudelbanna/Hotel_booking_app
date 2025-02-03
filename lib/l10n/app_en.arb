@@ -14,5 +14,8 @@
   "toOffers": "To offers",
   "ab": "from",
   "toHotel": "To hotel",
-  "reviews": "reviews"
+  "reviews": "reviews",
+  "retry": "Retry",
+  "somethingWentWrong": "Something went wrong,\n please press the button to try again",
+  "emptyList": "Your favorite list is empty"
 }
