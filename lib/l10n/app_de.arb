@@ -17,5 +17,9 @@
   "reviews": "Bew.",
   "retry": "Erneut versuchen",
   "somethingWentWrong": "Etwas ist schief gelaufen,\n bitte drücke den Button um es erneut zu versuchen",
-  "emptyList": "Ihre Favoritenliste ist leer"
+  "emptyList": "Ihre Favoritenliste ist leer",
+  "language": "Sprache",
+  "logout": "Abmelden",
+  "deleteAccount": "Account löschen",
+  "userProfile": "Benutzerprofil"
 }

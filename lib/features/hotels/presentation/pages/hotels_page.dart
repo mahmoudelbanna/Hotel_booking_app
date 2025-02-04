@@ -10,24 +10,26 @@ class HotelsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<FetchHotelsCubit>()..fetchHotels(),
+    return Scaffold(
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<FetchHotelsCubit>()..fetchHotels(),
+          ),
+          BlocProvider.value(
+            value: getIt<FavoriteBloc>(),
+          ),
+        ],
+        child: BlocBuilder<InternetCubit, InternetState>(
+          builder: (context, state) {
+            if (state is InternetLoading) {
+              return const LoadingWidget();
+            } else if (state is InternetDisconnected) {
+              return const NoConnectionHomeErrorLoading();
+            }
+            return const HotelsView();
+          },
         ),
-        BlocProvider.value(
-          value: getIt<FavoriteBloc>(),
-        ),
-      ],
-      child: BlocBuilder<InternetCubit, InternetState>(
-        builder: (context, state) {
-          if (state is InternetLoading) {
-            return const LoadingWidget();
-          } else if (state is InternetDisconnected) {
-            return const NoConnectionHomeErrorLoading();
-          }
-          return const HotelsView();
-        },
       ),
     );
   }

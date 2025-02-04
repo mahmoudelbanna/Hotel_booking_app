@@ -17,5 +17,9 @@
   "reviews": "reviews",
   "retry": "Retry",
   "somethingWentWrong": "Something went wrong,\n please press the button to try again",
-  "emptyList": "Your favorite list is empty"
+  "emptyList": "Your favorite list is empty",
+  "language": "Language",
+  "logout": "Logout",
+  "deleteAccount": "Delete Account",
+  "userProfile": "User Profile"
 }

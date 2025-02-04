@@ -10,9 +10,11 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt.get<FavoriteBloc>(),
-      child: const FavoritesView(),
+    return Scaffold(
+      body: BlocProvider.value(
+        value: getIt.get<FavoriteBloc>(),
+        child: const FavoritesView(),
+      ),
     );
   }
 }
