@@ -37,47 +37,42 @@ class FavoriteHotelScoreWidget extends StatelessWidget {
     final reviewsCount = hotel[kRatingInfo][kReviewsCount];
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        spacing: 5,
         children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: getRatingColor(rating),
-                  borderRadius: BorderRadius.circular(5),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: getRatingColor(rating),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Row(
+              spacing: 5,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  getRatingIcon(rating),
+                  size: 25,
+                  color: Colors.white,
                 ),
-                child: Row(
-                  spacing: 5,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      getRatingIcon(rating),
-                      size: 25,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "$rating / 5.0",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Colors.white),
-                    ),
-                  ],
+                Text(
+                  "$rating / 5.0",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(color: Colors.white),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                "$scoreDescription ($reviewsCount ${context.l10n.reviews})",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                      overflow: TextOverflow.fade,
-                    ),
-              ),
-            ],
-          )
+              ],
+            ),
+          ),
+          Text(
+            "$scoreDescription\n ($reviewsCount ${context.l10n.reviews})",
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  overflow: TextOverflow.fade,
+                ),
+          ),
         ],
       ),
     );

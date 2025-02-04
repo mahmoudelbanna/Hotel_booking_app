@@ -6,8 +6,8 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 /// Resolves the app's locale based on the device's locale and the app's supported locales.
 ///
 /// This function attempts to find a match between the device's locale and the app's supported
-/// locales. If a matching locale is found, it is returned. If no match is found and the 
-/// `languageCode` in the [state] is `null`, the language is set to the default locale using 
+/// locales. If a matching locale is found, it is returned. If no match is found and the
+/// `languageCode` in the [state] is `null`, the language is set to the default locale using
 /// the [LanguageCubit]. The default locale is the last one in the list of supported locales.
 ///
 /// - Parameters:
@@ -24,20 +24,27 @@ Locale? resolveLocale({
   required LanguageState state,
 }) {
   final defaultLocale = supportedLocales.last;
+
   final matchedLocale = supportedLocales.firstWhereOrNull(
-    (locale) => locale.languageCode == deviceLocale?.languageCode,
+    (locale) =>
+        locale.languageCode == deviceLocale?.languageCode &&
+        locale.countryCode == deviceLocale?.countryCode,
   );
 
-  if (matchedLocale != null) {
-    return matchedLocale;
-  }
+  final languageMatch = matchedLocale ??
+      supportedLocales.firstWhereOrNull(
+        (locale) => locale.languageCode == deviceLocale?.languageCode,
+      );
 
-  if (state.languageCode == null) {
+  final resolvedLocale = languageMatch ?? defaultLocale;
+
+  if (state.languageCode != resolvedLocale.languageCode ||
+      state.countryCode != resolvedLocale.countryCode) {
     context.read<LanguageCubit>().languageSelected(
-          defaultLocale.languageCode,
-          defaultLocale.countryCode,
+          resolvedLocale.languageCode,
+          resolvedLocale.countryCode,
         );
   }
 
-  return defaultLocale;
+  return resolvedLocale;
 }
