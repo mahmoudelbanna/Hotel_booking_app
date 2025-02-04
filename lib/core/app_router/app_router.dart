@@ -17,28 +17,37 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           initial: true,
           children: [
-            AutoRoute(
-              path: overviewPath,
+            CustomRoute(
               page: OverviewRoute.page,
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+              durationInMilliseconds: 500,
             ),
-            AutoRoute(
-              path: hotelsPath,
+            
+            CustomRoute(
               page: HotelsRoute.page,
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+              durationInMilliseconds: 500,
             ),
-            AutoRoute(
+            CustomRoute(
               page: FavoritesRoute.page,
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+              durationInMilliseconds: 500,
             ),
             AutoRoute(
               page: AccountRouteNavigation.page,
               children: [
-                AutoRoute(
+                CustomRoute(
                   path: accountPath,
                   page: AccountRoute.page,
                   initial: true,
+                  transitionsBuilder: TransitionsBuilders.fadeIn,
+                  durationInMilliseconds: 500,
                 ),
-                AutoRoute(
+                CustomRoute(
                   path: languagePath,
                   page: LanguageRoute.page,
+                  transitionsBuilder: TransitionsBuilders.fadeIn,
+                  durationInMilliseconds: 500,
                 ),
               ],
             ),
