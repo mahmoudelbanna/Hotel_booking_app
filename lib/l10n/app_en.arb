@@ -21,5 +21,7 @@
   "language": "Language",
   "logout": "Logout",
   "deleteAccount": "Delete Account",
-  "userProfile": "User Profile"
+  "userProfile": "User Profile",
+  "english": "English",
+  "german": "German"
 }

@@ -21,5 +21,7 @@
   "language": "Sprache",
   "logout": "Abmelden",
   "deleteAccount": "Account löschen",
-  "userProfile": "Benutzerprofil"
+  "userProfile": "Benutzerprofil",
+  "english": "Englisch",
+  "german": "Deutsch"
 }
