@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../hotel_booking_app.dart';
@@ -20,20 +21,18 @@ class HotelImageView extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey[300],
             )
-          : Image.network(
-              hotel.images.first.large,
+          : CachedNetworkImage(
+              imageUrl: hotel.images.first.large,
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
+              placeholder: (context, url) {
                 return Container(
                   height: 200,
                   color: Colors.grey[300],
-                  child: Center(child: CircularProgressIndicator.adaptive()),
                 );
               },
-              errorBuilder: (context, error, stackTrace) {
+              errorWidget: (context, url, error) {
                 return Container(
                   height: 200,
                   color: Colors.grey[300],
