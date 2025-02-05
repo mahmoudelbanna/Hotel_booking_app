@@ -24,5 +24,6 @@
   "userProfile": "User Profile",
   "english": "English",
   "german": "German",
-  "exploreHotels":"Explore Hotels"
+  "exploreHotels":"Explore Hotels",
+  "noInternetConnection": "No internet connection"
 }

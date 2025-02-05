@@ -82,7 +82,7 @@ class InternetCubit extends Cubit<InternetState> {
   void emitInternetDisconnected() => emit(InternetDisconnected());
 
   void emitInternetConnected() =>
-      emit(InternetConnected(connectionType: ConnectionType.connected));
+      emit(const InternetConnected());
 
   @override
   Future<void> close() {

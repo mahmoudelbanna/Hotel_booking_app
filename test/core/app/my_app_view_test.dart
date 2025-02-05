@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 import 'fake_app_router.dart';
 import 'my_app_view_test.mocks.dart';
 
-
 @GenerateMocks([LanguageCubit])
 void main() {
   late MockLanguageCubit mockLanguageCubit;
@@ -26,10 +25,8 @@ void main() {
     );
   }
 
-  /// ✅ **Widget Test 1: MyAppView initializes correctly**
   testWidgets('MyAppView initializes with correct default locale and theme',
       (WidgetTester tester) async {
-    // Arrange: Mock LanguageCubit state
     when(mockLanguageCubit.state).thenReturn(
       LanguageState(languageCode: 'en', countryCode: 'US'),
     );
@@ -37,10 +34,8 @@ void main() {
       (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
     );
 
-    // Act
     await tester.pumpWidget(createWidgetUnderTest());
 
-    // Assert
     final materialApp = tester.widget<MaterialApp>(
       find.byType(MaterialApp),
     );
@@ -50,10 +45,8 @@ void main() {
     expect(materialApp.locale, const Locale('en', 'US'));
   });
 
-  /// ✅ **Widget Test 2: Locale updates when LanguageCubit state changes**
   testWidgets('MyAppView updates locale when LanguageCubit emits a new state',
       (WidgetTester tester) async {
-    // Arrange: Initial state
     when(mockLanguageCubit.state).thenReturn(
       LanguageState(languageCode: 'en', countryCode: 'US'),
     );
@@ -61,14 +54,12 @@ void main() {
       (_) => Stream.value(LanguageState(languageCode: 'de', countryCode: 'DE')),
     );
 
-    // Act
     await tester.pumpWidget(createWidgetUnderTest());
 
-    // Update the state
     when(mockLanguageCubit.state).thenReturn(
       LanguageState(languageCode: 'de', countryCode: 'DE'),
     );
-    await tester.pump(); // Rebuild UI
+    await tester.pump();
 
     // Assert
     final materialApp = tester.widget<MaterialApp>(
@@ -78,10 +69,8 @@ void main() {
     expect(materialApp.locale, const Locale('de', 'DE'));
   });
 
-  /// ✅ **Widget Test 3: MyAppView uses the provided AppRouter**
   testWidgets('MyAppView uses the provided AppRouter for navigation',
       (WidgetTester tester) async {
-    // Arrange: Mock LanguageCubit state and stream
     when(mockLanguageCubit.state).thenReturn(
       LanguageState(languageCode: 'en', countryCode: 'US'),
     );
@@ -89,10 +78,8 @@ void main() {
       (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
     );
 
-    // Act
     await tester.pumpWidget(createWidgetUnderTest());
 
-    // Assert
-    expect(fakeAppRouter.routes, isNotEmpty); 
+    expect(fakeAppRouter.routes, isNotEmpty);
   });
 }

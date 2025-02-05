@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 // Mock callback function
 class MockNavBarOnTap extends Mock {
@@ -17,17 +16,8 @@ void main() {
 
   Widget createWidgetUnderTest() {
     return MaterialApp(
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('de'),
-      ],
-      locale: const Locale('en'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: Scaffold(
         bottomNavigationBar: NavBar(
           onTap: mockOnTap.call,

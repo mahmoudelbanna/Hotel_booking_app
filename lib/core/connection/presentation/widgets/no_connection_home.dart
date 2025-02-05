@@ -1,9 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../hotel_booking_app.dart';
-
 
 class NoConnectionHomeErrorLoading extends StatefulWidget {
   const NoConnectionHomeErrorLoading({super.key});
@@ -42,34 +39,27 @@ class _NoConnectionHomeErrorLoadingState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BlocBuilder<InternetCubit, InternetState>(
-        builder: (context, state) => Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ScaleTransition(
-                scale: _animation,
-                child: Icon(
-                  state is InternetConnected
-                      ? Icons.wifi
-                      : Icons.signal_wifi_off,
-                  size: 100,
-                  color: state is InternetConnected ? Colors.green : Colors.red,
-                ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ScaleTransition(
+              scale: _animation,
+              child: Icon(
+                Icons.signal_wifi_off,
+                size: 100,
+                color: Colors.red,
               ),
-              SizedBox(height: 20),
-              Text(
-                state is InternetConnected
-                    ? "You're online!"
-                    : "No internet connection",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: state is InternetConnected ? Colors.green : Colors.red,
-                ),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              context.l10n.noInternetConnection,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          ],
         ),
       ),
     );

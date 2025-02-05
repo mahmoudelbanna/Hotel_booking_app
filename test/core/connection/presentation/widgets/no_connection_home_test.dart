@@ -17,6 +17,8 @@ void main() {
 
   Widget createWidgetUnderTest() {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: BlocProvider<InternetCubit>.value(
         value: mockInternetCubit,
         child: const NoConnectionHomeErrorLoading(),
@@ -43,34 +45,10 @@ void main() {
     // Assert
     expect(find.byIcon(Icons.signal_wifi_off), findsOneWidget);
     expect(find.text("No internet connection"), findsOneWidget);
-    expect(find.text("You're online!"), findsNothing);
-  });
-
-  testWidgets('displays "You\'re online!" when InternetConnected',
-      (WidgetTester tester) async {
-    // Arrange
-    when(mockInternetCubit.state).thenReturn(
-      const InternetConnected(connectionType: ConnectionType.connected),
-    );
-    when(mockInternetCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const InternetConnected(connectionType: ConnectionType.connected),
-      ]),
-    );
-
-    // Act
-    await tester.pumpWidget(createWidgetUnderTest());
-    await tester.pump(); // Allow widget to build
-
-    // Assert
-    expect(find.byIcon(Icons.wifi), findsOneWidget);
-    expect(find.text("You're online!"), findsOneWidget);
-    expect(find.text("No internet connection"), findsNothing);
   });
 
   testWidgets('animates the icon with ScaleTransition',
       (WidgetTester tester) async {
-    // Arrange
     when(mockInternetCubit.state).thenReturn(
       const InternetDisconnected(),
     );
@@ -80,9 +58,8 @@ void main() {
       ]),
     );
 
-    // Act
     await tester.pumpWidget(createWidgetUnderTest());
-    await tester.pump(); // Allow widget to build
+    await tester.pump();
 
     // Find the ScaleTransition containing the specific Icon
     final scaleTransitionFinder = find.descendant(
@@ -90,7 +67,6 @@ void main() {
       matching: find.byIcon(Icons.signal_wifi_off),
     );
 
-    // Assert
     expect(scaleTransitionFinder, findsOneWidget);
   });
 }

@@ -1,7 +1,5 @@
 part of 'internet_cubit.dart';
 
-enum ConnectionType { connected }
-
 abstract class InternetState extends Equatable {
   const InternetState();
 
@@ -14,8 +12,7 @@ class InternetLoading extends InternetState {
 }
 
 class InternetConnected extends InternetState {
-  final ConnectionType connectionType;
-  const InternetConnected({required this.connectionType});
+  const InternetConnected();
 }
 
 class InternetDisconnected extends InternetState {

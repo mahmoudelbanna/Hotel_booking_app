@@ -23,7 +23,11 @@ class HotelsPage extends StatelessWidget {
         child: BlocBuilder<InternetCubit, InternetState>(
           builder: (context, state) {
             if (state is InternetLoading) {
-              return const LoadingWidget();
+              return const LoadingWidget(
+                key: ValueKey(
+                  'loading-internet-widget',
+                ),
+              );
             } else if (state is InternetDisconnected) {
               return const NoConnectionHomeErrorLoading();
             }

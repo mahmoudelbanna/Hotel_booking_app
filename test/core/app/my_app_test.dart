@@ -40,7 +40,7 @@ void main() {
     // Arrange
     when(mockInternetCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([
-        InternetConnected(connectionType: ConnectionType.connected),
+        const InternetConnected(),
       ]),
     );
 
