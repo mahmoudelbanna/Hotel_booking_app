@@ -14,7 +14,7 @@ class FakeAppRouter extends RootStackRouter implements AppRouter {
             AutoRoute(page: OverviewRoute.page),
             AutoRoute(page: HotelsRoute.page),
             AutoRoute(page: FavoritesRoute.page),
-            AutoRoute(page: AccountRoute.page),
+            AutoRoute(page: AccountTab.page),
           ],
         ),
       ];
