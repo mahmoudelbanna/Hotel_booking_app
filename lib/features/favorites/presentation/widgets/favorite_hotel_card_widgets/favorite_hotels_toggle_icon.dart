@@ -19,19 +19,28 @@ class FavoriteHotelToggleIcon extends StatelessWidget {
           current.favorites.containsKey(hotel[kHotelId]),
       builder: (context, favoriteState) {
         final isFavorite = favoriteState.favorites.containsKey(hotel[kHotelId]);
-        return IconButton(
-          icon: Icon(
-            Icons.favorite,
-            color: isFavorite ? Colors.red : Colors.white,
-            size: 40,
+
+        return TweenAnimationBuilder<Color?>(
+          duration: const Duration(milliseconds: 300),
+          tween: ColorTween(
+            end: isFavorite ? Colors.red : Colors.white,
           ),
-          onPressed: () {
-            context.read<FavoriteBloc>().add(
-                  ToggleFavorite(
-                    hotelId: hotel[kHotelId],
-                    hotelData: hotel,
-                  ),
-                );
+          builder: (context, color, child) {
+            return IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: color,
+                size: 40,
+              ),
+              onPressed: () {
+                context.read<FavoriteBloc>().add(
+                      ToggleFavorite(
+                        hotelId: hotel[kHotelId],
+                        hotelData: hotel,
+                      ),
+                    );
+              },
+            );
           },
         );
       },

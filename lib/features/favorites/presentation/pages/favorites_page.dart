@@ -13,7 +13,7 @@ class FavoritesPage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider.value(
         value: getIt.get<FavoriteBloc>(),
-        child: const FavoritesView(),
+        child: const FavoritesViewAnimated(),
       ),
     );
   }
