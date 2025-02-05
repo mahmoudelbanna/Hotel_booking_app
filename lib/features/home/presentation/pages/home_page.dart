@@ -13,12 +13,15 @@ class HomePage extends StatelessWidget {
       OverviewRoute(),
       HotelsRoute(),
       FavoritesRoute(),
-      AccountRoute(),
+      AccountTab(),
     ];
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => _appBarBuilder(
-        context: context,
-        tabsRouter: tabsRouter,
+      appBarBuilder: (_, tabsRouter) => AppBar(
+        title: Text(context.topRoute.title(context)),
+        leading: AutoLeadingButton(
+          ignorePagelessRoutes: true,
+          color: Theme.of(context).colorScheme.onPrimary,
+        ),
       ),
       routes: routes,
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -29,28 +32,4 @@ class HomePage extends StatelessWidget {
       },
     );
   }
-}
-
-PreferredSizeWidget _appBarBuilder({
-  required BuildContext context,
-  required TabsRouter tabsRouter,
-}) {
-  final routeTitles = {
-    OverviewRoute.name: context.l10n.overview,
-    HotelsRoute.name: context.l10n.hotels,
-    FavoritesRoute.name: context.l10n.favorites,
-    AccountRoute.name: context.l10n.account,
-    LanguageRoute.name: context.l10n.language,
-  };
-
-  final String title =
-      routeTitles[context.topRoute.name] ?? context.l10n.overview;
-
-  return AppBar(
-    title: Text(title),
-    leading: AutoLeadingButton(
-      ignorePagelessRoutes: true,
-      color: Theme.of(context).colorScheme.onPrimary,
-    ),
-  );
 }

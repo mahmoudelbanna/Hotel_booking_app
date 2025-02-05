@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'app_router.gr.dart';
+import '../../hotel_booking_app.dart';
 
 const homePath = '/';
 const overviewPath = 'overview';
@@ -7,6 +7,7 @@ const hotelsPath = 'hotels';
 const favoritesPath = 'favorites';
 const accountPath = 'account';
 const languagePath = 'language';
+const accountTab = 'accountTab';
 
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
@@ -17,41 +18,38 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           initial: true,
           children: [
-            CustomRoute(
+            AutoRoute(
               page: OverviewRoute.page,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-              durationInMilliseconds: 500,
-            ),
-            
-            CustomRoute(
-              page: HotelsRoute.page,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-              durationInMilliseconds: 500,
-            ),
-            CustomRoute(
-              page: FavoritesRoute.page,
-              transitionsBuilder: TransitionsBuilders.fadeIn,
-              durationInMilliseconds: 500,
+              title: (context, _) => context.l10n.overview,
             ),
             AutoRoute(
-              page: AccountRouteNavigation.page,
+              page: HotelsRoute.page,
+              title: (context, _) => context.l10n.hotels,
+            ),
+            AutoRoute(
+              page: FavoritesRoute.page,
+              title: (context, _) => context.l10n.favorites,
+            ),
+            AutoRoute(
+              page: AccountTab.page,
               children: [
-                CustomRoute(
+                AutoRoute(
                   path: accountPath,
                   page: AccountRoute.page,
                   initial: true,
-                  transitionsBuilder: TransitionsBuilders.fadeIn,
-                  durationInMilliseconds: 500,
+                  title: (context, _) => context.l10n.account,
                 ),
-                CustomRoute(
+                AutoRoute(
                   path: languagePath,
                   page: LanguageRoute.page,
-                  transitionsBuilder: TransitionsBuilders.fadeIn,
-                  durationInMilliseconds: 500,
-                ),
+                  title: (context, _) => context.l10n.language,
+                )
               ],
             ),
           ],
         ),
       ];
 }
+
+// ignore: constant_identifier_names
+const AccountTab = EmptyShellRoute(accountTab);
