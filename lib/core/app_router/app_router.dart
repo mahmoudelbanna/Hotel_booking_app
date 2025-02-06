@@ -1,14 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import '../../hotel_booking_app.dart';
 
-const homePath = '/';
-const overviewPath = 'overview';
-const hotelsPath = 'hotels';
-const favoritesPath = 'favorites';
-const accountPath = 'account';
-const languagePath = 'language';
-const accountTab = 'accountTab';
-
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   @override
@@ -19,22 +11,26 @@ class AppRouter extends RootStackRouter {
           initial: true,
           children: [
             AutoRoute(
+              path: overviewPath,
               page: OverviewRoute.page,
               title: (context, _) => context.l10n.overview,
             ),
             AutoRoute(
+              path: hotelsPath,
               page: HotelsRoute.page,
               title: (context, _) => context.l10n.hotels,
             ),
             AutoRoute(
+              path: favoritesPath,
               page: FavoritesRoute.page,
               title: (context, _) => context.l10n.favorites,
             ),
             AutoRoute(
+              path: accountPath,
               page: AccountTab.page,
               children: [
                 AutoRoute(
-                  path: accountPath,
+                  path: '',
                   page: AccountRoute.page,
                   initial: true,
                   title: (context, _) => context.l10n.account,

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../../../../hotel_booking_app.dart';
 
@@ -15,6 +16,7 @@ class HotelsRemoteDataSourceImpl implements HotelsRemoteDataSource {
   @override
   Future<List<HotelModel>> getHotels() async {
     try {
+      final kGetHotelsUrl = dotenv.get('URL');
       final response = await dio.get(kGetHotelsUrl);
 
       if (response.statusCode == 200) {

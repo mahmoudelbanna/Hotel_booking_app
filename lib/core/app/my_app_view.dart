@@ -9,22 +9,6 @@ class MyAppView extends StatelessWidget {
   final AppRouter appRouter;
 
   @override
-
-  /// Build a [MaterialApp] with the language and theme set based on the state of
-  /// the [LanguageCubit].
-  ///
-  /// This widget listens to the [LanguageCubit] and rebuilds the [MaterialApp]
-  /// with the new language and theme when the language code changes.
-  ///
-  /// The [localeResolutionCallback] is used to determine the locale of the
-  /// [MaterialApp] based on the device locale and the supported locales.
-  /// If the [LanguageCubit] has a language code and a country code, the
-  /// [MaterialApp] is given the locale with that language code and country code.
-  /// Otherwise, the [MaterialApp] is given null for its locale.
-  ///
-  /// The theme is determined by the [_themeData] function.
-  ///
-  /// The [MaterialApp] is given the [appRouter] as its router.
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageCubit, LanguageState>(
       buildWhen: (previous, current) =>
@@ -52,13 +36,6 @@ class MyAppView extends StatelessWidget {
     );
   }
 
-  /// Creates a [ThemeData] object for the app.
-  ///
-  /// The created [ThemeData] object has a blue app bar background and a white,
-  /// 20-point, bold font for the app bar title. The seed color for the color
-  /// scheme is deep purple. Material 3 is used.
-  ///
-  /// Returns the created [ThemeData] object.
   ThemeData _themeData() {
     return ThemeData(
       appBarTheme: AppBarTheme(

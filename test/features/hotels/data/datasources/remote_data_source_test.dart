@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/annotations.dart';
@@ -20,7 +21,7 @@ void main() {
 
   final RequestOptions requestOptions = RequestOptions(path: '');
 
-  final url = kGetHotelsUrl;
+  final url = dotenv.get('URL');
 
   // ✅ Mock successful response
   void setUpMockHttpClientSuccess200() {
