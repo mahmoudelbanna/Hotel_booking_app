@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/annotations.dart';
@@ -11,8 +12,10 @@ import 'remote_data_source_test.mocks.dart';
 
 @GenerateMocks([Dio])
 void main() async {
+
   TestWidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(); // This fixes the NotInitializedError
+  await dotenv.load(fileName: ".env"); 
+
   late HotelsRemoteDataSourceImpl dataSource;
   late MockDio mockDio;
 
