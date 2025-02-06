@@ -16,12 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
+      - name: Checkout My Code
+        uses: actions/checkout@v4
+
       - name: Create env file
         run: |
           echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
 
-      - name: Checkout My Code
-        uses: actions/checkout@v4
       - name: Install Flutter Version
         uses: subosito/flutter-action@v2
         with:
