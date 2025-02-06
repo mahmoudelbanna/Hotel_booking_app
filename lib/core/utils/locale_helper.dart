@@ -3,20 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-/// Resolves the app's locale based on the device's locale and the app's supported locales.
+/// Resolves the best matching locale for the given device locale and supported locales.
 ///
-/// This function attempts to find a match between the device's locale and the app's supported
-/// locales. If a matching locale is found, it is returned. If no match is found and the
-/// `languageCode` in the [state] is `null`, the language is set to the default locale using
-/// the [LanguageCubit]. The default locale is the last one in the list of supported locales.
+/// If the device locale is not supported, it will fall back to the first locale in the
+/// list of supported locales that matches the language code of the device locale.
+/// If no language code matches, it will fall back to the last locale in the list of
+/// supported locales.
 ///
-/// - Parameters:
-///   - deviceLocale: The locale of the device, which might be `null`.
-///   - supportedLocales: An iterable of locales that the app supports.
-///   - context: The build context to access the [LanguageCubit].
-///   - state: The current language state which may contain the selected language and country codes.
+/// If the resolved locale is different from the current language and country code in
+/// the [LanguageState], it will call [LanguageCubit.languageSelected] to update the
+/// state.
 ///
-/// - Returns: A [Locale] object that is either matched with the device's locale or the default locale.
+/// Returns the resolved locale.
 Locale? resolveLocale({
   required Locale? deviceLocale,
   required Iterable<Locale> supportedLocales,

@@ -17,7 +17,7 @@ class AccountPage extends StatelessWidget {
             spacing: 20,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProfileImage(),
+              const ProfileImage(),
               ProfileElement(
                 title: context.l10n.userProfile,
                 leadingIcon: Icons.person,
@@ -26,7 +26,7 @@ class AccountPage extends StatelessWidget {
                 title: context.l10n.language,
                 leadingIcon: Icons.language,
                 onTap: () {
-                  AutoRouter.of(context).push(const LanguageRoute());
+                  context.router.push(const LanguageRoute());
                 },
               ),
               ProfileElement(

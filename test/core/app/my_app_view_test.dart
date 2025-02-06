@@ -5,7 +5,8 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'fake_app_router.dart';
+
+import '../../fixtures/fake_app_router.dart';
 import 'my_app_view_test.mocks.dart';
 
 @GenerateMocks([LanguageCubit])

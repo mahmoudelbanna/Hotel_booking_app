@@ -23,11 +23,11 @@ class HotelsRemoteDataSourceImpl implements HotelsRemoteDataSource {
         final hotels = (response.data[kHotels] as List);
         return hotels.map((hotel) => HotelModel.fromJson(hotel)).toList();
       } else {
-        throw ServerException();
+        throw const ServerException();
       }
     } catch (e) {
       debugPrint(e.toString());
-      throw ServerException();
+      throw const ServerException();
     }
   }
 }

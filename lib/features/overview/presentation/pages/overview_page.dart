@@ -36,8 +36,9 @@ class OverviewPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Button(
-                    onPressed: () =>
-                        context.router.replaceAll([const HotelsRoute()]),
+                    onPressed: () {
+                      context.tabsRouter.setActiveIndex(1);
+                    },
                     text: context.l10n.exploreHotels,
                   ),
                 ),

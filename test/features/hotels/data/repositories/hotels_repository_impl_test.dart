@@ -37,7 +37,7 @@ void main() {
     test('should return Left(ServerFailure) when a ServerException occurs',
         () async {
       // Arrange
-      when(mockRemoteDataSource.getHotels()).thenThrow(ServerException());
+      when(mockRemoteDataSource.getHotels()).thenThrow(const ServerException());
 
       // Act
       final result = await repository.getHotels();
