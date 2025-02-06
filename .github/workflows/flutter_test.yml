@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - dev
-     
+
   pull_request:
     branches:
       - main
@@ -16,14 +16,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout My Code 
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
+
+      - name: Checkout My Code
         uses: actions/checkout@v4
-      - name: Install Flutter Version 
+      - name: Install Flutter Version
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-      - run:
-          flutter --version    
+      - run: flutter --version
 
       - name: Install Dependencies
         run: flutter pub get
@@ -34,15 +37,8 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-
-
-
-
-
-      
