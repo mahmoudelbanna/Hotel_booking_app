@@ -21,6 +21,12 @@ class _FavoritesViewAnimatedState extends State<FavoritesViewAnimated> {
     _favoriteHotels = state.favorites.values.toList();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _listKey.currentState?.dispose();
+  }
+
   void _handleAdditions(List<dynamic> newFavorites) {
     for (var entry in newFavorites) {
       if (!_favoriteHotels.any((e) => e[kHotelId] == entry[kHotelId])) {

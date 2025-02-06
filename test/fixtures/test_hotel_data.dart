@@ -7,7 +7,12 @@ class TestHotelData {
     destination: 'Test City',
     category: 1,
     categoryType: 'Test Type',
-    images: [],
+    images: [
+      HotelImage(
+        large: 'test_image_large.jpg',
+        small: 'test_image_small.jpg',
+      )
+    ],
     bestOffer: BestOffer(
       originalTravelPrice: 120,
       simplePricePerPerson: 50,
