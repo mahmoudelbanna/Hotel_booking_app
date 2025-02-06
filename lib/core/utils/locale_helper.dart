@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
@@ -21,28 +22,19 @@ Locale? resolveLocale({
   required BuildContext context,
   required LanguageState state,
 }) {
-  final defaultLocale = supportedLocales.last;
-
-  final matchedLocale = supportedLocales.firstWhereOrNull(
-    (locale) =>
-        locale.languageCode == deviceLocale?.languageCode &&
-        locale.countryCode == deviceLocale?.countryCode,
-  );
-
-  final languageMatch = matchedLocale ??
-      supportedLocales.firstWhereOrNull(
-        (locale) => locale.languageCode == deviceLocale?.languageCode,
-      );
-
-  final resolvedLocale = languageMatch ?? defaultLocale;
-
-  if (state.languageCode != resolvedLocale.languageCode ||
-      state.countryCode != resolvedLocale.countryCode) {
-    context.read<LanguageCubit>().languageSelected(
-          resolvedLocale.languageCode,
-          resolvedLocale.countryCode,
-        );
+  if (state.languageCode != null) {
+    return Locale(state.languageCode!, state.countryCode);
   }
 
-  return resolvedLocale;
+  
+  final matchedLocale = supportedLocales.firstWhereOrNull(
+      (locale) => locale.languageCode == deviceLocale?.languageCode);
+
+  final defaultLocale = matchedLocale ?? supportedLocales.first;
+
+  context
+      .read<LanguageCubit>()
+      .languageSelected(defaultLocale.languageCode, defaultLocale.countryCode);
+
+  return defaultLocale;
 }
