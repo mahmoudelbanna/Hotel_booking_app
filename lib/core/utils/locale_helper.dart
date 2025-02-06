@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
@@ -26,7 +25,6 @@ Locale? resolveLocale({
     return Locale(state.languageCode!, state.countryCode);
   }
 
-  
   final matchedLocale = supportedLocales.firstWhereOrNull(
       (locale) => locale.languageCode == deviceLocale?.languageCode);
 

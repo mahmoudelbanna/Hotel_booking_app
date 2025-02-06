@@ -10,7 +10,9 @@ import '../../../../fixtures/actual_article_json.dart';
 import 'remote_data_source_test.mocks.dart';
 
 @GenerateMocks([Dio])
-void main() {
+void main() async {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(); // This fixes the NotInitializedError
   late HotelsRemoteDataSourceImpl dataSource;
   late MockDio mockDio;
 
