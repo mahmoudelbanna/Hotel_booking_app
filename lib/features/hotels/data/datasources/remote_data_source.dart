@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../../../../hotel_booking_app.dart';
@@ -26,7 +25,6 @@ class HotelsRemoteDataSourceImpl implements HotelsRemoteDataSource {
         throw const ServerException();
       }
     } catch (e) {
-      debugPrint(e.toString());
       throw const ServerException();
     }
   }

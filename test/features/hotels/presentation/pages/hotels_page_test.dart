@@ -42,7 +42,6 @@ void main() {
 
   setUpAll(() {
     provideDummy<FetchHotelsState>(const FetchHotelsLoading());
-    provideDummy<FetchHotelsState>(const FetchHotelsLoading());
     provideDummy<FavoriteState>(FavoriteState.initial());
   });
 
