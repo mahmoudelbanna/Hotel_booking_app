@@ -46,5 +46,6 @@ app.*.map.json
 
 # Ignore the build/app/outputs/flutter-apk/ directory
 !build/app/outputs/flutter-apk/
+!build/app/outputs/flutter-apk/*.apk
 
 *.env
