@@ -32,6 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+!build/app/outputs/flutter-apk/*.apk
 
 # Symbolication related
 app.*.symbols
@@ -44,8 +45,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Ignore the build/app/outputs/flutter-apk/ directory
-!build/app/outputs/flutter-apk/
-!build/app/outputs/flutter-apk/*.apk
+
 
 *.env
