@@ -40,6 +40,7 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.4.5
 
+
 flutter:
   uses-material-design: true
   generate: true
@@ -47,7 +48,6 @@ flutter:
   assets:
     - .env
     - assets/images/profile-svgrepo-com.svg
-
   # fonts:
   #   - family: Schyler
   #     fonts:
