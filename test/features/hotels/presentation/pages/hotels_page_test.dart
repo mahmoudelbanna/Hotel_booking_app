@@ -52,7 +52,7 @@ void main() {
     getItTest.reset();
   });
 
-  const keyLoadingInternetWidget = ValueKey('loading-internet-widget');
+  const keyLoadingInternetWidget = ValueKey(kLoadingInternetWidgetKey);
 
   Widget createWidgetUnderTest() {
     return MultiBlocProvider(

@@ -23,12 +23,10 @@ class AccountPage extends StatelessWidget {
                 leadingIcon: Icons.person,
               ),
               ProfileElement(
-                key: const ValueKey('language'),
+                key: const ValueKey(kLanguageValueKey),// for testing
                 title: context.l10n.language,
                 leadingIcon: Icons.language,
-                onTap: () {
-                  context.router.push(const LanguageRoute());
-                },
+                onTap: () => context.router.push(const LanguageRoute()),
               ),
               ProfileElement(
                 title: context.l10n.logout,

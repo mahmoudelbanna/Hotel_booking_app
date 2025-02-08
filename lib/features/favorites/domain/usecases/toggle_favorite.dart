@@ -1,4 +1,11 @@
 class ToggleFavoriteUseCase {
+  /// Toggles the favorite status of a hotel.
+  ///
+  /// If the hotel with the given [hotelId] is already in [currentFavorites],
+  /// it will be removed. Otherwise, it will be added with the provided [hotelData].
+  ///
+  /// Returns a new map of updated favorites.
+
   Map<String, dynamic> call(
       {required Map<String, dynamic> currentFavorites,
       required String hotelId,

@@ -1,35 +1,282 @@
-# Hotel Booking App
 
-## Overview
+# 🏨 Hotel Booking App
 
-The **Hotel Booking App** is a **Flutter-based** mobile application designed for seamless **hotel room booking** across **iOS and Android** platforms. It follows **Clean Architecture**, ensuring a structured, maintainable, and scalable codebase.
+  
 
-## Key Features
+A cross-platform hotel booking app built with Flutter. The app allows users to explore hotel offers, manage favorites, and customize account settings.
 
-- **🛠️ State Management:** Uses the **BLoC pattern** for efficient state handling.
-- **💾 Local Storage:** Implements **hydrated_bloc** and **path_provider** for local data management.
-- **🔗 Dependency Injection:** Utilizes a structured DI system for better modularity.
-- **📱 Cross-Platform Compatibility:** Works seamlessly on both **iOS** and **Android**.
-- **🎨 User-Friendly UI:** Designed for an intuitive and engaging user experience.
+  
 
-## Architecture
+## 🚀 Features
 
-The app follows **Clean Architecture**, dividing the codebase into distinct layers for better maintainability:
+  
 
-### **1️⃣ Presentation Layer**
+- 🔍 **Browse Hotels** – Discover hotel offers with descriptions.
 
-- **Pages and Widgets:** Handles UI components and user interactions.
-- **BLoC (Business Logic Component):** Manages app state and business logic.
-- **Dependency Injection:** Handles the dependencies required for this layer.
+- ❤️ **Favorites** – Save and manage your favorite hotels locally.
 
-### **2️⃣ Domain Layer**
+- 🌐 **Multi-language Support** – Supports English and German, with automatic detection based on device settings.
 
-- **Entities:** Represents the core business models.
-- **Use Cases:** Encapsulates business logic and rules.
-- **Repositories (Interfaces):** Defines contracts for data operations.
+- 🔗 **Deep Linking** – Navigate directly to the app, favorites, and specific links.
 
-### **3️⃣ Data Layer**
+- 🗂️ **Persistent State** – Favorites and language settings are saved even after closing the app.
 
-- **Data Sources:** Fetches data from APIs, databases, or local storage.
-- **Models:** Defines data structures for API communication.
-- **Repository Implementations:** Provides actual data handling logic.
+- ⚡ **Clean Architecture** – Follows a scalable, maintainable structure for business logic, data, and UI.
+
+  
+
+## 📸 Screenshots and Demo Video
+
+  
+
+[View Screenshots and Demo Video](https://github.com/mahmoudelbanna/Hotel_booking_app/actions/)
+
+  
+
+## ⚙️ Setup Instructions
+
+  
+
+### Prerequisites
+
+  
+
+- Flutter SDK (latest stable version) → [Install Flutter](https://flutter.dev/docs/get-started/install)
+
+- Dart SDK (bundled with Flutter)
+
+- Android Studio, VS Code, or any preferred IDE
+
+- Emulator or physical device for testing
+
+  
+
+### Clone the Repository
+
+```bash
+
+git  clone  https://github.com/mahmoudelbanna/Hotel_booking_app.git
+
+cd  Hotel_booking_app
+
+```
+
+  
+  
+
+### Install Dependencies
+
+  
+
+```bash
+
+flutter  pub  get
+
+```
+
+  
+
+### Environment Configuration
+
+  
+
+Create a `.env` file in the project root (not committed to GitHub) to store environment-specific variables:
+
+  
+
+```plaintext
+
+API_URL=https://example.com/api
+
+```
+
+**Note:** GitHub Actions handle environment variables during CI/CD, so a `.env` file isn’t needed for automated tests.
+
+  
+
+## 🧪 Running Tests
+
+  
+
+```bash
+
+flutter  test
+
+```
+
+  
+
+## 🌍 Overview
+
+  
+
+The Hotel Booking App follows a clean architecture pattern, which separates the business logic from the UI and data sources. This separation makes the app easier to maintain, test, and scale.
+
+  
+
+- ✅ Supports two languages: English and German
+
+- ✅ Automatic language detection based on device settings
+
+- ✅ Local language switching from the settings screen
+
+  
+
+## 🏗️ App Architecture
+
+  
+
+The app is divided into three primary layers following the Clean Architecture principle:
+
+  
+
+1.  **Presentation Layer**
+
+-  **Pages and Widgets**: UI components built using Flutter's widget system.
+
+-  **BLoC (Business Logic Components)**: Handles state management and business logic.
+
+-  **Navigation**: Managed with AutoRoute for smooth deep linking and route handling.
+
+2.  **Domain Layer**
+
+-  **Entities**: Core business models like `Hotel`.
+
+-  **Use Cases**: Business rules that define specific operations.
+
+-  **Repositories**: Abstract interfaces for data access.
+
+3.  **Data Layer**
+
+-  **Repositories (Implementations)**: Concrete classes that implement repository interfaces.
+
+-  **Data Sources**: Remote data management (future API integration).
+
+-  **Models**: Data Transfer Objects for serialization/deserialization.
+
+  
+
+## 💡 Key Design Decisions
+
+  
+
+1.  **State Management with BLoC**
+
+-  **Implementation**: Each feature has its own BLoC handling state and business logic.
+
+-  **Persistence**: Uses `hydrated_bloc` to persist state across app restarts.
+
+2.  **Dependency Injection with `get_it`**
+
+-  **Rationale**: Promotes loose coupling and easier testing.
+
+-  **Implementation**: Dependencies are registered in a central file using `get_it`.
+
+-  **Note**: `get_it` is used only for BLoC providers, not throughout the entire app.
+
+3.  **Environment Configuration with `flutter_dotenv`**
+
+-  **Implementation**: `.env` files store critical variables, loaded at app startup.
+
+-  **Security**: Sensitive data is excluded from GitHub; GitHub Actions manage environment variables for CI/CD.
+
+4.  **Clean Architecture**
+
+-  **Rationale**: Ensures the app is scalable, testable, and easy to maintain.
+
+-  **Implementation**: Clear separation between Presentation, Domain, and Data layers with well-defined interfaces.
+
+5.  **Deep Linking**
+
+-  **Rationale**: Allows users to access specific screens directly via URLs.
+
+-  **Implementation**:
+
+-  **Android**: Simulates server interaction using a local server with HTTP scheme.
+
+-  `http://deeplinkserver` → Opens App
+
+-  `http://deeplinkserver/favorites` → Opens the Favorites page
+
+-  **iOS**: Uses a custom scheme to simulate deep linking.
+
+-  `myapp://deeplinkserver` → Opens App
+
+-  `myapp://deeplinkserver/favorites` → Opens the Favorites page
+
+6.  **Language Support**
+
+-  **Rationale**: Supports both English and German for international users.
+
+-  **Implementation**:
+
+-  **Auto-detection**: The app launches in German or English based on the device language.
+
+-  **Fallback**: Defaults to English if the device language is unsupported.
+
+-  **Manual Change**: Users can change the language in the settings, and the preference is stored locally.
+
+7.  **Internet Connectivity Check**
+
+-  **Rationale**: Ensures a stable and reliable user experience when interacting with online services.
+
+-  **Implementation**: The app checks for an active internet connection before making any API calls, preventing errors and improving performance.
+
+  
+
+## 📦 Project Structure
+
+  
+
+```
+
+lib/
+
+├── main.dart
+
+├── core/ # Core utilities and shared components
+
+│ ├── app/
+
+│ ├── app_router/
+
+│ └── ...
+
+├── features/ # Feature modules (Overview, Hotels, Favorites, Account)
+
+│ ├── data/
+
+│ ├── domain/
+
+│ └── presentation/
+
+```
+
+  
+
+## 🗂️ Tech Stack
+
+  
+
+- Flutter (Latest Stable Version)
+
+- Dart (Primary programming language)
+
+- BLoC & Hydrated Bloc (State management and persistence)
+
+- AutoRoute (Declarative navigation with deep linking support)
+
+- GetIt (Dependency injection)
+
+- Flutter Dotenv (Environment configuration)
+
+- Custom Widgets (Reusable UI components)
+
+
+  
+
+## 👥 Contributors
+
+  
+
+Mahmoud Elbanna

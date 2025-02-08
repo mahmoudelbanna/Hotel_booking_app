@@ -47,6 +47,7 @@ class AppRouter extends RootStackRouter {
         ),
       ];
 }
-
+/// Add empty route to account tab for routing account page and 
+/// language page at same route
 // ignore: constant_identifier_names
 const AccountTab = EmptyShellRoute(accountTab);

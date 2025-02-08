@@ -24,9 +24,7 @@ class HotelsPage extends StatelessWidget {
           builder: (context, state) {
             if (state is InternetLoading) {
               return const LoadingWidget(
-                key: ValueKey(
-                  'loading-internet-widget',
-                ),
+                key: ValueKey(kLoadingInternetWidgetKey), // for testing
               );
             } else if (state is InternetDisconnected) {
               return const NoConnectionHomeErrorLoading();

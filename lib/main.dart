@@ -6,9 +6,6 @@ import 'package:path_provider/path_provider.dart';
 import 'core/injection/injection.dart' as di;
 import 'hotel_booking_app.dart';
 
-/// Initializes the app by setting up the hydrated storage directory,
-/// initializing the dependencies, setting up the bloc observer, and
-/// running the app.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

@@ -1,0 +1,21 @@
+name: Upload Demo Video and Screenshot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  capture-and-upload:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Upload the generated files as artifacts
+      - name: Upload Demo Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-screenshots
+          path: assets/screenshots-video-demos/ 

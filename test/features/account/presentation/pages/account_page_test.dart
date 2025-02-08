@@ -56,7 +56,7 @@ void main() {
 
     expect(find.byType(ProfileElement), findsNWidgets(4));
 
-    final languageButton = find.byKey(const ValueKey('language'));
+    final languageButton = find.byKey(const ValueKey(kLanguageValueKey));
 
     expect(languageButton, findsOneWidget);
 
