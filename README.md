@@ -29,7 +29,8 @@ A cross-platform hotel booking app built with Flutter. The app allows users to e
 
   
 
-[View Screenshots and Demo Video](https://github.com/mahmoudelbanna/Hotel_booking_app/actions/)
+- [View Screenshots](https://github.com/mahmoudelbanna/Hotel_booking_app/actions/)
+- [View videos demo](https://drive.google.com/file/d/1kJpWHVeA7kBaTjTQS1lSCEH3NR-kzdd-/view?usp=share_link)
 
   
 
@@ -41,7 +42,7 @@ A cross-platform hotel booking app built with Flutter. The app allows users to e
 
   
 
-- Flutter SDK (latest stable version) → [Install Flutter](https://flutter.dev/docs/get-started/install)
+- Flutter SDK (latest stable version)
 
 - Dart SDK (bundled with Flutter)
 
@@ -86,7 +87,7 @@ Create a `.env` file in the project root (not committed to GitHub) to store envi
 
 ```plaintext
 
-API_URL=https://example.com/api
+URL=https://example.com/api
 
 ```
 
