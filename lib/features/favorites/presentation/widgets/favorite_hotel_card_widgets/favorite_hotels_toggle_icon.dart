@@ -4,9 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class FavoriteHotelToggleIcon extends StatelessWidget {
-  const FavoriteHotelToggleIcon({super.key, required this.hotel});
+  const FavoriteHotelToggleIcon({
+    super.key,
+    required this.hotel,
+    required this.onPressed,
+  });
 
   final dynamic hotel;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +29,7 @@ class FavoriteHotelToggleIcon extends StatelessWidget {
           builder: (context, color, child) {
             return IconButton(
               icon: Icon(Icons.favorite, color: color, size: 40),
-              onPressed: () {
-                context.read<FavoriteBloc>().add(
-                  ToggleFavorite(hotelId: hotel[kHotelId], hotelData: hotel),
-                );
-              },
+              onPressed: onPressed,
             );
           },
         );
