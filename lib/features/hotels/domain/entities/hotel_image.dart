@@ -15,11 +15,6 @@ class HotelImage extends Equatable {
   String toString() => 'HotelImage(large: $large, small: $small)';
 
   Map<String, dynamic> toMap() {
-    return {
-      kImageLarge: large,
-      kImageSmall: small,
-    };
+    return {kImageLarge: large, kImageSmall: small};
   }
-
- 
 }

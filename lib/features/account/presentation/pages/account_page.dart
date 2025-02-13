@@ -23,7 +23,7 @@ class AccountPage extends StatelessWidget {
                 leadingIcon: Icons.person,
               ),
               ProfileElement(
-                key: const ValueKey(kLanguageValueKey),// for testing
+                key: const ValueKey(kLanguageValueKey), // for testing
                 title: context.l10n.language,
                 leadingIcon: Icons.language,
                 onTap: () => context.router.push(const LanguageRoute()),

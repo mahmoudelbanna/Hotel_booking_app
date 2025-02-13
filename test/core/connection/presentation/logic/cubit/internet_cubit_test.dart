@@ -24,10 +24,12 @@ void main() {
     internetStatusController = StreamController<InternetConnectionStatus>();
 
     // Mock the connectivity and internet checker streams
-    when(mockConnectivity.onConnectivityChanged)
-        .thenAnswer((_) => connectivityStreamController.stream);
-    when(mockInternetChecker.onStatusChange)
-        .thenAnswer((_) => internetStatusController.stream);
+    when(
+      mockConnectivity.onConnectivityChanged,
+    ).thenAnswer((_) => connectivityStreamController.stream);
+    when(
+      mockInternetChecker.onStatusChange,
+    ).thenAnswer((_) => internetStatusController.stream);
 
     internetCubit = InternetCubit(
       connectivity: mockConnectivity,
@@ -47,31 +49,34 @@ void main() {
 
   group('connectivity changes', () {
     test(
-        'emits InternetConnected when wifi is available and internet is connected',
-        () async {
-      // Arrange
-      when(mockInternetChecker.hasConnection).thenAnswer((_) async => true);
+      'emits InternetConnected when wifi is available and internet is connected',
+      () async {
+        // Arrange
+        when(mockInternetChecker.hasConnection).thenAnswer((_) async => true);
 
-      // Act
-      connectivityStreamController.add([ConnectivityResult.wifi]);
-      await Future.delayed(Duration.zero); // Allow the stream to emit
+        // Act
+        connectivityStreamController.add([ConnectivityResult.wifi]);
+        await Future.delayed(Duration.zero); // Allow the stream to emit
 
-      // Assert
-      expect(internetCubit.state, isA<InternetConnected>());
-    });
+        // Assert
+        expect(internetCubit.state, isA<InternetConnected>());
+      },
+    );
 
-    test('emits InternetDisconnected when wifi is available but no internet',
-        () async {
-      // Arrange
-      when(mockInternetChecker.hasConnection).thenAnswer((_) async => false);
+    test(
+      'emits InternetDisconnected when wifi is available but no internet',
+      () async {
+        // Arrange
+        when(mockInternetChecker.hasConnection).thenAnswer((_) async => false);
 
-      // Act
-      connectivityStreamController.add([ConnectivityResult.wifi]);
-      await Future.delayed(Duration.zero); // Allow the stream to emit
+        // Act
+        connectivityStreamController.add([ConnectivityResult.wifi]);
+        await Future.delayed(Duration.zero); // Allow the stream to emit
 
-      // Assert
-      expect(internetCubit.state, isA<InternetDisconnected>());
-    });
+        // Assert
+        expect(internetCubit.state, isA<InternetDisconnected>());
+      },
+    );
 
     test('emits InternetDisconnected when no connectivity', () async {
       // Act

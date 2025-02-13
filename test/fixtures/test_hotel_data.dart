@@ -8,10 +8,7 @@ class TestHotelData {
     category: 1,
     categoryType: 'Test Type',
     images: [
-      HotelImage(
-        large: 'test_image_large.jpg',
-        small: 'test_image_small.jpg',
-      )
+      HotelImage(large: 'test_image_large.jpg', small: 'test_image_small.jpg'),
     ],
     bestOffer: BestOffer(
       originalTravelPrice: 120,
@@ -27,10 +24,7 @@ class TestHotelData {
           childrenCount: 0,
         ),
       ),
-      travelDate: TravelDate(
-        days: 7,
-        nights: 6,
-      ),
+      travelDate: TravelDate(days: 7, nights: 6),
     ),
     ratingInfo: RatingInfo(
       score: 4.5,

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-
 /// Resolves the appropriate locale for the application.
 ///
 /// This function attempts to determine the locale that should be used based on the provided
@@ -21,7 +20,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 ///
 /// Returns the resolved [Locale] for the application.
 
-
 Locale? resolveLocale({
   required Locale? deviceLocale,
   required Iterable<Locale> supportedLocales,
@@ -33,13 +31,15 @@ Locale? resolveLocale({
   }
 
   final matchedLocale = supportedLocales.firstWhereOrNull(
-      (locale) => locale.languageCode == deviceLocale?.languageCode);
+    (locale) => locale.languageCode == deviceLocale?.languageCode,
+  );
 
   final defaultLocale = matchedLocale ?? supportedLocales.first;
 
-  context
-      .read<LanguageCubit>()
-      .languageSelected(defaultLocale.languageCode, defaultLocale.countryCode);
+  context.read<LanguageCubit>().languageSelected(
+    defaultLocale.languageCode,
+    defaultLocale.countryCode,
+  );
 
   return defaultLocale;
 }

@@ -20,44 +20,53 @@ void main() {
   final List<HotelModel> tHotelModels = [TestHotelModelData.hotel];
 
   group('getHotels', () {
-    test('should return Right(List<HotelModel>) when the call is successful',
-        () async {
-      // Arrange
-      when(mockRemoteDataSource.getHotels())
-          .thenAnswer((_) async => tHotelModels);
+    test(
+      'should return Right(List<HotelModel>) when the call is successful',
+      () async {
+        // Arrange
+        when(
+          mockRemoteDataSource.getHotels(),
+        ).thenAnswer((_) async => tHotelModels);
 
-      // Act
-      final result = await repository.getHotels();
+        // Act
+        final result = await repository.getHotels();
 
-      // Assert
-      verify(mockRemoteDataSource.getHotels()).called(1);
-      expect(result, Right(tHotelModels));
-    });
+        // Assert
+        verify(mockRemoteDataSource.getHotels()).called(1);
+        expect(result, Right(tHotelModels));
+      },
+    );
 
-    test('should return Left(ServerFailure) when a ServerException occurs',
-        () async {
-      // Arrange
-      when(mockRemoteDataSource.getHotels()).thenThrow(const ServerException());
+    test(
+      'should return Left(ServerFailure) when a ServerException occurs',
+      () async {
+        // Arrange
+        when(
+          mockRemoteDataSource.getHotels(),
+        ).thenThrow(const ServerException());
 
-      // Act
-      final result = await repository.getHotels();
+        // Act
+        final result = await repository.getHotels();
 
-      // Assert
-      verify(mockRemoteDataSource.getHotels()).called(1);
-      expect(result, const Left(ServerFailure()));
-    });
+        // Assert
+        verify(mockRemoteDataSource.getHotels()).called(1);
+        expect(result, const Left(ServerFailure()));
+      },
+    );
 
-    test('should return Left(ServerFailure) when an unknown exception occurs',
-        () async {
-      // Arrange
-      when(mockRemoteDataSource.getHotels()).thenThrow(Exception());
+    test(
+      'should return Left(ServerFailure) when an unknown exception occurs',
+      () async {
+        // Arrange
+        when(mockRemoteDataSource.getHotels()).thenThrow(Exception());
 
-      // Act
-      final result = await repository.getHotels();
+        // Act
+        final result = await repository.getHotels();
 
-      // Assert
-      verify(mockRemoteDataSource.getHotels()).called(1);
-      expect(result, const Left(ServerFailure()));
-    });
+        // Assert
+        verify(mockRemoteDataSource.getHotels()).called(1);
+        expect(result, const Left(ServerFailure()));
+      },
+    );
   });
 }

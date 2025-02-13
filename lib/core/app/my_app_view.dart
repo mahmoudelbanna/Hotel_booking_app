@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,8 +12,8 @@ class MyAppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageCubit, LanguageState>(
-      buildWhen: (previous, current) =>
-          previous.languageCode != current.languageCode,
+      buildWhen:
+          (previous, current) => previous.languageCode != current.languageCode,
       builder: (context, state) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
@@ -20,17 +21,26 @@ class MyAppView extends StatelessWidget {
           theme: _themeData(),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          localeResolutionCallback: (deviceLocale, supportedLocales) =>
-              resolveLocale(
-            context: context,
-            state: state,
-            deviceLocale: deviceLocale,
-            supportedLocales: supportedLocales,
+          localeResolutionCallback:
+              (deviceLocale, supportedLocales) => resolveLocale(
+                context: context,
+                state: state,
+                deviceLocale: deviceLocale,
+                supportedLocales: supportedLocales,
+              ),
+          locale:
+              state.languageCode != null && state.countryCode != null
+                  ? Locale(state.languageCode!, state.countryCode!)
+                  : null,
+          routerConfig: appRouter.config(
+            deepLinkBuilder: (deepLink) {
+              if (deepLink.isValid) {
+                return deepLink;
+              } else {
+                return DeepLink.defaultPath;
+              }
+            },
           ),
-          locale: state.languageCode != null && state.countryCode != null
-              ? Locale(state.languageCode!, state.countryCode!)
-              : null,
-          routerConfig: appRouter.config(),
         );
       },
     );

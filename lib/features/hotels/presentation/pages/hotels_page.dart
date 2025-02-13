@@ -16,9 +16,7 @@ class HotelsPage extends StatelessWidget {
           BlocProvider(
             create: (context) => getIt<FetchHotelsCubit>()..fetchHotels(),
           ),
-          BlocProvider.value(
-            value: getIt<FavoriteBloc>(),
-          ),
+          BlocProvider.value(value: getIt<FavoriteBloc>()),
         ],
         child: BlocBuilder<InternetCubit, InternetState>(
           builder: (context, state) {

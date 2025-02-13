@@ -35,14 +35,14 @@ class BestOffer extends Equatable {
 
   @override
   List<Object?> get props => [
-        originalTravelPrice,
-        simplePricePerPerson,
-        total,
-        travelPrice,
-        flightIncluded,
-        room,
-        travelDate,
-      ];
+    originalTravelPrice,
+    simplePricePerPerson,
+    total,
+    travelPrice,
+    flightIncluded,
+    room,
+    travelDate,
+  ];
 
   @override
   String toString() {

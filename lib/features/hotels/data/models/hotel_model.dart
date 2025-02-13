@@ -19,9 +19,10 @@ class HotelModel extends Hotel {
       destination: json[kDestination],
       category: json[kCategory],
       categoryType: json[kCategoryType],
-      images: (json[kImages] as List)
-          .map((image) => HotelImageModel.fromJson(image))
-          .toList(),
+      images:
+          (json[kImages] as List)
+              .map((image) => HotelImageModel.fromJson(image))
+              .toList(),
       bestOffer: BestOfferModel.fromJson(json[kBestOffer]),
       ratingInfo: RatingInfoModel.fromJson(json[kRatingInfo]),
     );

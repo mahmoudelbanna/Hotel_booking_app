@@ -14,12 +14,8 @@ class FetchHotelsCubit extends Cubit<FetchHotelsState> {
     final fetchedHotels = await usecase();
 
     fetchedHotels.fold(
-      (failure) => emit(
-        FetchHotelsFailure(),
-      ),
-      (hotels) => emit(
-        FetchHotelsSuccess(hotels: hotels),
-      ),
+      (failure) => emit(FetchHotelsFailure()),
+      (hotels) => emit(FetchHotelsSuccess(hotels: hotels)),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:equatable/equatable.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,15 +13,11 @@ class InternetCubit extends Cubit<InternetState> {
   late StreamSubscription connectivityStreamSubscription;
   late StreamSubscription internetCheckerSubscription;
 
-  InternetCubit({
-    required this.connectivity,
-    required this.connectionChecker,
-  }) : super(InternetLoading()) {
+  InternetCubit({required this.connectivity, required this.connectionChecker})
+    : super(InternetLoading()) {
     _initializeConnectivityChecking();
     _initializeInternetChecking();
   }
-
- 
 
   /// Listens for changes to the connectivity state of the device and invokes
   /// [connectivityResultAction] whenever the connectivity state changes.
@@ -30,8 +25,9 @@ class InternetCubit extends Cubit<InternetState> {
   /// This method is called once from the constructor and is not intended to be
   /// used directly.
   void _initializeConnectivityChecking() {
-    connectivityStreamSubscription =
-        connectivity.onConnectivityChanged.listen(connectivityResultAction);
+    connectivityStreamSubscription = connectivity.onConnectivityChanged.listen(
+      connectivityResultAction,
+    );
   }
 
   /// Listens for changes to the internet connection state and emits either
@@ -41,8 +37,9 @@ class InternetCubit extends Cubit<InternetState> {
   /// This method is called once from the constructor and is not intended to be
   /// used directly.
   void _initializeInternetChecking() {
-    internetCheckerSubscription =
-        connectionChecker.onStatusChange.listen((status) {
+    internetCheckerSubscription = connectionChecker.onStatusChange.listen((
+      status,
+    ) {
       if (status == InternetConnectionStatus.connected) {
         emitInternetConnected();
       } else {
@@ -63,7 +60,7 @@ class InternetCubit extends Cubit<InternetState> {
   void connectivityResultAction(List<ConnectivityResult> connectivityResult) {
     final bool hasConnection =
         connectivityResult.contains(ConnectivityResult.wifi) ||
-            connectivityResult.contains(ConnectivityResult.mobile);
+        connectivityResult.contains(ConnectivityResult.mobile);
 
     if (hasConnection) {
       // Only check actual internet connectivity if we have network connection
@@ -81,8 +78,7 @@ class InternetCubit extends Cubit<InternetState> {
 
   void emitInternetDisconnected() => emit(InternetDisconnected());
 
-  void emitInternetConnected() =>
-      emit(const InternetConnected());
+  void emitInternetConnected() => emit(const InternetConnected());
 
   @override
   Future<void> close() {

@@ -25,12 +25,8 @@ void main() {
   Widget createWidgetUnderTest() {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<InternetCubit>(
-          create: (context) => mockInternetCubit,
-        ),
-        BlocProvider<LanguageCubit>(
-          create: (context) => mockLanguageCubit,
-        ),
+        BlocProvider<InternetCubit>(create: (context) => mockInternetCubit),
+        BlocProvider<LanguageCubit>(create: (context) => mockLanguageCubit),
       ],
       child: MyApp(),
     );
@@ -38,11 +34,9 @@ void main() {
 
   testWidgets('MyApp widget test', (WidgetTester tester) async {
     // Arrange
-    when(mockInternetCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const InternetConnected(),
-      ]),
-    );
+    when(
+      mockInternetCubit.stream,
+    ).thenAnswer((_) => Stream.fromIterable([const InternetConnected()]));
 
     when(mockLanguageCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([
@@ -58,12 +52,14 @@ void main() {
     expect(find.byType(MaterialApp), findsOneWidget);
 
     // Verify that the Cubits are provided correctly
-    final internetCubit =
-        BlocProvider.of<InternetCubit>(tester.element(find.byType(MyApp)));
+    final internetCubit = BlocProvider.of<InternetCubit>(
+      tester.element(find.byType(MyApp)),
+    );
     expect(internetCubit, equals(mockInternetCubit));
-    
-    final languageCubit =
-        BlocProvider.of<LanguageCubit>(tester.element(find.byType(MyApp)));
+
+    final languageCubit = BlocProvider.of<LanguageCubit>(
+      tester.element(find.byType(MyApp)),
+    );
     expect(languageCubit, equals(mockLanguageCubit));
   });
 }

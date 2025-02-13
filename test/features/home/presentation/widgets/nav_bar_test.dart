@@ -19,16 +19,14 @@ void main() {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       home: Scaffold(
-        bottomNavigationBar: NavBar(
-          onTap: mockOnTap.call,
-          currentIndex: 0,
-        ),
+        bottomNavigationBar: NavBar(onTap: mockOnTap.call, currentIndex: 0),
       ),
     );
   }
 
-  testWidgets('NavBar renders correctly and responds to taps',
-      (WidgetTester tester) async {
+  testWidgets('NavBar renders correctly and responds to taps', (
+    WidgetTester tester,
+  ) async {
     // Build NavBar widget with proper localization setup
     await tester.pumpWidget(createWidgetUnderTest());
 

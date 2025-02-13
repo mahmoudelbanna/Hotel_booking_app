@@ -14,7 +14,6 @@ class HotelsView extends StatelessWidget {
           return const LoadingWidget();
         } else if (state is FetchHotelsSuccess) {
           return HotelCardsList(hotels: state.hotels);
-          
         } else if (state is FetchHotelsFailure) {
           return const ErrorFetchHotelsWidget();
         }

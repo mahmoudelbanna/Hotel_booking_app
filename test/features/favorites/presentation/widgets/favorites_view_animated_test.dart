@@ -31,17 +31,20 @@ void main() {
 
     getItTest.registerLazySingleton<FavoriteBloc>(() => favoriteBloc);
 
-    when(languageCubit.state)
-        .thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    when(
+      languageCubit.state,
+    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
     when(internetCubit.state).thenReturn(const InternetConnected());
 
-    when(internetCubit.stream)
-        .thenAnswer((_) => Stream.value(const InternetConnected()));
+    when(
+      internetCubit.stream,
+    ).thenAnswer((_) => Stream.value(const InternetConnected()));
   });
 
   setUpAll(() {
     provideDummy<LanguageState>(
-        LanguageState(languageCode: 'en', countryCode: 'US'));
+      LanguageState(languageCode: 'en', countryCode: 'US'),
+    );
   });
 
   tearDown(() {
@@ -58,32 +61,26 @@ void main() {
   Widget createWidgetUnderTest() {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<InternetCubit>(
-          create: (context) => internetCubit,
-        ),
-        BlocProvider<LanguageCubit>(
-          create: (context) => languageCubit,
-        ),
-        BlocProvider<FavoriteBloc>(
-          create: (context) => favoriteBloc,
-        ),
+        BlocProvider<InternetCubit>(create: (context) => internetCubit),
+        BlocProvider<LanguageCubit>(create: (context) => languageCubit),
+        BlocProvider<FavoriteBloc>(create: (context) => favoriteBloc),
       ],
       child: const MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: Scaffold(
-          body: FavoritesViewAnimated(),
-        ),
+        home: Scaffold(body: FavoritesViewAnimated()),
       ),
     );
   }
 
   group('FavoritesViewAnimated', () {
-    testWidgets('renders empty list when no favorites are available',
-        (WidgetTester tester) async {
+    testWidgets('renders empty list when no favorites are available', (
+      WidgetTester tester,
+    ) async {
       when(favoriteBloc.state).thenReturn(FavoriteState.initial());
-      when(favoriteBloc.stream)
-          .thenAnswer((_) => Stream.value(FavoriteState.initial()));
+      when(
+        favoriteBloc.stream,
+      ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
 
       await tester.pumpWidget(createWidgetUnderTest());
 
@@ -91,19 +88,16 @@ void main() {
       expect(find.byType(FavoriteHotelCard), findsNothing);
     });
 
-    testWidgets('renders favorite hotels list when there are favorites',
-        (WidgetTester tester) async {
+    testWidgets('renders favorite hotels list when there are favorites', (
+      WidgetTester tester,
+    ) async {
       when(favoriteBloc.state).thenReturn(
-        FavoriteState(
-          favorites: {dynamicHotelA[kHotelId]: dynamicHotelA},
-        ),
+        FavoriteState(favorites: {dynamicHotelA[kHotelId]: dynamicHotelA}),
       );
 
       when(favoriteBloc.stream).thenAnswer(
         (_) => Stream.value(
-          FavoriteState(
-            favorites: {dynamicHotelA[kHotelId]: dynamicHotelA},
-          ),
+          FavoriteState(favorites: {dynamicHotelA[kHotelId]: dynamicHotelA}),
         ),
       );
 
@@ -116,10 +110,12 @@ void main() {
     });
 
     testWidgets('adds items to the list', (WidgetTester tester) async {
-      favoriteBloc.add(ToggleFavorite(
-        hotelId: dynamicHotelB[kHotelId],
-        hotelData: dynamicHotelB,
-      ));
+      favoriteBloc.add(
+        ToggleFavorite(
+          hotelId: dynamicHotelB[kHotelId],
+          hotelData: dynamicHotelB,
+        ),
+      );
 
       when(favoriteBloc.state).thenReturn(
         FavoriteState(
@@ -148,15 +144,18 @@ void main() {
       expect(find.byType(FavoriteHotelCard), findsNWidgets(2));
     });
   });
-  testWidgets('animates when removing a hotel from favorites',
-      (WidgetTester tester) async {
+  testWidgets('animates when removing a hotel from favorites', (
+    WidgetTester tester,
+  ) async {
     final blocController = StreamController<FavoriteState>.broadcast();
 
     when(favoriteBloc.state).thenReturn(
-      FavoriteState(favorites: {
-        dynamicHotelA[kHotelId]: dynamicHotelA,
-        dynamicHotelB[kHotelId]: dynamicHotelB,
-      }),
+      FavoriteState(
+        favorites: {
+          dynamicHotelA[kHotelId]: dynamicHotelA,
+          dynamicHotelB[kHotelId]: dynamicHotelB,
+        },
+      ),
     );
 
     when(favoriteBloc.stream).thenAnswer((_) => blocController.stream);
@@ -168,9 +167,9 @@ void main() {
     expect(find.byType(FavoriteHotelCard), findsNWidgets(2));
 
     // Emit new state
-    blocController.add(FavoriteState(favorites: {
-      dynamicHotelA[kHotelId]: dynamicHotelA,
-    }));
+    blocController.add(
+      FavoriteState(favorites: {dynamicHotelA[kHotelId]: dynamicHotelA}),
+    );
 
     // Wait for the animation to start
     await tester.pump();
@@ -183,15 +182,14 @@ void main() {
 
     await blocController.close();
   });
-  testWidgets('animates when adding a hotel to favorites',
-      (WidgetTester tester) async {
+  testWidgets('animates when adding a hotel to favorites', (
+    WidgetTester tester,
+  ) async {
     final blocController = StreamController<FavoriteState>.broadcast();
 
     // Setup initial state
     when(favoriteBloc.state).thenReturn(
-      FavoriteState(favorites: {
-        dynamicHotelA[kHotelId]: dynamicHotelA,
-      }),
+      FavoriteState(favorites: {dynamicHotelA[kHotelId]: dynamicHotelA}),
     );
 
     when(favoriteBloc.stream).thenAnswer((_) => blocController.stream);
@@ -204,10 +202,14 @@ void main() {
     expect(find.byType(FavoriteHotelCard), findsOneWidget);
 
     // Emit new state
-    blocController.add(FavoriteState(favorites: {
-      dynamicHotelA[kHotelId]: dynamicHotelA,
-      dynamicHotelB[kHotelId]: dynamicHotelB,
-    }));
+    blocController.add(
+      FavoriteState(
+        favorites: {
+          dynamicHotelA[kHotelId]: dynamicHotelA,
+          dynamicHotelB[kHotelId]: dynamicHotelB,
+        },
+      ),
+    );
 
     // Wait for the animation to start
     await tester.pump();

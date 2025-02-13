@@ -25,50 +25,50 @@ void main() {
   });
 
   group('fetchHotels', () {
-    test('should emit [FetchHotelsLoading, FetchHotelsLoaded] when success',
-        () async {
-      // arrange
-      final tHotel = [TestHotelData.hotel];
+    test(
+      'should emit [FetchHotelsLoading, FetchHotelsLoaded] when success',
+      () async {
+        // arrange
+        final tHotel = [TestHotelData.hotel];
 
-      when(mockGetHotels()).thenAnswer((_) async => Right(tHotel));
+        when(mockGetHotels()).thenAnswer((_) async => Right(tHotel));
 
-      // act
-      cubit.fetchHotels();
+        // act
+        cubit.fetchHotels();
 
-      // Assert that the initial state is correct.
-      expect(cubit.state, const FetchHotelsLoading());
+        // Assert that the initial state is correct.
+        expect(cubit.state, const FetchHotelsLoading());
 
-      // assert later
-      await expectLater(
-        cubit.stream,
-        emits(FetchHotelsSuccess(hotels: tHotel)),
-      );
-      // Assert that the current state is in sync with the stubbed stream.
-      expect(cubit.state, FetchHotelsSuccess(hotels: tHotel));
-    });
+        // assert later
+        await expectLater(
+          cubit.stream,
+          emits(FetchHotelsSuccess(hotels: tHotel)),
+        );
+        // Assert that the current state is in sync with the stubbed stream.
+        expect(cubit.state, FetchHotelsSuccess(hotels: tHotel));
+      },
+    );
 
-    test('should emit [FetchHotelsLoading, FetchHotelsFailure] when failure',
-        () async {
-      // arrange
-      when(mockGetHotels()).thenAnswer(
-        (_) async => const Left(ServerFailure()),
-      );
+    test(
+      'should emit [FetchHotelsLoading, FetchHotelsFailure] when failure',
+      () async {
+        // arrange
+        when(
+          mockGetHotels(),
+        ).thenAnswer((_) async => const Left(ServerFailure()));
 
-      // act
-      cubit.fetchHotels(); // Ensure this is awaited
+        // act
+        cubit.fetchHotels(); // Ensure this is awaited
 
-      // Assert initial state
-      expect(cubit.state, const FetchHotelsLoading());
+        // Assert initial state
+        expect(cubit.state, const FetchHotelsLoading());
 
-      // assert later
-      await expectLater(
-        cubit.stream,
-        emits(const FetchHotelsFailure()),
-      );
+        // assert later
+        await expectLater(cubit.stream, emits(const FetchHotelsFailure()));
 
-      // Assert final state
-      expect(cubit.state, const FetchHotelsFailure());
-    });
+        // Assert final state
+        expect(cubit.state, const FetchHotelsFailure());
+      },
+    );
   });
 }
-

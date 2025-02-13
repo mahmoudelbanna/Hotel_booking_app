@@ -10,19 +10,12 @@ final getIt = GetIt.instance;
 void init() {
   //!core
   //! Dio client
-  getIt.registerLazySingleton<Dio>(
-    () => Dio(),
-  );
+  getIt.registerLazySingleton<Dio>(() => Dio());
   //!InternetCubit
   getIt.registerFactory<InternetCubit>(
-    () => InternetCubit(
-      connectivity: getIt(),
-      connectionChecker: getIt(),
-    ),
+    () => InternetCubit(connectivity: getIt(), connectionChecker: getIt()),
   );
-  getIt.registerLazySingleton<Connectivity>(
-    () => Connectivity(),
-  );
+  getIt.registerLazySingleton<Connectivity>(() => Connectivity());
   getIt.registerLazySingleton<InternetConnectionChecker>(
     () => InternetConnectionChecker.instance,
   );
@@ -33,26 +26,20 @@ void init() {
   getIt.registerFactory<FetchHotelsCubit>(
     () => FetchHotelsCubit(usecase: getIt()),
   );
-  getIt.registerLazySingleton<GetHotels>(
-    () => GetHotels(repository: getIt()),
-  );
+  getIt.registerLazySingleton<GetHotels>(() => GetHotels(repository: getIt()));
 
   getIt.registerLazySingleton<HotelsRepository>(
-    () => HotelsRepositoryImpl(
-      remoteDataSource: getIt(),
-    ),
+    () => HotelsRepositoryImpl(remoteDataSource: getIt()),
   );
 
   getIt.registerLazySingleton<HotelsRemoteDataSource>(
-    () => HotelsRemoteDataSourceImpl(
-      dio: getIt(),
-    ),
+    () => HotelsRemoteDataSourceImpl(dio: getIt()),
   );
   //!Favorites
   getIt.registerLazySingleton<FavoriteBloc>(
     () => FavoriteBloc(toggleFavoriteUseCase: getIt()),
   );
-  
+
   getIt.registerLazySingleton<ToggleFavoriteUseCase>(
     () => ToggleFavoriteUseCase(),
   );

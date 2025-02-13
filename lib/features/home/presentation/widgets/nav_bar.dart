@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../hotel_booking_app.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({
-    super.key,
-    required this.onTap,
-    required this.currentIndex,
-  });
+  const NavBar({super.key, required this.onTap, required this.currentIndex});
 
   final NavBarOnTap onTap;
   final int currentIndex;

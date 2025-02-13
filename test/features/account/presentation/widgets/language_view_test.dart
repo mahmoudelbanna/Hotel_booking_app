@@ -26,21 +26,19 @@ void main() {
         child: const MaterialApp(
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          home: Scaffold(
-            body: LanguageView(),
-          ),
+          home: Scaffold(body: LanguageView()),
         ),
       );
     }
 
     testWidgets('displays German and English language options', (tester) async {
-      when(mockLanguageCubit.state)
-          .thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
-      when(mockLanguageCubit.stream)
-          .thenAnswer((_) => Stream.value(LanguageState(
-                languageCode: 'en',
-                countryCode: 'US',
-              )));
+      when(
+        mockLanguageCubit.state,
+      ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+      when(mockLanguageCubit.stream).thenAnswer(
+        (_) =>
+            Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+      );
 
       await tester.pumpWidget(createWidgetUnderTest());
 
@@ -49,14 +47,17 @@ void main() {
       expect(find.text('German'), findsOneWidget);
     });
 
-    testWidgets('calls languageSelected when a language is selected',
-        (tester) async {
+    testWidgets('calls languageSelected when a language is selected', (
+      tester,
+    ) async {
       // Initial state
-      when(mockLanguageCubit.state)
-          .thenReturn(LanguageState(languageCode: 'de', countryCode: 'DE'));
-      when(mockLanguageCubit.stream).thenAnswer((_) => Stream.value(
-            LanguageState(languageCode: 'de', countryCode: 'DE'),
-          ));
+      when(
+        mockLanguageCubit.state,
+      ).thenReturn(LanguageState(languageCode: 'de', countryCode: 'DE'));
+      when(mockLanguageCubit.stream).thenAnswer(
+        (_) =>
+            Stream.value(LanguageState(languageCode: 'de', countryCode: 'DE')),
+      );
 
       await tester.pumpWidget(createWidgetUnderTest());
 

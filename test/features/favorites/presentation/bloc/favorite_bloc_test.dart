@@ -42,23 +42,30 @@ void main() {
     'should call ToggleFavoriteUseCase and add a hotel to favorites',
     build: () => favoriteBloc,
     setUp: () {
-      when(mockToggleFavorite.call(
-        currentFavorites: {},
-        hotelId: tHotelId,
-        hotelData: testHotelMap,
-      )).thenReturn({tHotelId: testHotelMap});
+      when(
+        mockToggleFavorite.call(
+          currentFavorites: {},
+          hotelId: tHotelId,
+          hotelData: testHotelMap,
+        ),
+      ).thenReturn({tHotelId: testHotelMap});
     },
-    act: (bloc) =>
-        bloc.add(ToggleFavorite(hotelId: tHotelId, hotelData: testHotelMap)),
-    expect: () => [
-      FavoriteState(favorites: {tHotelId: testHotelMap})
-    ],
+    act:
+        (bloc) => bloc.add(
+          ToggleFavorite(hotelId: tHotelId, hotelData: testHotelMap),
+        ),
+    expect:
+        () => [
+          FavoriteState(favorites: {tHotelId: testHotelMap}),
+        ],
     verify: (_) {
-      verify(mockToggleFavorite.call(
-        currentFavorites: {},
-        hotelId: tHotelId,
-        hotelData: testHotelMap,
-      )).called(1);
+      verify(
+        mockToggleFavorite.call(
+          currentFavorites: {},
+          hotelId: tHotelId,
+          hotelData: testHotelMap,
+        ),
+      ).called(1);
     },
   );
 
@@ -67,21 +74,27 @@ void main() {
     build: () => favoriteBloc,
     seed: () => FavoriteState(favorites: {tHotelId: testHotelMap}),
     setUp: () {
-      when(mockToggleFavorite.call(
-        currentFavorites: {tHotelId: testHotelMap},
-        hotelId: tHotelId,
-        hotelData: testHotelMap,
-      )).thenReturn(testEmptyHotel);
+      when(
+        mockToggleFavorite.call(
+          currentFavorites: {tHotelId: testHotelMap},
+          hotelId: tHotelId,
+          hotelData: testHotelMap,
+        ),
+      ).thenReturn(testEmptyHotel);
     },
-    act: (bloc) =>
-        bloc.add(ToggleFavorite(hotelId: tHotelId, hotelData: testHotelMap)),
+    act:
+        (bloc) => bloc.add(
+          ToggleFavorite(hotelId: tHotelId, hotelData: testHotelMap),
+        ),
     expect: () => [FavoriteState(favorites: testEmptyHotel)],
     verify: (_) {
-      verify(mockToggleFavorite.call(
-        currentFavorites: {tHotelId: testHotelMap},
-        hotelId: tHotelId,
-        hotelData: testHotelMap,
-      )).called(1);
+      verify(
+        mockToggleFavorite.call(
+          currentFavorites: {tHotelId: testHotelMap},
+          hotelId: tHotelId,
+          hotelData: testHotelMap,
+        ),
+      ).called(1);
     },
   );
 

@@ -3,9 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../hotel_booking_app.dart';
 
 class Room extends Equatable {
-  const Room({
-    required this.overall,
-  });
+  const Room({required this.overall});
 
   factory Room.empty() {
     return Room(overall: Overall.empty());
@@ -15,9 +13,7 @@ class Room extends Equatable {
 
   @override
   @override
-  List<Object?> get props => [
-        overall,
-      ];
+  List<Object?> get props => [overall];
 
   @override
   String toString() {
@@ -25,8 +21,6 @@ class Room extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      kOverall: overall.toMap(),
-    };
+    return {kOverall: overall.toMap()};
   }
 }

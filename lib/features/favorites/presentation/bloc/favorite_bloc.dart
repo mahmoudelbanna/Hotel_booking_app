@@ -10,7 +10,7 @@ class FavoriteBloc extends HydratedBloc<FavoriteEvent, FavoriteState> {
   final ToggleFavoriteUseCase toggleFavoriteUseCase;
 
   FavoriteBloc({required this.toggleFavoriteUseCase})
-      : super(FavoriteState.initial()) {
+    : super(FavoriteState.initial()) {
     on<ToggleFavorite>(_onToggleFavorite);
   }
 

@@ -24,7 +24,7 @@ class Hotel extends Equatable {
   });
 
   factory Hotel.empty() {
-    return  Hotel(
+    return Hotel(
       id: '',
       name: '',
       destination: '',
@@ -38,15 +38,15 @@ class Hotel extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        destination,
-        category,
-        categoryType,
-        images,
-        bestOffer,
-        ratingInfo,
-      ];
+    id,
+    name,
+    destination,
+    category,
+    categoryType,
+    images,
+    bestOffer,
+    ratingInfo,
+  ];
 
   @override
   String toString() {

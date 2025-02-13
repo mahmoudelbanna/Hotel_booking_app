@@ -7,12 +7,7 @@ void main() {
   const buttonText = 'Click Me';
   Widget createWidgetUnderTest(VoidCallback onPressed) {
     return MaterialApp(
-      home: Scaffold(
-        body: Button(
-          onPressed: onPressed,
-          text: buttonText,
-        ),
-      ),
+      home: Scaffold(body: Button(onPressed: onPressed, text: buttonText)),
     );
   }
 
@@ -22,8 +17,9 @@ void main() {
     expect(textFinder, findsOneWidget);
   });
 
-  testWidgets('Button calls onPressed when tapped',
-      (WidgetTester tester) async {
+  testWidgets('Button calls onPressed when tapped', (
+    WidgetTester tester,
+  ) async {
     bool isPressed = false;
     void onPressed() {
       isPressed = true;

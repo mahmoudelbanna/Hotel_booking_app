@@ -30,22 +30,27 @@ void main() {
     getItTest.registerFactory<FetchHotelsCubit>(() => fetchHotelsCubit);
 
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
-    when(languageCubit.state)
-        .thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    when(
+      languageCubit.state,
+    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
     when(internetCubit.state).thenReturn(const InternetConnected());
     when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
-    when(favoriteBloc.stream)
-        .thenAnswer((_) => Stream.value(FavoriteState.initial()));
-    when(internetCubit.stream)
-        .thenAnswer((_) => Stream.value(const InternetConnected()));
-    when(fetchHotelsCubit.stream)
-        .thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
+    when(
+      favoriteBloc.stream,
+    ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
+    when(
+      internetCubit.stream,
+    ).thenAnswer((_) => Stream.value(const InternetConnected()));
+    when(
+      fetchHotelsCubit.stream,
+    ).thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
   });
 
   setUpAll(() {
     provideDummy<FavoriteState>(FavoriteState.initial());
     provideDummy<LanguageState>(
-        LanguageState(languageCode: 'en', countryCode: 'US'));
+      LanguageState(languageCode: 'en', countryCode: 'US'),
+    );
     provideDummy<FetchHotelsState>(const FetchHotelsLoading());
   });
 
@@ -57,31 +62,25 @@ void main() {
     getItTest.reset();
   });
 
-  Future<void> pumpRouterConfigApp(
-    WidgetTester tester,
-  ) {
+  Future<void> pumpRouterConfigApp(WidgetTester tester) {
     return tester
-        .pumpWidget(MultiBlocProvider(
-          providers: [
-            BlocProvider<FavoriteBloc>(
-              create: (context) => favoriteBloc,
+        .pumpWidget(
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<FavoriteBloc>(create: (context) => favoriteBloc),
+              BlocProvider<LanguageCubit>(create: (context) => languageCubit),
+              BlocProvider<InternetCubit>(create: (context) => internetCubit),
+              BlocProvider<FetchHotelsCubit>(
+                create: (context) => fetchHotelsCubit,
+              ),
+            ],
+            child: MaterialApp.router(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              routerConfig: fakeAppRouter.config(),
             ),
-            BlocProvider<LanguageCubit>(
-              create: (context) => languageCubit,
-            ),
-            BlocProvider<InternetCubit>(
-              create: (context) => internetCubit,
-            ),
-            BlocProvider<FetchHotelsCubit>(
-              create: (context) => fetchHotelsCubit,
-            ),
-          ],
-          child: MaterialApp.router(
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            routerConfig: fakeAppRouter.config(),
           ),
-        ))
+        )
         .then((_) => tester.pumpAndSettle());
   }
 
@@ -93,13 +92,14 @@ void main() {
 
     expect(find.text('Ab in den Urlaub!'), findsOneWidget);
   });
-  testWidgets('OverviewPage navigates to HotelsRoute on button tap',
-      (WidgetTester tester) async {
+  testWidgets('OverviewPage navigates to HotelsRoute on button tap', (
+    WidgetTester tester,
+  ) async {
     await pumpRouterConfigApp(tester);
 
     final exploreHotelsButton = find.text(
-        AppLocalizations.of(tester.element(find.byType(Button)))!
-            .exploreHotels);
+      AppLocalizations.of(tester.element(find.byType(Button)))!.exploreHotels,
+    );
     expect(exploreHotelsButton, findsOneWidget);
 
     await tester.tap(exploreHotelsButton);

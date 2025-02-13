@@ -26,11 +26,11 @@ class Overall extends Equatable {
 
   @override
   List<Object?> get props => [
-        boarding,
-        roomsOverallName,
-        adultCount,
-        childrenCount,
-      ];
+    boarding,
+    roomsOverallName,
+    adultCount,
+    childrenCount,
+  ];
 
   @override
   String toString() {

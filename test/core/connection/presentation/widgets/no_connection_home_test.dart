@@ -26,17 +26,14 @@ void main() {
     );
   }
 
-  testWidgets('displays "No internet connection" when InternetDisconnected',
-      (WidgetTester tester) async {
+  testWidgets('displays "No internet connection" when InternetDisconnected', (
+    WidgetTester tester,
+  ) async {
     // Arrange
-    when(mockInternetCubit.state).thenReturn(
-      const InternetDisconnected(),
-    );
-    when(mockInternetCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const InternetDisconnected(),
-      ]),
-    );
+    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
+    when(
+      mockInternetCubit.stream,
+    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
 
     // Act
     await tester.pumpWidget(createWidgetUnderTest());
@@ -47,16 +44,13 @@ void main() {
     expect(find.text("No internet connection"), findsOneWidget);
   });
 
-  testWidgets('animates the icon with ScaleTransition',
-      (WidgetTester tester) async {
-    when(mockInternetCubit.state).thenReturn(
-      const InternetDisconnected(),
-    );
-    when(mockInternetCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const InternetDisconnected(),
-      ]),
-    );
+  testWidgets('animates the icon with ScaleTransition', (
+    WidgetTester tester,
+  ) async {
+    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
+    when(
+      mockInternetCubit.stream,
+    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
 
     await tester.pumpWidget(createWidgetUnderTest());
     await tester.pump();

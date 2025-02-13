@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../hotel_booking_app.dart';
 
 class HotelCardsList extends StatefulWidget {
-  const HotelCardsList({
-    super.key,
-    required this.hotels,
-  });
+  const HotelCardsList({super.key, required this.hotels});
 
   final List<Hotel> hotels;
 
@@ -39,8 +36,10 @@ class _HotelCardsListState extends State<HotelCardsList> {
             pinned: false,
             backgroundColor: Theme.of(context).cardColor,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              titlePadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 10,
+              ),
               centerTitle: false,
               title: HotelsNumbers(hotels: widget.hotels),
             ),

@@ -2,14 +2,10 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../hotel_booking_app.dart';
 
-
-
 class HotelsRepositoryImpl implements HotelsRepository {
   final HotelsRemoteDataSource remoteDataSource;
 
-  const HotelsRepositoryImpl({
-    required this.remoteDataSource,
-  });
+  const HotelsRepositoryImpl({required this.remoteDataSource});
 
   @override
   Future<Either<Failure, List<HotelModel>>> getHotels() async {

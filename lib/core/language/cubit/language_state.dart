@@ -22,16 +22,10 @@ class LanguageState extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      "languageCode": languageCode,
-      "countryCode": countryCode,
-    };
+    return {"languageCode": languageCode, "countryCode": countryCode};
   }
 
-  LanguageState copyWith({
-    String? countryCode,
-    String? languageCode,
-  }) {
+  LanguageState copyWith({String? countryCode, String? languageCode}) {
     return LanguageState(
       countryCode: countryCode ?? this.countryCode,
       languageCode: languageCode ?? this.languageCode,

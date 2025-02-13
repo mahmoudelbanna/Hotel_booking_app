@@ -22,10 +22,7 @@ class TestHotelModelData {
           childrenCount: 0,
         ),
       ),
-      travelDate: TravelDate(
-        days: 7,
-        nights: 6,
-      ),
+      travelDate: TravelDate(days: 7, nights: 6),
     ),
     ratingInfo: RatingInfo(
       score: 4.5,

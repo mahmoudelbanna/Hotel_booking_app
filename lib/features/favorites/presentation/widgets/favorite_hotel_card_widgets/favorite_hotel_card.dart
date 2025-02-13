@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class FavoriteHotelCard extends StatelessWidget {
-  const FavoriteHotelCard({
-    super.key,
-    required this.hotel,
-  });
+  const FavoriteHotelCard({super.key, required this.hotel});
 
   final dynamic hotel;
 

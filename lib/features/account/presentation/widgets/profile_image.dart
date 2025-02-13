@@ -4,9 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../hotel_booking_app.dart';
 
 class ProfileImage extends StatelessWidget {
-  const ProfileImage({
-    super.key,
-  });
+  const ProfileImage({super.key});
 
   @override
   Widget build(BuildContext context) {

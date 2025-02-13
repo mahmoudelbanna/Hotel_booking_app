@@ -29,9 +29,9 @@ class OverviewPage extends StatelessWidget {
               children: [
                 Text(
                   'Ab in den Urlaub!',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: Colors.white,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.headlineLarge?.copyWith(color: Colors.white),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

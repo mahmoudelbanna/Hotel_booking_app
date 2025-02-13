@@ -19,38 +19,34 @@ void main() {
 
   final tHotel = [TestHotelData.hotel];
 
-  test(
-    'should get hotel entity from the repository',
-    () async {
-      // arrange
-      when(mockHotelsRepository.getHotels())
-          .thenAnswer((_) async => Right(tHotel));
+  test('should get hotel entity from the repository', () async {
+    // arrange
+    when(
+      mockHotelsRepository.getHotels(),
+    ).thenAnswer((_) async => Right(tHotel));
 
-      // act
-      final result = await usecase();
+    // act
+    final result = await usecase();
 
-      // assert
-      expect(result, Right(tHotel));
-      verify(mockHotelsRepository.getHotels());
-      verifyNoMoreInteractions(mockHotelsRepository);
-    },
-  );
+    // assert
+    expect(result, Right(tHotel));
+    verify(mockHotelsRepository.getHotels());
+    verifyNoMoreInteractions(mockHotelsRepository);
+  });
 
-  test(
-    'should return Failure when repository fails',
-    () async {
-      // arrange
-      final tFailure = const ServerFailure();
-      when(mockHotelsRepository.getHotels())
-          .thenAnswer((_) async => Left(tFailure));
+  test('should return Failure when repository fails', () async {
+    // arrange
+    final tFailure = const ServerFailure();
+    when(
+      mockHotelsRepository.getHotels(),
+    ).thenAnswer((_) async => Left(tFailure));
 
-      // act
-      final result = await usecase();
+    // act
+    final result = await usecase();
 
-      // assert
-      expect(result, Left(tFailure));
-      verify(mockHotelsRepository.getHotels());
-      verifyNoMoreInteractions(mockHotelsRepository);
-    },
-  );
+    // assert
+    expect(result, Left(tFailure));
+    verify(mockHotelsRepository.getHotels());
+    verifyNoMoreInteractions(mockHotelsRepository);
+  });
 }

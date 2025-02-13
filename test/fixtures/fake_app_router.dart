@@ -5,34 +5,23 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 class FakeAppRouter extends RootStackRouter implements AppRouter {
   @override
   List<AutoRoute> get routes => [
+    AutoRoute(
+      page: HomeRoute.page,
+      initial: true,
+      children: [
+        AutoRoute(page: OverviewRoute.page),
+        AutoRoute(page: HotelsRoute.page),
+        AutoRoute(page: FavoritesRoute.page),
         AutoRoute(
-          page: HomeRoute.page,
-          initial: true,
+          page: AccountTab.page,
           children: [
-            AutoRoute(
-              page: OverviewRoute.page,
-            ),
-            AutoRoute(
-              page: HotelsRoute.page,
-            ),
-            AutoRoute(
-              page: FavoritesRoute.page,
-            ),
-            AutoRoute(
-              page: AccountTab.page,
-              children: [
-                AutoRoute(
-                  page: AccountRoute.page,
-                  initial: true,
-                ),
-                AutoRoute(
-                  page: LanguageRoute.page,
-                )
-              ],
-            ),
+            AutoRoute(page: AccountRoute.page, initial: true),
+            AutoRoute(page: LanguageRoute.page),
           ],
         ),
-      ];
+      ],
+    ),
+  ];
 }
 
 // ignore: constant_identifier_names

@@ -1,13 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../hotel_booking_app.dart';
 
 class HotelLocation extends StatelessWidget {
-  const HotelLocation({
-    super.key,
-    required this.hotel,
-  });
+  const HotelLocation({super.key, required this.hotel});
 
   final Hotel hotel;
 
@@ -15,9 +11,9 @@ class HotelLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       hotel.destination,
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Colors.grey[700],
-          ),
+      style: Theme.of(
+        context,
+      ).textTheme.titleMedium?.copyWith(color: Colors.grey[700]),
     );
   }
 }

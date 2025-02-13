@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DetailsText extends StatelessWidget {
-  const DetailsText({
-    super.key,
-    required this.text,
-  });
+  const DetailsText({super.key, required this.text});
 
   final String text;
 
@@ -12,9 +9,9 @@ class DetailsText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            color: Colors.grey[700],
-          ),
+      style: Theme.of(
+        context,
+      ).textTheme.titleSmall?.copyWith(color: Colors.grey[700]),
       overflow: TextOverflow.fade,
     );
   }

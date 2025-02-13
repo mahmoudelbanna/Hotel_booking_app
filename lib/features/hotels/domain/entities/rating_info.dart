@@ -23,8 +23,12 @@ class RatingInfo extends Equatable {
   final String scoreDescription;
 
   @override
-  List<Object?> get props =>
-      [recommendationRate, reviewsCount, score, scoreDescription];
+  List<Object?> get props => [
+    recommendationRate,
+    reviewsCount,
+    score,
+    scoreDescription,
+  ];
 
   @override
   String toString() {

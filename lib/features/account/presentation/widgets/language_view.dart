@@ -8,8 +8,7 @@ class LanguageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final countryCode =
-        context.watch<LanguageCubit>().state.countryCode ?? '';
+    final countryCode = context.watch<LanguageCubit>().state.countryCode ?? '';
     final languageCode =
         context.watch<LanguageCubit>().state.languageCode ?? '';
     final germanLocale = AppLocalizations.supportedLocales[0];
@@ -25,15 +24,21 @@ class LanguageView extends StatelessWidget {
             text: context.l10n.german,
             value: germanLocale.languageCode,
             groupValue: languageCode,
-            onChanged: (value) =>
-                context.read<LanguageCubit>().languageSelected(value, countryCode),
+            onChanged:
+                (value) => context.read<LanguageCubit>().languageSelected(
+                  value,
+                  countryCode,
+                ),
           ),
           LanguageListTile(
             text: context.l10n.english,
             value: englishLocale.languageCode,
             groupValue: languageCode,
-            onChanged: (value) =>
-                context.read<LanguageCubit>().languageSelected(value, countryCode),
+            onChanged:
+                (value) => context.read<LanguageCubit>().languageSelected(
+                  value,
+                  countryCode,
+                ),
           ),
         ],
       ),

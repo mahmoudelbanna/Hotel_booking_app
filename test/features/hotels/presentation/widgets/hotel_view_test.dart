@@ -27,8 +27,9 @@ void main() {
 
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
 
-    when(favoriteBloc.stream)
-        .thenAnswer((_) => Stream.value(FavoriteState.initial()));
+    when(
+      favoriteBloc.stream,
+    ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
   });
 
   setUpAll(() {
@@ -45,33 +46,24 @@ void main() {
   Widget createWidgetUnderTest() {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<FetchHotelsCubit>(
-          create: (context) => fetchHotelsCubit,
-        ),
-        BlocProvider<FavoriteBloc>(
-          create: (context) => favoriteBloc,
-        ),
+        BlocProvider<FetchHotelsCubit>(create: (context) => fetchHotelsCubit),
+        BlocProvider<FavoriteBloc>(create: (context) => favoriteBloc),
       ],
       child: const MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: Scaffold(
-          body: HotelsView(),
-        ),
+        home: Scaffold(body: HotelsView()),
       ),
     );
   }
 
-  testWidgets('displays LoadingWidget when in FetchHotelsLoading state',
-      (WidgetTester tester) async {
-    when(fetchHotelsCubit.state).thenReturn(
-      const FetchHotelsLoading(),
-    );
-    when(fetchHotelsCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const FetchHotelsLoading(),
-      ]),
-    );
+  testWidgets('displays LoadingWidget when in FetchHotelsLoading state', (
+    WidgetTester tester,
+  ) async {
+    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
+    when(
+      fetchHotelsCubit.stream,
+    ).thenAnswer((_) => Stream.fromIterable([const FetchHotelsLoading()]));
 
     await tester.pumpWidget(createWidgetUnderTest());
 
@@ -81,17 +73,14 @@ void main() {
     expect(find.byType(EmptyListWidget), findsNothing);
   });
 
-  testWidgets('displays HotelCardsList when in FetchHotelsSuccess state',
-      (WidgetTester tester) async {
+  testWidgets('displays HotelCardsList when in FetchHotelsSuccess state', (
+    WidgetTester tester,
+  ) async {
     final hotels = [TestHotelData.hotel];
 
-    when(fetchHotelsCubit.state).thenReturn(
-      FetchHotelsSuccess(hotels: hotels),
-    );
+    when(fetchHotelsCubit.state).thenReturn(FetchHotelsSuccess(hotels: hotels));
     when(fetchHotelsCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        FetchHotelsSuccess(hotels: hotels),
-      ]),
+      (_) => Stream.fromIterable([FetchHotelsSuccess(hotels: hotels)]),
     );
     await tester.pumpWidget(createWidgetUnderTest());
 
@@ -100,22 +89,19 @@ void main() {
   });
 
   testWidgets(
-      'displays ErrorFetchHotelsWidget when in FetchHotelsFailure state',
-      (WidgetTester tester) async {
-    when(fetchHotelsCubit.state).thenReturn(
-      const FetchHotelsFailure(),
-    );
-    when(fetchHotelsCubit.stream).thenAnswer(
-      (_) => Stream.fromIterable([
-        const FetchHotelsFailure(),
-      ]),
-    );
+    'displays ErrorFetchHotelsWidget when in FetchHotelsFailure state',
+    (WidgetTester tester) async {
+      when(fetchHotelsCubit.state).thenReturn(const FetchHotelsFailure());
+      when(
+        fetchHotelsCubit.stream,
+      ).thenAnswer((_) => Stream.fromIterable([const FetchHotelsFailure()]));
 
-    await tester.pumpWidget(createWidgetUnderTest());
+      await tester.pumpWidget(createWidgetUnderTest());
 
-    expect(find.byType(ErrorFetchHotelsWidget), findsOneWidget);
-    expect(find.byType(HotelCardsList), findsNothing);
-    expect(find.byType(LoadingWidget), findsNothing);
-    expect(find.byType(EmptyListWidget), findsNothing);
-  });
+      expect(find.byType(ErrorFetchHotelsWidget), findsOneWidget);
+      expect(find.byType(HotelCardsList), findsNothing);
+      expect(find.byType(LoadingWidget), findsNothing);
+      expect(find.byType(EmptyListWidget), findsNothing);
+    },
+  );
 }

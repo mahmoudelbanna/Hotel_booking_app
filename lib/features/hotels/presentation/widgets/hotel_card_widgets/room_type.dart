@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class RoomTypes extends StatelessWidget {
-  const RoomTypes({
-    super.key,
-    required this.hotel,
-  });
+  const RoomTypes({super.key, required this.hotel});
 
   final Hotel hotel;
 

@@ -40,8 +40,9 @@ class _FavoritesViewAnimatedState extends State<FavoritesViewAnimated> {
   void _handleRemovals(List<dynamic> newFavorites) {
     for (var entry in List.of(_favoriteHotels)) {
       if (!newFavorites.any((e) => e[kHotelId] == entry[kHotelId])) {
-        final index =
-            _favoriteHotels.indexWhere((e) => e[kHotelId] == entry[kHotelId]);
+        final index = _favoriteHotels.indexWhere(
+          (e) => e[kHotelId] == entry[kHotelId],
+        );
         if (index != -1) {
           _listKey.currentState?.removeItem(
             index,

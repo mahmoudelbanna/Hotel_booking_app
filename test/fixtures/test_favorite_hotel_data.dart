@@ -11,7 +11,7 @@ class TestFavoriteHotelData {
       {
         kImageLarge: 'test_image_large.jpg',
         kImageSmall: 'test_image_small.jpg',
-      }
+      },
     ],
     kBestOffer: {
       kOriginalTravelPrice: 120,
@@ -27,10 +27,7 @@ class TestFavoriteHotelData {
           kChildrenCount: 0,
         },
       },
-      kTravelDate: {
-        kDays: 7,
-        kNights: 6,
-      },
+      kTravelDate: {kDays: 7, kNights: 6},
     },
     kRatingInfo: {
       kScore: 4.5,
@@ -49,7 +46,7 @@ class TestFavoriteHotelData {
       {
         kImageLarge: 'test_image_large.jpg',
         kImageSmall: 'test_image_small.jpg',
-      }
+      },
     ],
     kBestOffer: {
       kOriginalTravelPrice: 120,
@@ -65,10 +62,7 @@ class TestFavoriteHotelData {
           kChildrenCount: 0,
         },
       },
-      kTravelDate: {
-        kDays: 7,
-        kNights: 6,
-      },
+      kTravelDate: {kDays: 7, kNights: 6},
     },
     kRatingInfo: {
       kScore: 4.5,

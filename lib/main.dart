@@ -12,13 +12,12 @@ void main() async {
   await dotenv.load(fileName: ".env");
 
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory:
-        HydratedStorageDirectory((await getTemporaryDirectory()).path),
+    storageDirectory: HydratedStorageDirectory(
+      (await getTemporaryDirectory()).path,
+    ),
   );
   di.init();
   Bloc.observer = const AppBlocObserver();
 
-  runApp(
-    const MyApp(),
-  );
+  runApp(const MyApp());
 }

@@ -22,10 +22,10 @@ class _ErrorFetchHotelsWidgetState extends State<ErrorFetchHotelsWidget>
       duration: const Duration(seconds: 2),
       vsync: this,
     )..repeat(reverse: true);
-    _animation = Tween<double>(begin: 0.75, end: 1.0).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
+    _animation = Tween<double>(
+      begin: 0.75,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -55,9 +55,9 @@ class _ErrorFetchHotelsWidgetState extends State<ErrorFetchHotelsWidget>
             child: Text(
               context.l10n.somethingWentWrong,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.center,
             ),
           ),

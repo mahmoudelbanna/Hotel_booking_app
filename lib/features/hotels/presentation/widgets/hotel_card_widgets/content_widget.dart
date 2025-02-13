@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class ContentWidget extends StatelessWidget {
-  const ContentWidget({
-    super.key,
-    required this.hotel,
-  });
+  const ContentWidget({super.key, required this.hotel});
 
   final Hotel hotel;
 

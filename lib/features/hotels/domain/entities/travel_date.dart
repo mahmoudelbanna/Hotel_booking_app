@@ -3,10 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../hotel_booking_app.dart';
 
 class TravelDate extends Equatable {
-  const TravelDate({
-    required this.days,
-    required this.nights,
-  });
+  const TravelDate({required this.days, required this.nights});
 
   factory TravelDate.empty() {
     return const TravelDate(days: 0, nights: 0);
@@ -16,10 +13,7 @@ class TravelDate extends Equatable {
   final int nights;
 
   @override
-  List<Object?> get props => [
-        days,
-        nights,
-      ];
+  List<Object?> get props => [days, nights];
 
   @override
   String toString() {
@@ -27,9 +21,6 @@ class TravelDate extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      kDays: days,
-      kNights: nights,
-    };
+    return {kDays: days, kNights: nights};
   }
 }

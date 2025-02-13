@@ -12,12 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => getIt<InternetCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => LanguageCubit(),
-        ),
+        BlocProvider(create: (context) => getIt<InternetCubit>()),
+        BlocProvider(create: (context) => LanguageCubit()),
       ],
       child: MyAppView(appRouter: _appRouter),
     );

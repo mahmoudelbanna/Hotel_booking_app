@@ -16,13 +16,14 @@ class HomePage extends StatelessWidget {
       AccountTab(),
     ];
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => AppBar(
-        title: Text(context.topRoute.title(context)),
-        leading: AutoLeadingButton(
-          ignorePagelessRoutes: true,
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
-      ),
+      appBarBuilder:
+          (_, tabsRouter) => AppBar(
+            title: Text(context.topRoute.title(context)),
+            leading: AutoLeadingButton(
+              ignorePagelessRoutes: true,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
       routes: routes,
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavBar(

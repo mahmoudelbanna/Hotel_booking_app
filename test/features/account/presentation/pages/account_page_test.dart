@@ -20,37 +20,38 @@ void main() {
   setUp(() {
     fakeAppRouter = FakeAppRouter();
     languageCubit = MockLanguageCubit();
-    when(languageCubit.state)
-        .thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
-    when(languageCubit.stream).thenAnswer((_) =>
-        Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')));
+    when(
+      languageCubit.state,
+    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    when(languageCubit.stream).thenAnswer(
+      (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+    );
   });
 
   tearDown(() {
     languageCubit.close();
   });
 
-  Future<void> pumpRouterConfigApp(
-    WidgetTester tester,
-  ) {
+  Future<void> pumpRouterConfigApp(WidgetTester tester) {
     return tester
-        .pumpWidget(BlocProvider<LanguageCubit>(
-          create: (context) => languageCubit,
-          child: MaterialApp.router(
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            routerConfig: fakeAppRouter.config(
-              deepLinkBuilder: (_) => DeepLink.single(
-                AccountRoute(),
+        .pumpWidget(
+          BlocProvider<LanguageCubit>(
+            create: (context) => languageCubit,
+            child: MaterialApp.router(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              routerConfig: fakeAppRouter.config(
+                deepLinkBuilder: (_) => DeepLink.single(AccountRoute()),
               ),
             ),
           ),
-        ))
+        )
         .then((_) => tester.pumpAndSettle());
   }
 
-  testWidgets('AccountPage has expected elements and navigates correctly',
-      (tester) async {
+  testWidgets('AccountPage has expected elements and navigates correctly', (
+    tester,
+  ) async {
     // Arrange
     await pumpRouterConfigApp(tester);
 

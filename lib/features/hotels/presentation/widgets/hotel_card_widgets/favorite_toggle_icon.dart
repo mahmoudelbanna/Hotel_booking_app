@@ -4,19 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class FavoriteToggleIcon extends StatelessWidget {
-  const FavoriteToggleIcon({
-    super.key,
-    required this.hotel,
-  });
+  const FavoriteToggleIcon({super.key, required this.hotel});
 
   final Hotel hotel;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteBloc, FavoriteState>(
-      buildWhen: (previous, current) =>
-          previous.favorites.containsKey(hotel.id) !=
-          current.favorites.containsKey(hotel.id),
+      buildWhen:
+          (previous, current) =>
+              previous.favorites.containsKey(hotel.id) !=
+              current.favorites.containsKey(hotel.id),
       builder: (context, favoriteState) {
         final isFavorite = favoriteState.favorites.containsKey(hotel.id);
         return IconButton(
@@ -27,11 +25,8 @@ class FavoriteToggleIcon extends StatelessWidget {
           ),
           onPressed: () {
             context.read<FavoriteBloc>().add(
-                  ToggleFavorite(
-                    hotelId: hotel.id,
-                    hotelData: hotel.toMap(),
-                  ),
-                );
+              ToggleFavorite(hotelId: hotel.id, hotelData: hotel.toMap()),
+            );
           },
         );
       },

@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class ImageFavoriteIconWidget extends StatelessWidget {
-  const ImageFavoriteIconWidget({
-    super.key,
-    required this.hotel,
-  });
+  const ImageFavoriteIconWidget({super.key, required this.hotel});
 
   final Hotel hotel;
 
@@ -15,11 +12,7 @@ class ImageFavoriteIconWidget extends StatelessWidget {
     return Stack(
       children: [
         HotelImageView(hotel: hotel),
-        Positioned(
-          top: 10,
-          right: 10,
-          child: FavoriteToggleIcon(hotel: hotel),
-        ),
+        Positioned(top: 10, right: 10, child: FavoriteToggleIcon(hotel: hotel)),
       ],
     );
   }

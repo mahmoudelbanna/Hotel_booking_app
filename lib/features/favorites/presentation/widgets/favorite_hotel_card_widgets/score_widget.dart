@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../hotel_booking_app.dart';
 
 class FavoriteHotelScoreWidget extends StatelessWidget {
-  const FavoriteHotelScoreWidget({
-    super.key,
-    required this.hotel,
-  });
+  const FavoriteHotelScoreWidget({super.key, required this.hotel});
 
   final dynamic hotel;
 
@@ -50,17 +47,12 @@ class FavoriteHotelScoreWidget extends StatelessWidget {
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  getRatingIcon(rating),
-                  size: 25,
-                  color: Colors.white,
-                ),
+                Icon(getRatingIcon(rating), size: 25, color: Colors.white),
                 Text(
                   "$rating / 5.0",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(color: Colors.white),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleMedium?.copyWith(color: Colors.white),
                 ),
               ],
             ),
@@ -68,10 +60,10 @@ class FavoriteHotelScoreWidget extends StatelessWidget {
           Text(
             "$scoreDescription\n ($reviewsCount ${context.l10n.reviews})",
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  overflow: TextOverflow.fade,
-                ),
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+              overflow: TextOverflow.fade,
+            ),
           ),
         ],
       ),

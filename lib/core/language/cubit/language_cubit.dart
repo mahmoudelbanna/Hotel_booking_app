@@ -7,12 +7,7 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   LanguageCubit() : super(const LanguageState());
 
   void languageSelected(String languageCode, String? countryCode) {
-    emit(
-      LanguageState(
-        languageCode: languageCode,
-        countryCode: countryCode,
-      ),
-    );
+    emit(LanguageState(languageCode: languageCode, countryCode: countryCode));
   }
 
   @override
