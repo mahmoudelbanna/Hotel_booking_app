@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+
 import 'package:hotel_booking_app/hotel_booking_app.dart';
-// Adjust the import as necessary.
 
 void main() {
   const buttonText = 'Click Me';

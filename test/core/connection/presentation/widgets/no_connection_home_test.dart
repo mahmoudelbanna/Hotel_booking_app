@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'no_connection_home_test.mocks.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-@GenerateMocks([InternetCubit])
+import '../../../../fixtures/test_mocks.mocks.dart';
+
+
+
+
 void main() {
   late MockInternetCubit mockInternetCubit;
 

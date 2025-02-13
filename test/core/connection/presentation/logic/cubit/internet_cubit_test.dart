@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import 'internet_cubit_test.mocks.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-@GenerateMocks([Connectivity, InternetConnectionChecker])
+import '../../../../../fixtures/test_mocks.mocks.dart';
+
+
+
+
 void main() {
   late InternetCubit internetCubit;
   late MockConnectivity mockConnectivity;

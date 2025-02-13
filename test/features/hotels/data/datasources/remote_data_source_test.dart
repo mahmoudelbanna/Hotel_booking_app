@@ -1,16 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:hotel_booking_app/hotel_booking_app.dart';
+
 import '../../../../fixtures/actual_article_json.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-import 'remote_data_source_test.mocks.dart';
 
-@GenerateMocks([Dio])
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");

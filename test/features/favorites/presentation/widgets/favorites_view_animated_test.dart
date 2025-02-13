@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/test_favorite_hotel_data.dart';
-import 'favorites_view_animated_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-// Update with correct import path
-@GenerateMocks([FavoriteBloc, LanguageCubit, InternetCubit])
+
+
+
 void main() {
   late MockFavoriteBloc favoriteBloc;
   late MockLanguageCubit languageCubit;

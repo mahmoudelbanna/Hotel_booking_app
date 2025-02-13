@@ -2,12 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
 
 import '../../../../fixtures/test_hotel_data.dart';
-import 'usecases_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([HotelsRepository])
 void main() {
   late GetHotels usecase;
   late MockHotelsRepository mockHotelsRepository;

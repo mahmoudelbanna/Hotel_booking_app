@@ -3,15 +3,14 @@ import 'dart:convert';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
-
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/test_hotel_data.dart';
-import 'favorite_bloc_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([Storage, ToggleFavoriteUseCase])
+
+
 void main() {
   late FavoriteBloc favoriteBloc;
   late MockStorage mockStorage;

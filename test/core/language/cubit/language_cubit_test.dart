@@ -1,12 +1,14 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:mockito/annotations.dart';
 
-import 'language_cubit_test.mocks.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-@GenerateMocks([Storage])
+import '../../../fixtures/test_mocks.mocks.dart';
+
+
+
+
 void main() {
   group('LanguageCubit', () {
     late LanguageCubit languageCubit;

@@ -1,13 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../fixtures/test_hotel_model_data.dart';
-import 'hotels_repository_impl_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([HotelsRemoteDataSource])
 void main() {
   late HotelsRepositoryImpl repository;
   late MockHotelsRemoteDataSource mockRemoteDataSource;

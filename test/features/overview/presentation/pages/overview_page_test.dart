@@ -4,13 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/fake_app_router.dart';
-import 'overview_page_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([FavoriteBloc, LanguageCubit, InternetCubit, FetchHotelsCubit])
 void main() {
   late FakeAppRouter fakeAppRouter;
   late MockFavoriteBloc favoriteBloc;

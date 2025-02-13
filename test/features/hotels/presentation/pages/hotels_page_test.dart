@@ -5,12 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mockito/annotations.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart'; // Adjust the import as needed
 
-import 'hotels_page_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([InternetCubit, FetchHotelsCubit, FavoriteBloc])
 void main() {
   late MockInternetCubit internetCubit;
   late MockFetchHotelsCubit fetchHotelsCubit;

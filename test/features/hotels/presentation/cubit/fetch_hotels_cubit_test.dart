@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hotel_booking_app/hotel_booking_app.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/test_hotel_data.dart';
-import 'fetch_hotels_cubit_test.mocks.dart';
+import '../../../../fixtures/test_mocks.mocks.dart';
 
-@GenerateMocks([GetHotels])
+
+
 void main() {
   late FetchHotelsCubit cubit;
   late MockGetHotels mockGetHotels;
