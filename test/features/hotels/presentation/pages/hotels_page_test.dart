@@ -28,12 +28,12 @@ void main() {
     getItTest.registerFactory<FetchHotelsCubit>(() => fetchHotelsCubit);
     getItTest.registerLazySingleton<FavoriteBloc>(() => favoriteBloc);
 
-    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
+    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
 
     when(
       fetchHotelsCubit.stream,
-    ).thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
+    ).thenAnswer((_) => Stream.value(const FetchHotelsState.loading()));
     when(
       favoriteBloc.stream,
     ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
@@ -42,7 +42,7 @@ void main() {
   });
 
   setUpAll(() {
-    provideDummy<FetchHotelsState>(const FetchHotelsLoading());
+    provideDummy<FetchHotelsState>(const FetchHotelsState.loading());
     provideDummy<FavoriteState>(FavoriteState.initial());
   });
 

@@ -32,7 +32,7 @@ void main() {
       languageCubit.state,
     ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
     when(internetCubit.state).thenReturn(const InternetConnected());
-    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
+    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
     when(
       favoriteBloc.stream,
     ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
@@ -41,7 +41,7 @@ void main() {
     ).thenAnswer((_) => Stream.value(const InternetConnected()));
     when(
       fetchHotelsCubit.stream,
-    ).thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
+    ).thenAnswer((_) => Stream.value(const FetchHotelsState.loading()));
   });
 
   setUpAll(() {
@@ -49,7 +49,7 @@ void main() {
     provideDummy<LanguageState>(
       LanguageState(languageCode: 'en', countryCode: 'US'),
     );
-    provideDummy<FetchHotelsState>(const FetchHotelsLoading());
+    provideDummy<FetchHotelsState>(const FetchHotelsState.loading());
   });
 
   tearDown(() {

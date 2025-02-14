@@ -1,53 +1,31 @@
-import 'package:equatable/equatable.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class BestOffer extends Equatable {
-  const BestOffer({
-    required this.originalTravelPrice,
-    required this.simplePricePerPerson,
-    required this.total,
-    required this.travelPrice,
-    required this.flightIncluded,
-    required this.room,
-    required this.travelDate,
-  });
+part 'best_offer.freezed.dart';
 
-  factory BestOffer.empty() {
-    return BestOffer(
-      originalTravelPrice: 0,
-      simplePricePerPerson: 0,
-      total: 0,
-      travelPrice: 0,
-      flightIncluded: false,
-      room: Room.empty(),
-      travelDate: TravelDate.empty(),
-    );
-  }
+@freezed
+class BestOffer with _$BestOffer {
+  // ignore: unused_element
+  const BestOffer._();
+  const factory BestOffer({
+    required int originalTravelPrice,
+    required int simplePricePerPerson,
+    required int total,
+    required int travelPrice,
+    required bool flightIncluded,
+    required Room room,
+    required TravelDate travelDate,
+  }) = _BestOffer;
 
-  final int originalTravelPrice;
-  final int simplePricePerPerson;
-  final int total;
-  final int travelPrice;
-  final bool flightIncluded;
-  final Room room;
-  final TravelDate travelDate;
-
-  @override
-  List<Object?> get props => [
-    originalTravelPrice,
-    simplePricePerPerson,
-    total,
-    travelPrice,
-    flightIncluded,
-    room,
-    travelDate,
-  ];
-
-  @override
-  String toString() {
-    return 'BestOffer(originalTravelPrice: $originalTravelPrice, simplePricePerPerson: $simplePricePerPerson, total: $total, travelPrice: $travelPrice, flightIncluded: $flightIncluded, room: $room, travelDate: $travelDate)';
-  }
+  factory BestOffer.empty() => BestOffer(
+    originalTravelPrice: 0,
+    simplePricePerPerson: 0,
+    total: 0,
+    travelPrice: 0,
+    flightIncluded: false,
+    room: Room.empty(),
+    travelDate: TravelDate.empty(),
+  );
 
   Map<String, dynamic> toMap() {
     return {

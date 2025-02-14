@@ -1,14 +1,12 @@
-part of 'favorite_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class FavoriteState extends Equatable {
-  const FavoriteState({required this.favorites});
+part 'favorite_state.freezed.dart';
+
+@freezed
+class FavoriteState with _$FavoriteState {
+  
+  const factory FavoriteState({required Map<String, dynamic> favorites}) =
+      _FavoriteState;
 
   factory FavoriteState.initial() => const FavoriteState(favorites: {});
-  final Map<String, dynamic> favorites;
-
-  @override
-  List<Object> get props => [favorites];
-
-  @override
-  String toString() => 'FavoriteState(favorites: $favorites)';
 }

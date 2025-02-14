@@ -1,25 +1,15 @@
-part of 'fetch_hotels_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class FetchHotelsState extends Equatable {
-  const FetchHotelsState();
+import '../../../../hotel_booking_app.dart';
 
-  @override
-  List<Object> get props => [];
-}
 
-final class FetchHotelsLoading extends FetchHotelsState {
-  const FetchHotelsLoading();
-}
+part 'fetch_hotels_state.freezed.dart';
 
-final class FetchHotelsSuccess extends FetchHotelsState {
-  final List<Hotel> hotels;
 
-  const FetchHotelsSuccess({required this.hotels});
-
-  @override
-  List<Object> get props => [hotels];
-}
-
-final class FetchHotelsFailure extends FetchHotelsState {
-  const FetchHotelsFailure();
+@freezed
+class FetchHotelsState with _$FetchHotelsState {
+  const factory FetchHotelsState.loading() = _FetchHotelsLoading;
+  const factory FetchHotelsState.success({required List<Hotel> hotels}) =
+      _FetchHotelsSuccess;
+  const factory FetchHotelsState.failure() = _FetchHotelsFailure;
 }

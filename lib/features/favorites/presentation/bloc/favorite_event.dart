@@ -1,22 +1,11 @@
-part of 'favorite_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class FavoriteEvent extends Equatable {
-  const FavoriteEvent();
+part 'favorite_event.freezed.dart';
 
-  @override
-  List<Object> get props => [];
-}
-
-class ToggleFavorite extends FavoriteEvent {
-  const ToggleFavorite({required this.hotelId, required this.hotelData});
-
-  final String hotelId;
-  final Map<String, dynamic> hotelData;
-
-  @override
-  List<Object> get props => [hotelId, hotelData];
-
-  @override
-  String toString() =>
-      'ToggleFavorite(hotelId: $hotelId, hotelData: $hotelData)';
+@freezed
+class FavoriteEvent with _$FavoriteEvent {
+  const factory FavoriteEvent.toggleFavorite({
+    required String hotelId,
+    required Map<String, dynamic> hotelData,
+  }) = ToggleFavorite;
 }

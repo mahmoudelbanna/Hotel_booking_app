@@ -1,21 +1,22 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-part 'fetch_hotels_state.dart';
+
+
+import '../../../../hotel_booking_app.dart';
 
 class FetchHotelsCubit extends Cubit<FetchHotelsState> {
   final GetHotels usecase;
-  FetchHotelsCubit({required this.usecase}) : super(const FetchHotelsLoading());
+  FetchHotelsCubit({required this.usecase})
+    : super(const FetchHotelsState.loading());
 
   void fetchHotels() async {
-    emit(const FetchHotelsLoading());
+    emit(const FetchHotelsState.loading());
 
     final fetchedHotels = await usecase();
 
     fetchedHotels.fold(
-      (failure) => emit(FetchHotelsFailure()),
-      (hotels) => emit(FetchHotelsSuccess(hotels: hotels)),
+      (failure) => emit(const FetchHotelsState.failure()),
+      (hotels) => emit(FetchHotelsState.success(hotels: hotels)),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_hotel_model_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
@@ -15,23 +16,29 @@ void main() {
     repository = HotelsRepositoryImpl(remoteDataSource: mockRemoteDataSource);
   });
 
-  final List<HotelModel> tHotelModels = [TestHotelModelData.hotel];
+  final tHotelModels = [TestHotelModelData.hotel];
+  final tHotels = [TestHotelData.hotel];
 
   group('getHotels', () {
     test(
-      'should return Right(List<HotelModel>) when the call is successful',
+      'should return Right(List<Hotel>) when the call is successful',
       () async {
         // Arrange
         when(
           mockRemoteDataSource.getHotels(),
         ).thenAnswer((_) async => tHotelModels);
 
-        // Act
+        // act
         final result = await repository.getHotels();
 
-        // Assert
-        verify(mockRemoteDataSource.getHotels()).called(1);
-        expect(result, Right(tHotelModels));
+        // assert
+        expect(result.isRight(), true);
+        result.fold(
+          (failure) => fail('Expected Right, got Left with $failure'),
+          (hotels) => expect(hotels, equals(tHotels)),
+        );
+        verify(mockRemoteDataSource.getHotels());
+        verifyNoMoreInteractions(mockRemoteDataSource);
       },
     );
 

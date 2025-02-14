@@ -8,9 +8,12 @@ class HotelsRepositoryImpl implements HotelsRepository {
   const HotelsRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, List<HotelModel>>> getHotels() async {
+  Future<Either<Failure, List<Hotel>>> getHotels() async {
     try {
-      final hotels = await remoteDataSource.getHotels();
+      final hotelModels = await remoteDataSource.getHotels();
+
+      final hotels =
+          hotelModels.map((hotelModel) => hotelModel.toEntity()).toList();
 
       return Right(hotels);
     } on ServerException {

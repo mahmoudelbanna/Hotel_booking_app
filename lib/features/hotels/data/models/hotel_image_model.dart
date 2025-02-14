@@ -1,13 +1,25 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class HotelImageModel extends HotelImage {
-  const HotelImageModel({required super.large, required super.small});
 
-  factory HotelImageModel.fromJson(Map<String, dynamic> json) {
-    return HotelImageModel(large: json[kImageLarge], small: json[kImageSmall]);
-  }
 
-  Map<String, dynamic> toJson() {
-    return {kImageLarge: large, kImageSmall: small};
-  }
+part 'hotel_image_model.freezed.dart';
+part 'hotel_image_model.g.dart';
+
+@freezed
+class HotelImageModel with _$HotelImageModel {
+  const factory HotelImageModel({
+    @JsonKey(name: kImageLarge) required String large,
+    @JsonKey(name: kImageSmall) required String small,
+  }) = _HotelImageModel;
+
+  factory HotelImageModel.fromJson(Map<String, dynamic> json) => _$HotelImageModelFromJson(json);
+}
+
+// Add the toEntity method
+extension HotelImageModelX on HotelImageModel {
+  HotelImage toEntity() => HotelImage(
+    large: large,
+    small: small,
+  );
 }

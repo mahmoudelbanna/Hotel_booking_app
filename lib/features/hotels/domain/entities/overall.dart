@@ -1,41 +1,24 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-import '../../../../hotel_booking_app.dart';
+part 'overall.freezed.dart';
 
-class Overall extends Equatable {
-  const Overall({
-    required this.boarding,
-    required this.roomsOverallName,
-    required this.adultCount,
-    required this.childrenCount,
-  });
+@freezed
+class Overall with _$Overall {
+  const Overall._();
+  const factory Overall({
+    required String boarding,
+    required String roomsOverallName,
+    required int adultCount,
+    required int childrenCount,
+  }) = _Overall;
 
-  factory Overall.empty() {
-    return const Overall(
-      boarding: '',
-      roomsOverallName: '',
-      adultCount: 0,
-      childrenCount: 0,
-    );
-  }
-
-  final String boarding;
-  final String roomsOverallName;
-  final int adultCount;
-  final int childrenCount;
-
-  @override
-  List<Object?> get props => [
-    boarding,
-    roomsOverallName,
-    adultCount,
-    childrenCount,
-  ];
-
-  @override
-  String toString() {
-    return 'Overall(boarding: $boarding, name: $kRoomsOverallName, adultCount: $adultCount, childrenCount: $childrenCount)';
-  }
+  factory Overall.empty() => const Overall(
+    boarding: '',
+    roomsOverallName: '',
+    adultCount: 0,
+    childrenCount: 0,
+  );
 
   Map<String, dynamic> toMap() {
     return {

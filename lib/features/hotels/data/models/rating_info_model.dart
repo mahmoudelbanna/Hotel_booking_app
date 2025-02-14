@@ -1,28 +1,27 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class RatingInfoModel extends RatingInfo {
-  const RatingInfoModel({
-    required super.score,
-    required super.scoreDescription,
-    required super.reviewsCount,
-    required super.recommendationRate,
-  });
+part 'rating_info_model.freezed.dart';
+part 'rating_info_model.g.dart';
 
-  factory RatingInfoModel.fromJson(Map<String, dynamic> json) {
-    return RatingInfoModel(
-      recommendationRate: json[kRecommendationRate],
-      reviewsCount: json[kReviewsCount],
-      score: json[kScore], //! return from Api int and double, defines as num
-      scoreDescription: json[kScoreDescription],
-    );
-  }
+@freezed
+class RatingInfoModel with _$RatingInfoModel {
+  const factory RatingInfoModel({
+    @JsonKey(name: kScore) required num score,
+    @JsonKey(name: kScoreDescription) required String scoreDescription,
+    @JsonKey(name: kReviewsCount) required int reviewsCount,
+    @JsonKey(name: kRecommendationRate) required int recommendationRate,
+  }) = _RatingInfoModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      kScore: score,
-      kScoreDescription: scoreDescription,
-      kReviewsCount: reviewsCount,
-      kRecommendationRate: recommendationRate,
-    };
-  }
+  factory RatingInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$RatingInfoModelFromJson(json);
+}
+
+extension RatingInfoModelX on RatingInfoModel {
+  RatingInfo toEntity() => RatingInfo(
+    recommendationRate: recommendationRate,
+    reviewsCount: reviewsCount,
+    score: score,
+    scoreDescription: scoreDescription,
+  );
 }

@@ -1,43 +1,34 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class HotelModel extends Hotel {
-  const HotelModel({
-    required super.id,
-    required super.name,
-    required super.destination,
-    required super.category,
-    required super.categoryType,
-    required super.images,
-    required super.bestOffer,
-    required super.ratingInfo,
-  });
+part 'hotel_model.freezed.dart';
+part 'hotel_model.g.dart';
 
-  factory HotelModel.fromJson(Map<String, dynamic> json) {
-    return HotelModel(
-      id: json[kHotelId],
-      name: json[kHotelName],
-      destination: json[kDestination],
-      category: json[kCategory],
-      categoryType: json[kCategoryType],
-      images:
-          (json[kImages] as List)
-              .map((image) => HotelImageModel.fromJson(image))
-              .toList(),
-      bestOffer: BestOfferModel.fromJson(json[kBestOffer]),
-      ratingInfo: RatingInfoModel.fromJson(json[kRatingInfo]),
-    );
-  }
+@freezed
+class HotelModel with _$HotelModel {
+  const factory HotelModel({
+    @JsonKey(name: kHotelId) required String id,
+    @JsonKey(name: kHotelName) required String name,
+    @JsonKey(name: kDestination) required String destination,
+    @JsonKey(name: kCategory) required int category,
+    @JsonKey(name: kCategoryType) required String categoryType,
+    @JsonKey(name: kImages) required List<HotelImageModel> images,
+    @JsonKey(name: kBestOffer) required BestOfferModel bestOffer,
+    @JsonKey(name: kRatingInfo) required RatingInfoModel ratingInfo,
+  }) = _HotelModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      kHotelId: id,
-      kHotelName: name,
-      kDestination: destination,
-      kCategory: category,
-      kCategoryType: categoryType,
-      kImages: images.map((image) => image.toMap()).toList(),
-      kBestOffer: bestOffer.toMap(),
-      kRatingInfo: ratingInfo.toMap(),
-    };
-  }
+  factory HotelModel.fromJson(Map<String, dynamic> json) => _$HotelModelFromJson(json);
+}
+
+extension HotelModelX on HotelModel {
+  Hotel toEntity() => Hotel(
+    id: id,
+    name: name,
+    destination: destination,
+    category: category,
+    categoryType: categoryType,
+    images: images.map((image) => image.toEntity()).toList(),
+    bestOffer: bestOffer.toEntity(),
+    ratingInfo: ratingInfo.toEntity(),
+  );
 }

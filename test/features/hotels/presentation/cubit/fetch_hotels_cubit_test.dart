@@ -6,8 +6,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late FetchHotelsCubit cubit;
   late MockGetHotels mockGetHotels;
@@ -21,7 +19,7 @@ void main() {
 
   test('initialState should be FetchHotelsLoading', () {
     // assert
-    expect(cubit.state, const FetchHotelsLoading());
+    expect(cubit.state, const FetchHotelsState.loading());
   });
 
   group('fetchHotels', () {
@@ -37,20 +35,20 @@ void main() {
         cubit.fetchHotels();
 
         // Assert that the initial state is correct.
-        expect(cubit.state, const FetchHotelsLoading());
+        expect(cubit.state, const FetchHotelsState.loading());
 
         // assert later
         await expectLater(
           cubit.stream,
-          emits(FetchHotelsSuccess(hotels: tHotel)),
+          emits(FetchHotelsState.success(hotels: tHotel)),
         );
         // Assert that the current state is in sync with the stubbed stream.
-        expect(cubit.state, FetchHotelsSuccess(hotels: tHotel));
+        expect(cubit.state, FetchHotelsState.success(hotels: tHotel));
       },
     );
 
     test(
-      'should emit [FetchHotelsLoading, FetchHotelsFailure] when failure',
+      'should emit [FetchHotelsLoading, FetchHotelsState.failure()] when failure',
       () async {
         // arrange
         when(
@@ -61,13 +59,16 @@ void main() {
         cubit.fetchHotels(); // Ensure this is awaited
 
         // Assert initial state
-        expect(cubit.state, const FetchHotelsLoading());
+        expect(cubit.state, const FetchHotelsState.loading());
 
         // assert later
-        await expectLater(cubit.stream, emits(const FetchHotelsFailure()));
+        await expectLater(
+          cubit.stream,
+          emits(const FetchHotelsState.failure()),
+        );
 
         // Assert final state
-        expect(cubit.state, const FetchHotelsFailure());
+        expect(cubit.state, const FetchHotelsState.failure());
       },
     );
   });

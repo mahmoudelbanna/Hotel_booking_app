@@ -7,24 +7,29 @@ class TestHotelModelData {
     destination: 'Test City',
     category: 1,
     categoryType: 'Test Type',
-    images: [],
-    bestOffer: BestOffer(
+    images: [
+      HotelImageModel(
+        large: 'test_image_large.jpg',
+        small: 'test_image_small.jpg',
+      ),
+    ],
+    bestOffer: BestOfferModel(
       originalTravelPrice: 120,
       simplePricePerPerson: 50,
       total: 110,
       travelPrice: 110,
       flightIncluded: true,
-      room: Room(
-        overall: Overall(
+      room: RoomModel(
+        overall: OverallModel(
           roomsOverallName: 'Test Room',
           boarding: 'Test Boarding',
           adultCount: 2,
           childrenCount: 0,
         ),
       ),
-      travelDate: TravelDate(days: 7, nights: 6),
+      travelDate: TravelDateModel(days: 7, nights: 6),
     ),
-    ratingInfo: RatingInfo(
+    ratingInfo: RatingInfoModel(
       score: 4.5,
       scoreDescription: 'Very Good',
       reviewsCount: 100,

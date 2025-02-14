@@ -1,13 +1,22 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class RoomModel extends Room {
-  const RoomModel({required super.overall});
 
-  factory RoomModel.fromJson(Map<String, dynamic> json) {
-    return RoomModel(overall: OverallModel.fromJson(json[kOverall]));
-  }
+part 'room_model.freezed.dart';
+part 'room_model.g.dart';
 
-  Map<String, dynamic> toJson() {
-    return {kOverall: overall.toMap()};
-  }
+@freezed
+class RoomModel with _$RoomModel {
+  const factory RoomModel({
+    @JsonKey(name: kOverall) required OverallModel overall,
+  }) = _RoomModel;
+
+  factory RoomModel.fromJson(Map<String, dynamic> json) => _$RoomModelFromJson(json);
+}
+
+// Add the toEntity method
+extension RoomModelX on RoomModel {
+  Room toEntity() => Room(
+    overall: overall.toEntity(), 
+  );
 }
