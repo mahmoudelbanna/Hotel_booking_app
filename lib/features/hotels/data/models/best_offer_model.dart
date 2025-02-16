@@ -1,12 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-
 part 'best_offer_model.freezed.dart';
 part 'best_offer_model.g.dart';
 
 @freezed
-class BestOfferModel with _$BestOfferModel {
+class BestOfferModel
+    with _$BestOfferModel, EntityConvertible<BestOfferModel, BestOffer> {
+  // ignore: unused_element
+  const BestOfferModel._();
   const factory BestOfferModel({
     @JsonKey(name: kOriginalTravelPrice) required int originalTravelPrice,
     @JsonKey(name: kSimplePricePerPerson) required int simplePricePerPerson,
@@ -17,10 +19,10 @@ class BestOfferModel with _$BestOfferModel {
     @JsonKey(name: kTravelDate) required TravelDateModel travelDate,
   }) = _BestOfferModel;
 
-  factory BestOfferModel.fromJson(Map<String, dynamic> json) => _$BestOfferModelFromJson(json);
-}
+  factory BestOfferModel.fromJson(Map<String, dynamic> json) =>
+      _$BestOfferModelFromJson(json);
 
-extension BestOfferModelX on BestOfferModel {
+  @override
   BestOffer toEntity() => BestOffer(
     originalTravelPrice: originalTravelPrice,
     simplePricePerPerson: simplePricePerPerson,

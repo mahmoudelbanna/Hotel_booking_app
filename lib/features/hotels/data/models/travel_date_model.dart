@@ -6,7 +6,10 @@ part 'travel_date_model.freezed.dart';
 part 'travel_date_model.g.dart';
 
 @freezed
-class TravelDateModel with _$TravelDateModel {
+class TravelDateModel
+    with _$TravelDateModel, EntityConvertible<TravelDateModel, TravelDate> {
+  // ignore: unused_element
+  const TravelDateModel._();
   const factory TravelDateModel({
     @JsonKey(name: kDays) required int days,
     @JsonKey(name: kNights) required int nights,
@@ -14,8 +17,7 @@ class TravelDateModel with _$TravelDateModel {
 
   factory TravelDateModel.fromJson(Map<String, dynamic> json) =>
       _$TravelDateModelFromJson(json);
-}
 
-extension TravelDateModelX on TravelDateModel {
+  @override
   TravelDate toEntity() => TravelDate(days: days, nights: nights);
 }

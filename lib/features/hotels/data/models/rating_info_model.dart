@@ -5,7 +5,10 @@ part 'rating_info_model.freezed.dart';
 part 'rating_info_model.g.dart';
 
 @freezed
-class RatingInfoModel with _$RatingInfoModel {
+class RatingInfoModel
+    with _$RatingInfoModel, EntityConvertible<RatingInfoModel, RatingInfo> {
+       // ignore: unused_element
+  const RatingInfoModel._();
   const factory RatingInfoModel({
     @JsonKey(name: kScore) required num score,
     @JsonKey(name: kScoreDescription) required String scoreDescription,
@@ -15,9 +18,8 @@ class RatingInfoModel with _$RatingInfoModel {
 
   factory RatingInfoModel.fromJson(Map<String, dynamic> json) =>
       _$RatingInfoModelFromJson(json);
-}
 
-extension RatingInfoModelX on RatingInfoModel {
+  @override
   RatingInfo toEntity() => RatingInfo(
     recommendationRate: recommendationRate,
     reviewsCount: reviewsCount,

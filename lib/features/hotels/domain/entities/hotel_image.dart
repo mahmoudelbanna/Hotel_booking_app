@@ -10,11 +10,7 @@ class HotelImage with _$HotelImage {
   const factory HotelImage({required String large, required String small}) =
       _HotelImage;
 
-  // Add toMap method
   Map<String, dynamic> toMap() {
-    return {
-      kImageLarge: large,
-      kImageSmall: small,
-    };
+    return {kImageLarge: large, kImageSmall: small};
   }
 }

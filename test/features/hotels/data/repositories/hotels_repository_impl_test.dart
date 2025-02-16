@@ -3,7 +3,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_hotel_model_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
@@ -17,7 +16,7 @@ void main() {
   });
 
   final tHotelModels = [TestHotelModelData.hotel];
-  final tHotels = [TestHotelData.hotel];
+  final tHotels = tHotelModels.map((model) => model.toEntity()).toList();
 
   group('getHotels', () {
     test(

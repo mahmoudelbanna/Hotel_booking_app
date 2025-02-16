@@ -29,7 +29,6 @@ class Hotel with _$Hotel {
     ratingInfo: RatingInfo.empty(),
   );
 
-  // Add toMap method
   Map<String, dynamic> toMap() {
     return {
       kHotelId: id,
@@ -37,9 +36,9 @@ class Hotel with _$Hotel {
       kDestination: destination,
       kCategory: category,
       kCategoryType: categoryType,
-      kImages: images.map((image) => image.toMap()).toList(), // Assuming HotelImage has a toMap method
-      kBestOffer: bestOffer.toMap(), // Assuming BestOffer has a toMap method
-      kRatingInfo: ratingInfo.toMap(), // Assuming RatingInfo has a toMap method
+      kImages: images.map((image) => image.toMap()).toList(),
+      kBestOffer: bestOffer.toMap(),
+      kRatingInfo: ratingInfo.toMap(),
     };
   }
 }

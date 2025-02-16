@@ -6,7 +6,10 @@ part 'overall_model.freezed.dart';
 part 'overall_model.g.dart';
 
 @freezed
-class OverallModel with _$OverallModel {
+class OverallModel
+    with _$OverallModel, EntityConvertible<OverallModel, Overall> {
+  // ignore: unused_element
+  const OverallModel._();
   const factory OverallModel({
     @JsonKey(name: kBoarding) required String boarding,
     @JsonKey(name: kRoomsOverallName) required String roomsOverallName,
@@ -16,9 +19,8 @@ class OverallModel with _$OverallModel {
 
   factory OverallModel.fromJson(Map<String, dynamic> json) =>
       _$OverallModelFromJson(json);
-}
 
-extension OverallModelX on OverallModel {
+  @override
   Overall toEntity() => Overall(
     boarding: boarding,
     roomsOverallName: roomsOverallName,
