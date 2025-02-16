@@ -9,9 +9,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../../../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late InternetCubit internetCubit;
   late MockConnectivity mockConnectivity;
@@ -46,7 +43,7 @@ void main() {
   });
 
   test('initial state should be InternetLoading', () {
-    expect(internetCubit.state, isA<InternetLoading>());
+    expect(internetCubit.state, InternetState.loading());
   });
 
   group('connectivity changes', () {
@@ -61,7 +58,7 @@ void main() {
         await Future.delayed(Duration.zero); // Allow the stream to emit
 
         // Assert
-        expect(internetCubit.state, isA<InternetConnected>());
+        expect(internetCubit.state, InternetState.connected());
       },
     );
 
@@ -76,7 +73,7 @@ void main() {
         await Future.delayed(Duration.zero); // Allow the stream to emit
 
         // Assert
-        expect(internetCubit.state, isA<InternetDisconnected>());
+        expect(internetCubit.state, InternetState.disconnected());
       },
     );
 
@@ -86,7 +83,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, isA<InternetDisconnected>());
+      expect(internetCubit.state, InternetState.disconnected());
     });
   });
 
@@ -97,7 +94,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, isA<InternetConnected>());
+      expect(internetCubit.state, InternetState.connected());
     });
 
     test('emits InternetDisconnected when internet is lost', () async {
@@ -106,7 +103,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, isA<InternetDisconnected>());
+      expect(internetCubit.state, InternetState.disconnected());
     });
   });
 
@@ -120,6 +117,6 @@ void main() {
     await Future.delayed(Duration.zero); // Allow the stream to emit
 
     // Assert
-    expect(internetCubit.state, isA<InternetLoading>());
+    expect(internetCubit.state, InternetState.loading());
   });
 }

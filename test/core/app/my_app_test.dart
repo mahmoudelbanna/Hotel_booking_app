@@ -38,7 +38,7 @@ void main() {
     // Arrange
     when(
       mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetConnected()]));
+    ).thenAnswer((_) => Stream.fromIterable([const InternetState.connected()]));
 
     when(mockLanguageCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([

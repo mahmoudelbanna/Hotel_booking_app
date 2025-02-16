@@ -32,10 +32,10 @@ void main() {
     WidgetTester tester,
   ) async {
     // Arrange
-    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
+    when(mockInternetCubit.state).thenReturn(const InternetState.disconnected());
     when(
       mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
+    ).thenAnswer((_) => Stream.fromIterable([const InternetState.disconnected()]));
 
     // Act
     await tester.pumpWidget(createWidgetUnderTest());
@@ -49,10 +49,10 @@ void main() {
   testWidgets('animates the icon with ScaleTransition', (
     WidgetTester tester,
   ) async {
-    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
+    when(mockInternetCubit.state).thenReturn(const InternetState.disconnected());
     when(
       mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
+    ).thenAnswer((_) => Stream.fromIterable([const InternetState.disconnected()]));
 
     await tester.pumpWidget(createWidgetUnderTest());
     await tester.pump();
