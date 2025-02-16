@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - dev
+      - dev_freezed
 
   pull_request:
     branches:
       - main
       - dev
+      - dev_freezed
 
 jobs:
   build:
