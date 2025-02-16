@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-part 'language_state.dart';
+import 'language_state.dart';
 
 class LanguageCubit extends HydratedCubit<LanguageState> {
   LanguageCubit() : super(const LanguageState());
@@ -12,11 +11,11 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
 
   @override
   LanguageState fromJson(Map<String, dynamic> json) {
-    return LanguageState.fromMap(json);
+    return LanguageState.fromJson(json);
   }
 
   @override
   Map<String, dynamic> toJson(LanguageState state) {
-    return state.toMap();
+    return state.toJson();
   }
 }

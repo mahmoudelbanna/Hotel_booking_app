@@ -1,34 +1,13 @@
-part of 'language_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class LanguageState extends Equatable {
-  const LanguageState({this.languageCode, this.countryCode});
+part 'language_state.freezed.dart';
+part 'language_state.g.dart';
 
-  factory LanguageState.fromMap(Map<String, dynamic> map) {
-    return LanguageState(
-      languageCode: map["languageCode"],
-      countryCode: map["countryCode"],
-    );
-  }
+@freezed
+class LanguageState with _$LanguageState {
+  const factory LanguageState({String? languageCode, String? countryCode}) =
+      _LanguageState;
 
-  final String? countryCode;
-  final String? languageCode;
-
-  @override
-  List<Object?> get props => [countryCode, languageCode];
-
-  @override
-  String toString() {
-    return 'LanguageState{languageCode: $languageCode, countryCode: $countryCode}';
-  }
-
-  Map<String, dynamic> toMap() {
-    return {"languageCode": languageCode, "countryCode": countryCode};
-  }
-
-  LanguageState copyWith({String? countryCode, String? languageCode}) {
-    return LanguageState(
-      countryCode: countryCode ?? this.countryCode,
-      languageCode: languageCode ?? this.languageCode,
-    );
-  }
+  factory LanguageState.fromJson(Map<String, dynamic> json) =>
+      _$LanguageStateFromJson(json);
 }
