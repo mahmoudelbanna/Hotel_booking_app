@@ -49,7 +49,7 @@ void main() {
 
     expect(
       (actualPadding as WidgetStatePropertyAll<EdgeInsetsGeometry>).value,
-      equals(EdgeInsets.symmetric(vertical: 12)),
+      equals(const EdgeInsets.symmetric(vertical: 12)),
     );
   });
 }

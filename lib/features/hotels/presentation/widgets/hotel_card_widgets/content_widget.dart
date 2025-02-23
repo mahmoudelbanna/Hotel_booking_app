@@ -20,7 +20,7 @@ class ContentWidget extends StatelessWidget {
           HotelLocation(hotel: hotel),
           const Divider(),
           RoomPriceWidget(hotel: hotel),
-          OfferButton(),
+          const OfferButton(),
         ],
       ),
     );

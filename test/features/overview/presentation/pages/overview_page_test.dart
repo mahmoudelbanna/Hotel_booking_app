@@ -30,7 +30,7 @@ void main() {
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
     when(
       languageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(internetCubit.state).thenReturn(const InternetState.connected());
     when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
     when(
@@ -47,7 +47,7 @@ void main() {
   setUpAll(() {
     provideDummy<FavoriteState>(FavoriteState.initial());
     provideDummy<LanguageState>(
-      LanguageState(languageCode: 'en', countryCode: 'US'),
+      const LanguageState(languageCode: 'en', countryCode: 'US'),
     );
     provideDummy<FetchHotelsState>(const FetchHotelsState.loading());
   });

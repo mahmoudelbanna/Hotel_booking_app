@@ -12,7 +12,7 @@ class FavoriteHotelRatings extends StatelessWidget {
     return Row(
       children: List.generate(
         hotel[kCategory],
-        (_) => Icon(Icons.star, color: Colors.black, size: 18),
+        (_) => const Icon(Icons.star, color: Colors.black, size: 18),
       ),
     );
   }

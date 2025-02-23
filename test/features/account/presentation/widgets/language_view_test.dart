@@ -36,10 +36,10 @@ void main() {
     testWidgets('displays German and English language options', (tester) async {
       when(
         mockLanguageCubit.state,
-      ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+      ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
       when(mockLanguageCubit.stream).thenAnswer(
         (_) =>
-            Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+            Stream.value(const LanguageState(languageCode: 'en', countryCode: 'US')),
       );
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -55,10 +55,10 @@ void main() {
       // Initial state
       when(
         mockLanguageCubit.state,
-      ).thenReturn(LanguageState(languageCode: 'de', countryCode: 'DE'));
+      ).thenReturn(const LanguageState(languageCode: 'de', countryCode: 'DE'));
       when(mockLanguageCubit.stream).thenAnswer(
         (_) =>
-            Stream.value(LanguageState(languageCode: 'de', countryCode: 'DE')),
+            Stream.value(const LanguageState(languageCode: 'de', countryCode: 'DE')),
       );
 
       await tester.pumpWidget(createWidgetUnderTest());

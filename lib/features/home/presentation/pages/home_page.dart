@@ -10,9 +10,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routes = [
-      OverviewRoute(),
-      HotelsRoute(),
-      FavoritesRoute(),
+      const OverviewRoute(),
+      const HotelsRoute(),
+      const FavoritesRoute(),
       AccountTab(),
     ];
     return AutoTabsScaffold(

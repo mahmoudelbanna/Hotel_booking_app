@@ -30,7 +30,7 @@ void main() {
         BlocProvider<InternetCubit>(create: (context) => mockInternetCubit),
         BlocProvider<LanguageCubit>(create: (context) => mockLanguageCubit),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 
@@ -42,7 +42,7 @@ void main() {
 
     when(mockLanguageCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([
-        LanguageState(languageCode: 'en', countryCode: 'EN'),
+        const LanguageState(languageCode: 'en', countryCode: 'EN'),
       ]),
     );
 

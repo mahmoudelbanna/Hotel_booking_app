@@ -127,7 +127,7 @@ void main() {
       final streamController = StreamController<InternetState>.broadcast();
 
       when(internetCubit.stream).thenAnswer((_) => streamController.stream);
-      when(internetCubit.state).thenReturn(InternetState.disconnected());
+      when(internetCubit.state).thenReturn(const InternetState.disconnected());
 
       await tester.pumpWidget(createWidgetUnderTest());
       await tester.pump();

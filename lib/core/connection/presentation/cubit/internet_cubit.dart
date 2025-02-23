@@ -13,7 +13,7 @@ class InternetCubit extends Cubit<InternetState> {
   late StreamSubscription internetCheckerSubscription;
 
   InternetCubit({required this.connectivity, required this.connectionChecker})
-    : super(InternetState.loading()) {
+    : super(const InternetState.loading()) {
     _initializeConnectivityChecking();
     _initializeInternetChecking();
   }
@@ -75,7 +75,7 @@ class InternetCubit extends Cubit<InternetState> {
     }
   }
 
-  void emitInternetDisconnected() => emit(InternetState.disconnected());
+  void emitInternetDisconnected() => emit(const InternetState.disconnected());
 
   void emitInternetConnected() => emit(const InternetState.connected());
 

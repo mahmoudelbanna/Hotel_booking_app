@@ -33,7 +33,7 @@ void main() {
 
     when(
       languageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(internetCubit.state).thenReturn(const InternetState.connected());
 
     when(
@@ -43,7 +43,7 @@ void main() {
 
   setUpAll(() {
     provideDummy<LanguageState>(
-      LanguageState(languageCode: 'en', countryCode: 'US'),
+      const LanguageState(languageCode: 'en', countryCode: 'US'),
     );
   });
 

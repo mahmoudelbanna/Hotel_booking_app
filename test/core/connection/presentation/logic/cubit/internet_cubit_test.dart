@@ -43,7 +43,7 @@ void main() {
   });
 
   test('initial state should be InternetLoading', () {
-    expect(internetCubit.state, InternetState.loading());
+    expect(internetCubit.state, const InternetState.loading());
   });
 
   group('connectivity changes', () {
@@ -58,7 +58,7 @@ void main() {
         await Future.delayed(Duration.zero); // Allow the stream to emit
 
         // Assert
-        expect(internetCubit.state, InternetState.connected());
+        expect(internetCubit.state, const InternetState.connected());
       },
     );
 
@@ -73,7 +73,7 @@ void main() {
         await Future.delayed(Duration.zero); // Allow the stream to emit
 
         // Assert
-        expect(internetCubit.state, InternetState.disconnected());
+        expect(internetCubit.state, const InternetState.disconnected());
       },
     );
 
@@ -83,7 +83,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, InternetState.disconnected());
+      expect(internetCubit.state, const InternetState.disconnected());
     });
   });
 
@@ -94,7 +94,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, InternetState.connected());
+      expect(internetCubit.state, const InternetState.connected());
     });
 
     test('emits InternetDisconnected when internet is lost', () async {
@@ -103,7 +103,7 @@ void main() {
       await Future.delayed(Duration.zero); // Allow the stream to emit
 
       // Assert
-      expect(internetCubit.state, InternetState.disconnected());
+      expect(internetCubit.state, const InternetState.disconnected());
     });
   });
 
@@ -117,6 +117,6 @@ void main() {
     await Future.delayed(Duration.zero); // Allow the stream to emit
 
     // Assert
-    expect(internetCubit.state, InternetState.loading());
+    expect(internetCubit.state, const InternetState.loading());
   });
 }

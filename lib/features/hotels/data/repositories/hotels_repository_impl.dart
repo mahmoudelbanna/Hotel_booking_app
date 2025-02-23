@@ -17,9 +17,9 @@ class HotelsRepositoryImpl implements HotelsRepository {
 
       return Right(hotels);
     } on ServerException {
-      return Left(const ServerFailure());
+      return const Left(ServerFailure());
     } catch (e) {
-      return Left(const ServerFailure());
+      return const Left(ServerFailure());
     }
   }
 }

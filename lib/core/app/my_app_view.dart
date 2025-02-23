@@ -51,7 +51,7 @@ class MyAppView extends StatelessWidget {
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.blue.shade900,
         centerTitle: true,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 20,
           fontWeight: FontWeight.bold,

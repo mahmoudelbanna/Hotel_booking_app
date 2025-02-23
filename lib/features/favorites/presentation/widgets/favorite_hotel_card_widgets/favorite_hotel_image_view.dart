@@ -13,7 +13,7 @@ class FavoriteHotelImageView extends StatelessWidget {
     final images = hotel[kImages] ?? [];
 
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
       child:
           images.isNotEmpty
               ? CachedNetworkImage(
