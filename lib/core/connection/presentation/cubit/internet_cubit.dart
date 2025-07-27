@@ -36,11 +36,23 @@ class InternetCubit extends Cubit<InternetState> {
   /// This method is called once from the constructor and is not intended to be
   /// used directly.
   void _initializeInternetChecking() {
+    connectionChecker.addresses = [
+      AddressCheckOption(
+        uri: Uri.parse('https://example.com'),
+        timeout: const Duration(seconds: 5),
+      ),
+      AddressCheckOption(
+        uri: Uri.parse('https://google.com'),
+        timeout: const Duration(seconds: 5),
+      ),
+    ];
     internetCheckerSubscription = connectionChecker.onStatusChange.listen((
       status,
     ) {
       if (status == InternetConnectionStatus.connected) {
         emitInternetConnected();
+      } else if (status == InternetConnectionStatus.slow) {
+        emitInternetDisconnected();
       } else {
         emitInternetDisconnected();
       }
