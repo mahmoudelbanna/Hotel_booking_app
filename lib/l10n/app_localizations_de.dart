@@ -60,7 +60,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get retry => 'Erneut versuchen';
 
   @override
-  String get somethingWentWrong => 'Etwas ist schief gelaufen,\n bitte drücke den Button um es erneut zu versuchen';
+  String get somethingWentWrong =>
+      'Etwas ist schief gelaufen,\n bitte drücke den Button um es erneut zu versuchen';
 
   @override
   String get emptyList => 'Ihre Favoritenliste ist leer';
