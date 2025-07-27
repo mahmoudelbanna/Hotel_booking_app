@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
           (_, tabsRouter) => AppBar(
             title: Text(context.topRoute.title(context)),
             leading: AutoLeadingButton(
-              ignorePagelessRoutes: true,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),

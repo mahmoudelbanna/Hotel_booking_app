@@ -14,8 +14,8 @@ class HotelsRemoteDataSourceImpl implements HotelsRemoteDataSource {
 
   @override
   Future<List<HotelModel>> getHotels() async {
+    final kGetHotelsUrl = dotenv.get('URL');
     try {
-      final kGetHotelsUrl = dotenv.get('URL');
       final response = await dio.get(kGetHotelsUrl);
 
       if (response.statusCode == 200) {

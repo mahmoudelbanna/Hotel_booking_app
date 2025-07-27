@@ -47,17 +47,15 @@ class MyAppView extends StatelessWidget {
   }
 
   ThemeData _themeData() {
-    return ThemeData(
-      appBarTheme: AppBarTheme(
+    return ThemeData().copyWith(
+      appBarTheme: const AppBarTheme().copyWith(
         backgroundColor: Colors.blue.shade900,
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
         ),
       ),
-      useMaterial3: true,
     );
   }
 }
