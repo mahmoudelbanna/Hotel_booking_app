@@ -52,6 +52,7 @@ class MyAppView extends StatelessWidget {
         backgroundColor: Colors.blue.shade900,
         centerTitle: true,
         titleTextStyle: const TextStyle(
+          color: Colors.white,
           fontSize: 22,
           fontWeight: FontWeight.bold,
         ),
