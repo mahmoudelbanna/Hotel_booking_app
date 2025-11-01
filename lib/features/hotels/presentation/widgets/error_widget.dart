@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../hotel_booking_app.dart';
 
 class ErrorFetchHotelsWidget extends StatefulWidget {
-  const ErrorFetchHotelsWidget({super.key});
+  const ErrorFetchHotelsWidget({this.message, super.key});
+
+  final String? message;
 
   @override
   State<ErrorFetchHotelsWidget> createState() => _ErrorFetchHotelsWidgetState();
@@ -53,11 +55,11 @@ class _ErrorFetchHotelsWidgetState extends State<ErrorFetchHotelsWidget>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              context.l10n.somethingWentWrong,
+              widget.message ?? context.l10n.somethingWentWrong,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
               textAlign: TextAlign.center,
             ),
           ),

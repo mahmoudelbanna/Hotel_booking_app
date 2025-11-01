@@ -6,12 +6,17 @@ class FailureToMessage {
   static String call({required Failure failure}) {
     switch (failure.runtimeType) {
       case ServerFailure _:
-        return serverFailureMessage;
-
+        return failure.message ?? serverFailureMessage;
+      case NetworkFailure _:
+        return failure.message ?? networkFailureMessage;
+      case ParsingFailure _:
+        return failure.message ?? parsingFailureMessage;
       default:
         return 'Unexpected Error';
     }
   }
 }
 
-String serverFailureMessage = 'Server Error';
+const String serverFailureMessage = 'Server Error';
+const String networkFailureMessage = 'Network Error';
+const String parsingFailureMessage = 'Data Parsing Error';

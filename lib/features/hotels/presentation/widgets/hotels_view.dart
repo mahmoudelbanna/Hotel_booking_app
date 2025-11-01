@@ -12,7 +12,7 @@ class HotelsView extends StatelessWidget {
     return state.when(
       loading: () => const LoadingWidget(),
       success: (hotels) => HotelCardsList(hotels: hotels),
-      failure: () => const ErrorFetchHotelsWidget(),
+      failure: (message) => ErrorFetchHotelsWidget(message: message),
     );
   }
 }

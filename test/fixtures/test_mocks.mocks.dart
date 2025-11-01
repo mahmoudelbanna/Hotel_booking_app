@@ -173,10 +173,13 @@ class MockFetchHotelsCubit extends _i1.Mock implements _i2.FetchHotelsCubit {
           as bool);
 
   @override
-  void fetchHotels() => super.noSuchMethod(
-    Invocation.method(#fetchHotels, []),
-    returnValueForMissingStub: null,
-  );
+  _i6.Future<void> fetchHotels() =>
+      (super.noSuchMethod(
+            Invocation.method(#fetchHotels, []),
+            returnValue: _i6.Future<void>.value(),
+            returnValueForMissingStub: _i6.Future<void>.value(),
+          )
+          as _i6.Future<void>);
 
   @override
   void emit(_i2.FetchHotelsState? state) => super.noSuchMethod(
