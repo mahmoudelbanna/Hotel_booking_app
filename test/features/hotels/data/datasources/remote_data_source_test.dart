@@ -9,10 +9,9 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import '../../../../fixtures/actual_article_json.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: '.env');
 
   late HotelsRemoteDataSourceImpl dataSource;
   late MockDio mockDio;
@@ -42,7 +41,7 @@ void main() async {
     when(mockDio.get(any)).thenAnswer((_) async {
       return Response(
         requestOptions: requestOptions,
-        data: {"error": "Bad Request"},
+        data: {'error': 'Bad Request'},
         statusCode: 400,
       );
     });

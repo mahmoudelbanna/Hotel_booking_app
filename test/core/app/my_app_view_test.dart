@@ -8,8 +8,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import '../../fixtures/fake_app_router.dart';
 import '../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late MockLanguageCubit mockLanguageCubit;
   late FakeAppRouter fakeAppRouter;
@@ -31,9 +29,11 @@ void main() {
   ) async {
     when(
       mockLanguageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -50,16 +50,18 @@ void main() {
   ) async {
     when(
       mockLanguageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(LanguageState(languageCode: 'de', countryCode: 'DE')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'de', countryCode: 'DE'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());
 
     when(
       mockLanguageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'de', countryCode: 'DE'));
+    ).thenReturn(const LanguageState(languageCode: 'de', countryCode: 'DE'));
     await tester.pump();
 
     // Assert
@@ -73,9 +75,11 @@ void main() {
   ) async {
     when(
       mockLanguageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());

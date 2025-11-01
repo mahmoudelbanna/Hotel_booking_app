@@ -1,28 +1,30 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../hotel_booking_app.dart';
 
-class OverallModel extends Overall {
-  const OverallModel({
-    required super.boarding,
-    required super.roomsOverallName,
-    required super.adultCount,
-    required super.childrenCount,
-  });
+part 'overall_model.freezed.dart';
+part 'overall_model.g.dart';
 
-  factory OverallModel.fromJson(Map<String, dynamic> json) {
-    return OverallModel(
-      boarding: json[kBoarding],
-      roomsOverallName: json[kRoomsOverallName],
-      adultCount: json[kAdultCount],
-      childrenCount: json[kChildrenCount],
-    );
-  }
+@freezed
+class OverallModel
+    with _$OverallModel, EntityConvertible<OverallModel, Overall> {
+  // ignore: unused_element
+  const OverallModel._();
+  const factory OverallModel({
+    @JsonKey(name: kBoarding) required String boarding,
+    @JsonKey(name: kRoomsOverallName) required String roomsOverallName,
+    @JsonKey(name: kAdultCount) required int adultCount,
+    @JsonKey(name: kChildrenCount) required int childrenCount,
+  }) = _OverallModel;
 
-  Map<String, dynamic> toJson() {
-    return {
-      kBoarding: boarding,
-      kRoomsOverallName: kRoomsOverallName,
-      kAdultCount: adultCount,
-      kChildrenCount: childrenCount,
-    };
-  }
+  factory OverallModel.fromJson(Map<String, dynamic> json) =>
+      _$OverallModelFromJson(json);
+
+  @override
+  Overall toEntity() => Overall(
+    boarding: boarding,
+    roomsOverallName: roomsOverallName,
+    adultCount: adultCount,
+    childrenCount: childrenCount,
+  );
 }

@@ -7,17 +7,20 @@ void main() {
     final String text,
     final String value,
     final String groupValue,
-    final LanguageTitleOnTap onChanged,
+    final void Function(String) onChanged,
   ) {
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       home: Scaffold(
-        body: LanguageListTile(
-          text: text,
-          value: value,
+        body: RadioGroup<String>(
           groupValue: groupValue,
-          onChanged: onChanged,
+          onChanged: (newValue) {
+            if (newValue != null) {
+              onChanged(newValue);
+            }
+          },
+          child: LanguageListTile(text: text, value: value),
         ),
       ),
     );
@@ -40,9 +43,12 @@ void main() {
       expect(find.byType(Radio<String>), findsOneWidget);
 
       final radio = tester.widget<Radio<String>>(find.byType(Radio<String>));
-      expect(radio.groupValue, 'de'); // Not selected
+      final radioGroup = tester.widget<RadioGroup<String>>(
+        find.byType(RadioGroup<String>),
+      );
+      expect(radioGroup.groupValue, 'de'); // Not selected
       expect(radio.value, 'en');
-      expect(radio.value == radio.groupValue, isFalse);
+      expect(radio.value == radioGroup.groupValue, isFalse);
     });
 
     testWidgets('marks radio as selected when value matches groupValue', (
@@ -58,9 +64,15 @@ void main() {
       );
 
       final radio = tester.widget<Radio<String>>(find.byType(Radio<String>));
+      final radioGroup = tester.widget<RadioGroup<String>>(
+        find.byType(RadioGroup<String>),
+      );
       expect(radio.value, 'de');
-      expect(radio.groupValue, 'de');
-      expect(radio.value == radio.groupValue, isTrue); // Should be selected
+      expect(radioGroup.groupValue, 'de');
+      expect(
+        radio.value == radioGroup.groupValue,
+        isTrue,
+      ); // Should be selected
     });
 
     testWidgets('calls onChanged when radio button is tapped', (tester) async {

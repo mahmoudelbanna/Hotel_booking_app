@@ -60,7 +60,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get retry => 'Retry';
 
   @override
-  String get somethingWentWrong => 'Something went wrong,\n please press the button to try again';
+  String get somethingWentWrong =>
+      'Something went wrong,\n please press the button to try again';
 
   @override
   String get emptyList => 'Your favorite list is empty';

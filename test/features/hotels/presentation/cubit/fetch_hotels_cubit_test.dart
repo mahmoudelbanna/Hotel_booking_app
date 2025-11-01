@@ -6,8 +6,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late FetchHotelsCubit cubit;
   late MockGetHotels mockGetHotels;
@@ -21,7 +19,7 @@ void main() {
 
   test('initialState should be FetchHotelsLoading', () {
     // assert
-    expect(cubit.state, const FetchHotelsLoading());
+    expect(cubit.state, const FetchHotelsState.loading());
   });
 
   group('fetchHotels', () {
@@ -33,41 +31,40 @@ void main() {
 
         when(mockGetHotels()).thenAnswer((_) async => Right(tHotel));
 
-        // act
         cubit.fetchHotels();
 
-        // Assert that the initial state is correct.
-        expect(cubit.state, const FetchHotelsLoading());
+        expect(cubit.state, const FetchHotelsState.loading());
 
-        // assert later
         await expectLater(
           cubit.stream,
-          emits(FetchHotelsSuccess(hotels: tHotel)),
+          emits(FetchHotelsState.success(hotels: tHotel)),
         );
-        // Assert that the current state is in sync with the stubbed stream.
-        expect(cubit.state, FetchHotelsSuccess(hotels: tHotel));
+
+        expect(cubit.state, FetchHotelsState.success(hotels: tHotel));
       },
     );
 
     test(
-      'should emit [FetchHotelsLoading, FetchHotelsFailure] when failure',
+      'should emit [FetchHotelsLoading, FetchHotelsState.failure()] when failure',
       () async {
-        // arrange
         when(
           mockGetHotels(),
         ).thenAnswer((_) async => const Left(ServerFailure()));
 
-        // act
-        cubit.fetchHotels(); // Ensure this is awaited
+        expectLater(
+          cubit.stream,
+          emitsInOrder([
+            const FetchHotelsState.loading(),
+            const FetchHotelsState.failure(message: 'Server Error'),
+          ]),
+        );
 
-        // Assert initial state
-        expect(cubit.state, const FetchHotelsLoading());
+        await cubit.fetchHotels();
 
-        // assert later
-        await expectLater(cubit.stream, emits(const FetchHotelsFailure()));
-
-        // Assert final state
-        expect(cubit.state, const FetchHotelsFailure());
+        expect(
+          cubit.state,
+          const FetchHotelsState.failure(message: 'Server Error'),
+        );
       },
     );
   });

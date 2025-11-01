@@ -75,6 +75,21 @@ flutter  pub  get
 
 ```
 
+### Generate Code
+
+Run the code generators (Freezed, json_serializable) before launching the app or
+executing tests:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+For active development you can keep the generator running:
+
+```bash
+dart run build_runner watch --delete-conflicting-outputs
+```
+
   
 
 ### Environment Configuration

@@ -10,7 +10,7 @@ void main() {
     toggleFavorite = ToggleFavoriteUseCase();
   });
 
-  final testHotel = TestHotelData.hotel;
+  const testHotel = TestHotelData.hotel;
   final testHotelId = testHotel.id;
   final testHotelData = testHotel.toMap();
 

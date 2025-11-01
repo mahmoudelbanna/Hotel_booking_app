@@ -1,39 +1,26 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../hotel_booking_app.dart';
 
-class RatingInfo extends Equatable {
-  const RatingInfo({
-    required this.recommendationRate,
-    required this.reviewsCount,
-    required this.score,
-    required this.scoreDescription,
-  });
-  factory RatingInfo.empty() {
-    return RatingInfo(
-      recommendationRate: 0,
-      reviewsCount: 0,
-      score: 0,
-      scoreDescription: '',
-    );
-  }
-  final int recommendationRate;
-  final int reviewsCount;
-  final num score; //! return from Api int and double, defines as num
-  final String scoreDescription;
+part 'rating_info.freezed.dart';
 
-  @override
-  List<Object?> get props => [
-    recommendationRate,
-    reviewsCount,
-    score,
-    scoreDescription,
-  ];
+@freezed
+class RatingInfo with _$RatingInfo {
+  // ignore: unused_element
+  const RatingInfo._();
+  const factory RatingInfo({
+    required int recommendationRate,
+    required int reviewsCount,
+    required num score,
+    required String scoreDescription,
+  }) = _RatingInfo;
 
-  @override
-  String toString() {
-    return 'RatingInfo(recommendationRate: $recommendationRate, reviewsCount: $reviewsCount, score: $score, scoreDescription: $scoreDescription)';
-  }
+  factory RatingInfo.empty() => const RatingInfo(
+    recommendationRate: 0,
+    reviewsCount: 0,
+    score: 0,
+    scoreDescription: '',
+  );
 
   Map<String, dynamic> toMap() {
     return {

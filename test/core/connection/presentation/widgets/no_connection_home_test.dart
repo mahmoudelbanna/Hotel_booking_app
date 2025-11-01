@@ -7,9 +7,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockInternetCubit mockInternetCubit;
 
@@ -32,10 +29,12 @@ void main() {
     WidgetTester tester,
   ) async {
     // Arrange
-    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
     when(
-      mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
+      mockInternetCubit.state,
+    ).thenReturn(const InternetState.disconnected());
+    when(mockInternetCubit.stream).thenAnswer(
+      (_) => Stream.fromIterable([const InternetState.disconnected()]),
+    );
 
     // Act
     await tester.pumpWidget(createWidgetUnderTest());
@@ -43,16 +42,18 @@ void main() {
 
     // Assert
     expect(find.byIcon(Icons.signal_wifi_off), findsOneWidget);
-    expect(find.text("No internet connection"), findsOneWidget);
+    expect(find.text('No internet connection'), findsOneWidget);
   });
 
   testWidgets('animates the icon with ScaleTransition', (
     WidgetTester tester,
   ) async {
-    when(mockInternetCubit.state).thenReturn(const InternetDisconnected());
     when(
-      mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetDisconnected()]));
+      mockInternetCubit.state,
+    ).thenReturn(const InternetState.disconnected());
+    when(mockInternetCubit.stream).thenAnswer(
+      (_) => Stream.fromIterable([const InternetState.disconnected()]),
+    );
 
     await tester.pumpWidget(createWidgetUnderTest());
     await tester.pump();

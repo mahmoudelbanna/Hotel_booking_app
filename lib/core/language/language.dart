@@ -1,1 +1,1 @@
-export 'cubit/language_cubit.dart';
+export 'cubit/cubit.dart';

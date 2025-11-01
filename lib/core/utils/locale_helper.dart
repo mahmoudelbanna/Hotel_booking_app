@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
-import 'package:hotel_booking_app/hotel_booking_app.dart';
+import '../../hotel_booking_app.dart';
 
 /// Resolves the appropriate locale for the application.
 ///

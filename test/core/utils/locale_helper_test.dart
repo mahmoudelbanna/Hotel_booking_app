@@ -7,9 +7,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockLanguageCubit mockLanguageCubit;
 
@@ -17,10 +14,12 @@ void main() {
     mockLanguageCubit = MockLanguageCubit();
     when(
       mockLanguageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
 
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
   });
 
@@ -37,7 +36,7 @@ void main() {
     testWidgets(
       'returns locale from LanguageState if languageCode is not null',
       (WidgetTester tester) async {
-        final state = LanguageState(languageCode: 'de', countryCode: 'DE');
+        const state = LanguageState(languageCode: 'de', countryCode: 'DE');
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -62,7 +61,7 @@ void main() {
     testWidgets(
       'matches deviceLocale language code with supportedLocales and updates LanguageCubit',
       (WidgetTester tester) async {
-        final state = LanguageState(languageCode: null, countryCode: null);
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -88,7 +87,7 @@ void main() {
     testWidgets(
       'falls back to first supported locale when no language code matches',
       (WidgetTester tester) async {
-        final state = LanguageState(languageCode: null, countryCode: null);
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -115,7 +114,7 @@ void main() {
     testWidgets(
       'falls back to first supported locale if deviceLocale is null',
       (WidgetTester tester) async {
-        final state = LanguageState(languageCode: null, countryCode: null);
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(

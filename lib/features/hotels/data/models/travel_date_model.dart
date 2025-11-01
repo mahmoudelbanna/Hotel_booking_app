@@ -1,13 +1,23 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../hotel_booking_app.dart';
 
-class TravelDateModel extends TravelDate {
-  const TravelDateModel({required super.days, required super.nights});
+part 'travel_date_model.freezed.dart';
+part 'travel_date_model.g.dart';
 
-  factory TravelDateModel.fromJson(Map<String, dynamic> json) {
-    return TravelDateModel(days: json[kDays], nights: json[kNights]);
-  }
+@freezed
+class TravelDateModel
+    with _$TravelDateModel, EntityConvertible<TravelDateModel, TravelDate> {
+  // ignore: unused_element
+  const TravelDateModel._();
+  const factory TravelDateModel({
+    @JsonKey(name: kDays) required int days,
+    @JsonKey(name: kNights) required int nights,
+  }) = _TravelDateModel;
 
-  Map<String, dynamic> toJson() {
-    return {kDays: days, kNights: nights};
-  }
+  factory TravelDateModel.fromJson(Map<String, dynamic> json) =>
+      _$TravelDateModelFromJson(json);
+
+  @override
+  TravelDate toEntity() => TravelDate(days: days, nights: nights);
 }

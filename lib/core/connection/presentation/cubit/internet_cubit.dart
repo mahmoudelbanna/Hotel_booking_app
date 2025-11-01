@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-part 'internet_state.dart';
+import 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
   final Connectivity connectivity;
@@ -14,7 +13,7 @@ class InternetCubit extends Cubit<InternetState> {
   late StreamSubscription internetCheckerSubscription;
 
   InternetCubit({required this.connectivity, required this.connectionChecker})
-    : super(InternetLoading()) {
+    : super(const InternetState.loading()) {
     _initializeConnectivityChecking();
     _initializeInternetChecking();
   }
@@ -37,11 +36,23 @@ class InternetCubit extends Cubit<InternetState> {
   /// This method is called once from the constructor and is not intended to be
   /// used directly.
   void _initializeInternetChecking() {
+    connectionChecker.addresses = [
+      AddressCheckOption(
+        uri: Uri.parse('https://example.com'),
+        timeout: const Duration(seconds: 5),
+      ),
+      AddressCheckOption(
+        uri: Uri.parse('https://google.com'),
+        timeout: const Duration(seconds: 5),
+      ),
+    ];
     internetCheckerSubscription = connectionChecker.onStatusChange.listen((
       status,
     ) {
       if (status == InternetConnectionStatus.connected) {
         emitInternetConnected();
+      } else if (status == InternetConnectionStatus.slow) {
+        emitInternetDisconnected();
       } else {
         emitInternetDisconnected();
       }
@@ -76,9 +87,9 @@ class InternetCubit extends Cubit<InternetState> {
     }
   }
 
-  void emitInternetDisconnected() => emit(InternetDisconnected());
+  void emitInternetDisconnected() => emit(const InternetState.disconnected());
 
-  void emitInternetConnected() => emit(const InternetConnected());
+  void emitInternetConnected() => emit(const InternetState.connected());
 
   @override
   Future<void> close() {

@@ -8,13 +8,13 @@ import 'dart:async' as _i6;
 import 'package:connectivity_plus/connectivity_plus.dart' as _i4;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:dio/dio.dart' as _i7;
-import 'package:flutter_bloc/flutter_bloc.dart' as _i9;
+import 'package:flutter_bloc/flutter_bloc.dart' as _i8;
 import 'package:hotel_booking_app/hotel_booking_app.dart' as _i2;
 import 'package:hydrated_bloc/hydrated_bloc.dart' as _i10;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i5;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i8;
+import 'package:mockito/src/dummies.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -35,94 +35,100 @@ class _FakeGetHotels_0 extends _i1.SmartFake implements _i2.GetHotels {
     : super(parent, parentInvocation);
 }
 
-class _FakeHotelsRepository_1 extends _i1.SmartFake
+class _FakeFetchHotelsState_1 extends _i1.SmartFake
+    implements _i2.FetchHotelsState {
+  _FakeFetchHotelsState_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeHotelsRepository_2 extends _i1.SmartFake
     implements _i2.HotelsRepository {
-  _FakeHotelsRepository_1(Object parent, Invocation parentInvocation)
+  _FakeHotelsRepository_2(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeEither_2<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
-  _FakeEither_2(Object parent, Invocation parentInvocation)
+class _FakeEither_3<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
+  _FakeEither_3(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeToggleFavoriteUseCase_3 extends _i1.SmartFake
+class _FakeToggleFavoriteUseCase_4 extends _i1.SmartFake
     implements _i2.ToggleFavoriteUseCase {
-  _FakeToggleFavoriteUseCase_3(Object parent, Invocation parentInvocation)
+  _FakeToggleFavoriteUseCase_4(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeFavoriteState_4 extends _i1.SmartFake implements _i2.FavoriteState {
-  _FakeFavoriteState_4(Object parent, Invocation parentInvocation)
+class _FakeFavoriteState_5 extends _i1.SmartFake implements _i2.FavoriteState {
+  _FakeFavoriteState_5(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeLanguageState_5 extends _i1.SmartFake implements _i2.LanguageState {
-  _FakeLanguageState_5(Object parent, Invocation parentInvocation)
+class _FakeLanguageState_6 extends _i1.SmartFake implements _i2.LanguageState {
+  _FakeLanguageState_6(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeConnectivity_6 extends _i1.SmartFake implements _i4.Connectivity {
-  _FakeConnectivity_6(Object parent, Invocation parentInvocation)
+class _FakeConnectivity_7 extends _i1.SmartFake implements _i4.Connectivity {
+  _FakeConnectivity_7(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeInternetConnectionChecker_7 extends _i1.SmartFake
+class _FakeInternetConnectionChecker_8 extends _i1.SmartFake
     implements _i5.InternetConnectionChecker {
-  _FakeInternetConnectionChecker_7(Object parent, Invocation parentInvocation)
+  _FakeInternetConnectionChecker_8(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeStreamSubscription_8<T> extends _i1.SmartFake
+class _FakeStreamSubscription_9<T> extends _i1.SmartFake
     implements _i6.StreamSubscription<T> {
-  _FakeStreamSubscription_8(Object parent, Invocation parentInvocation)
+  _FakeStreamSubscription_9(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeInternetState_9 extends _i1.SmartFake implements _i2.InternetState {
-  _FakeInternetState_9(Object parent, Invocation parentInvocation)
+class _FakeInternetState_10 extends _i1.SmartFake implements _i2.InternetState {
+  _FakeInternetState_10(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeDuration_10 extends _i1.SmartFake implements Duration {
-  _FakeDuration_10(Object parent, Invocation parentInvocation)
+class _FakeDuration_11 extends _i1.SmartFake implements Duration {
+  _FakeDuration_11(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeAddressCheckResult_11 extends _i1.SmartFake
+class _FakeAddressCheckResult_12 extends _i1.SmartFake
     implements _i5.AddressCheckResult {
-  _FakeAddressCheckResult_11(Object parent, Invocation parentInvocation)
+  _FakeAddressCheckResult_12(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeBaseOptions_12 extends _i1.SmartFake implements _i7.BaseOptions {
-  _FakeBaseOptions_12(Object parent, Invocation parentInvocation)
+class _FakeBaseOptions_13 extends _i1.SmartFake implements _i7.BaseOptions {
+  _FakeBaseOptions_13(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeHttpClientAdapter_13 extends _i1.SmartFake
+class _FakeHttpClientAdapter_14 extends _i1.SmartFake
     implements _i7.HttpClientAdapter {
-  _FakeHttpClientAdapter_13(Object parent, Invocation parentInvocation)
+  _FakeHttpClientAdapter_14(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeTransformer_14 extends _i1.SmartFake implements _i7.Transformer {
-  _FakeTransformer_14(Object parent, Invocation parentInvocation)
+class _FakeTransformer_15 extends _i1.SmartFake implements _i7.Transformer {
+  _FakeTransformer_15(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeInterceptors_15 extends _i1.SmartFake implements _i7.Interceptors {
-  _FakeInterceptors_15(Object parent, Invocation parentInvocation)
+class _FakeInterceptors_16 extends _i1.SmartFake implements _i7.Interceptors {
+  _FakeInterceptors_16(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeResponse_16<T1> extends _i1.SmartFake implements _i7.Response<T1> {
-  _FakeResponse_16(Object parent, Invocation parentInvocation)
+class _FakeResponse_17<T1> extends _i1.SmartFake implements _i7.Response<T1> {
+  _FakeResponse_17(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeDio_17 extends _i1.SmartFake implements _i7.Dio {
-  _FakeDio_17(Object parent, Invocation parentInvocation)
+class _FakeDio_18 extends _i1.SmartFake implements _i7.Dio {
+  _FakeDio_18(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -146,7 +152,7 @@ class MockFetchHotelsCubit extends _i1.Mock implements _i2.FetchHotelsCubit {
   _i2.FetchHotelsState get state =>
       (super.noSuchMethod(
             Invocation.getter(#state),
-            returnValue: _i8.dummyValue<_i2.FetchHotelsState>(
+            returnValue: _FakeFetchHotelsState_1(
               this,
               Invocation.getter(#state),
             ),
@@ -167,10 +173,13 @@ class MockFetchHotelsCubit extends _i1.Mock implements _i2.FetchHotelsCubit {
           as bool);
 
   @override
-  void fetchHotels() => super.noSuchMethod(
-    Invocation.method(#fetchHotels, []),
-    returnValueForMissingStub: null,
-  );
+  _i6.Future<void> fetchHotels() =>
+      (super.noSuchMethod(
+            Invocation.method(#fetchHotels, []),
+            returnValue: _i6.Future<void>.value(),
+            returnValueForMissingStub: _i6.Future<void>.value(),
+          )
+          as _i6.Future<void>);
 
   @override
   void emit(_i2.FetchHotelsState? state) => super.noSuchMethod(
@@ -179,7 +188,7 @@ class MockFetchHotelsCubit extends _i1.Mock implements _i2.FetchHotelsCubit {
   );
 
   @override
-  void onChange(_i9.Change<_i2.FetchHotelsState>? change) => super.noSuchMethod(
+  void onChange(_i8.Change<_i2.FetchHotelsState>? change) => super.noSuchMethod(
     Invocation.method(#onChange, [change]),
     returnValueForMissingStub: null,
   );
@@ -218,7 +227,7 @@ class MockGetHotels extends _i1.Mock implements _i2.GetHotels {
   _i2.HotelsRepository get repository =>
       (super.noSuchMethod(
             Invocation.getter(#repository),
-            returnValue: _FakeHotelsRepository_1(
+            returnValue: _FakeHotelsRepository_2(
               this,
               Invocation.getter(#repository),
             ),
@@ -231,7 +240,7 @@ class MockGetHotels extends _i1.Mock implements _i2.GetHotels {
             Invocation.method(#call, []),
             returnValue:
                 _i6.Future<_i3.Either<_i2.Failure, List<_i2.Hotel>>>.value(
-                  _FakeEither_2<_i2.Failure, List<_i2.Hotel>>(
+                  _FakeEither_3<_i2.Failure, List<_i2.Hotel>>(
                     this,
                     Invocation.method(#call, []),
                   ),
@@ -274,7 +283,7 @@ class MockHotelsRepository extends _i1.Mock implements _i2.HotelsRepository {
             Invocation.method(#getHotels, []),
             returnValue:
                 _i6.Future<_i3.Either<_i2.Failure, List<_i2.Hotel>>>.value(
-                  _FakeEither_2<_i2.Failure, List<_i2.Hotel>>(
+                  _FakeEither_3<_i2.Failure, List<_i2.Hotel>>(
                     this,
                     Invocation.method(#getHotels, []),
                   ),
@@ -295,7 +304,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
   _i2.ToggleFavoriteUseCase get toggleFavoriteUseCase =>
       (super.noSuchMethod(
             Invocation.getter(#toggleFavoriteUseCase),
-            returnValue: _FakeToggleFavoriteUseCase_3(
+            returnValue: _FakeToggleFavoriteUseCase_4(
               this,
               Invocation.getter(#toggleFavoriteUseCase),
             ),
@@ -306,7 +315,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
   _i2.FavoriteState get state =>
       (super.noSuchMethod(
             Invocation.getter(#state),
-            returnValue: _FakeFavoriteState_4(this, Invocation.getter(#state)),
+            returnValue: _FakeFavoriteState_5(this, Invocation.getter(#state)),
           )
           as _i2.FavoriteState);
 
@@ -327,7 +336,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
   String get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _i8.dummyValue<String>(this, Invocation.getter(#id)),
+            returnValue: _i9.dummyValue<String>(this, Invocation.getter(#id)),
           )
           as String);
 
@@ -335,7 +344,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
   String get storagePrefix =>
       (super.noSuchMethod(
             Invocation.getter(#storagePrefix),
-            returnValue: _i8.dummyValue<String>(
+            returnValue: _i9.dummyValue<String>(
               this,
               Invocation.getter(#storagePrefix),
             ),
@@ -346,7 +355,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
   String get storageToken =>
       (super.noSuchMethod(
             Invocation.getter(#storageToken),
-            returnValue: _i8.dummyValue<String>(
+            returnValue: _i9.dummyValue<String>(
               this,
               Invocation.getter(#storageToken),
             ),
@@ -383,8 +392,8 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
 
   @override
   void on<E extends _i2.FavoriteEvent>(
-    _i9.EventHandler<E, _i2.FavoriteState>? handler, {
-    _i9.EventTransformer<E>? transformer,
+    _i8.EventHandler<E, _i2.FavoriteState>? handler, {
+    _i8.EventTransformer<E>? transformer,
   }) => super.noSuchMethod(
     Invocation.method(#on, [handler], {#transformer: transformer}),
     returnValueForMissingStub: null,
@@ -392,7 +401,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
 
   @override
   void onTransition(
-    _i9.Transition<_i2.FavoriteEvent, _i2.FavoriteState>? transition,
+    _i8.Transition<_i2.FavoriteEvent, _i2.FavoriteState>? transition,
   ) => super.noSuchMethod(
     Invocation.method(#onTransition, [transition]),
     returnValueForMissingStub: null,
@@ -408,7 +417,7 @@ class MockFavoriteBloc extends _i1.Mock implements _i2.FavoriteBloc {
           as _i6.Future<void>);
 
   @override
-  void onChange(_i9.Change<_i2.FavoriteState>? change) => super.noSuchMethod(
+  void onChange(_i8.Change<_i2.FavoriteState>? change) => super.noSuchMethod(
     Invocation.method(#onChange, [change]),
     returnValueForMissingStub: null,
   );
@@ -453,7 +462,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   _i2.LanguageState get state =>
       (super.noSuchMethod(
             Invocation.getter(#state),
-            returnValue: _FakeLanguageState_5(this, Invocation.getter(#state)),
+            returnValue: _FakeLanguageState_6(this, Invocation.getter(#state)),
           )
           as _i2.LanguageState);
 
@@ -474,7 +483,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   String get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _i8.dummyValue<String>(this, Invocation.getter(#id)),
+            returnValue: _i9.dummyValue<String>(this, Invocation.getter(#id)),
           )
           as String);
 
@@ -482,7 +491,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   String get storagePrefix =>
       (super.noSuchMethod(
             Invocation.getter(#storagePrefix),
-            returnValue: _i8.dummyValue<String>(
+            returnValue: _i9.dummyValue<String>(
               this,
               Invocation.getter(#storagePrefix),
             ),
@@ -493,7 +502,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   String get storageToken =>
       (super.noSuchMethod(
             Invocation.getter(#storageToken),
-            returnValue: _i8.dummyValue<String>(
+            returnValue: _i9.dummyValue<String>(
               this,
               Invocation.getter(#storageToken),
             ),
@@ -511,7 +520,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   _i2.LanguageState fromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
             Invocation.method(#fromJson, [json]),
-            returnValue: _FakeLanguageState_5(
+            returnValue: _FakeLanguageState_6(
               this,
               Invocation.method(#fromJson, [json]),
             ),
@@ -533,7 +542,7 @@ class MockLanguageCubit extends _i1.Mock implements _i2.LanguageCubit {
   );
 
   @override
-  void onChange(_i9.Change<_i2.LanguageState>? change) => super.noSuchMethod(
+  void onChange(_i8.Change<_i2.LanguageState>? change) => super.noSuchMethod(
     Invocation.method(#onChange, [change]),
     returnValueForMissingStub: null,
   );
@@ -587,7 +596,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   _i4.Connectivity get connectivity =>
       (super.noSuchMethod(
             Invocation.getter(#connectivity),
-            returnValue: _FakeConnectivity_6(
+            returnValue: _FakeConnectivity_7(
               this,
               Invocation.getter(#connectivity),
             ),
@@ -598,7 +607,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   _i5.InternetConnectionChecker get connectionChecker =>
       (super.noSuchMethod(
             Invocation.getter(#connectionChecker),
-            returnValue: _FakeInternetConnectionChecker_7(
+            returnValue: _FakeInternetConnectionChecker_8(
               this,
               Invocation.getter(#connectionChecker),
             ),
@@ -609,7 +618,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   _i6.StreamSubscription<dynamic> get connectivityStreamSubscription =>
       (super.noSuchMethod(
             Invocation.getter(#connectivityStreamSubscription),
-            returnValue: _FakeStreamSubscription_8<dynamic>(
+            returnValue: _FakeStreamSubscription_9<dynamic>(
               this,
               Invocation.getter(#connectivityStreamSubscription),
             ),
@@ -631,7 +640,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   _i6.StreamSubscription<dynamic> get internetCheckerSubscription =>
       (super.noSuchMethod(
             Invocation.getter(#internetCheckerSubscription),
-            returnValue: _FakeStreamSubscription_8<dynamic>(
+            returnValue: _FakeStreamSubscription_9<dynamic>(
               this,
               Invocation.getter(#internetCheckerSubscription),
             ),
@@ -653,7 +662,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   _i2.InternetState get state =>
       (super.noSuchMethod(
             Invocation.getter(#state),
-            returnValue: _FakeInternetState_9(this, Invocation.getter(#state)),
+            returnValue: _FakeInternetState_10(this, Invocation.getter(#state)),
           )
           as _i2.InternetState);
 
@@ -706,7 +715,7 @@ class MockInternetCubit extends _i1.Mock implements _i2.InternetCubit {
   );
 
   @override
-  void onChange(_i9.Change<_i2.InternetState>? change) => super.noSuchMethod(
+  void onChange(_i8.Change<_i2.InternetState>? change) => super.noSuchMethod(
     Invocation.method(#onChange, [change]),
     returnValueForMissingStub: null,
   );
@@ -849,7 +858,7 @@ class MockInternetConnectionChecker extends _i1.Mock
   Duration get slowConnectionThreshold =>
       (super.noSuchMethod(
             Invocation.getter(#slowConnectionThreshold),
-            returnValue: _FakeDuration_10(
+            returnValue: _FakeDuration_11(
               this,
               Invocation.getter(#slowConnectionThreshold),
             ),
@@ -867,7 +876,7 @@ class MockInternetConnectionChecker extends _i1.Mock
   Duration get checkTimeout =>
       (super.noSuchMethod(
             Invocation.getter(#checkTimeout),
-            returnValue: _FakeDuration_10(
+            returnValue: _FakeDuration_11(
               this,
               Invocation.getter(#checkTimeout),
             ),
@@ -884,7 +893,7 @@ class MockInternetConnectionChecker extends _i1.Mock
   Duration get checkInterval =>
       (super.noSuchMethod(
             Invocation.getter(#checkInterval),
-            returnValue: _FakeDuration_10(
+            returnValue: _FakeDuration_11(
               this,
               Invocation.getter(#checkInterval),
             ),
@@ -979,7 +988,7 @@ class MockInternetConnectionChecker extends _i1.Mock
       (super.noSuchMethod(
             Invocation.method(#isHostReachable, [option]),
             returnValue: _i6.Future<_i5.AddressCheckResult>.value(
-              _FakeAddressCheckResult_11(
+              _FakeAddressCheckResult_12(
                 this,
                 Invocation.method(#isHostReachable, [option]),
               ),
@@ -1082,7 +1091,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
   _i7.BaseOptions get options =>
       (super.noSuchMethod(
             Invocation.getter(#options),
-            returnValue: _FakeBaseOptions_12(this, Invocation.getter(#options)),
+            returnValue: _FakeBaseOptions_13(this, Invocation.getter(#options)),
           )
           as _i7.BaseOptions);
 
@@ -1096,7 +1105,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
   _i7.HttpClientAdapter get httpClientAdapter =>
       (super.noSuchMethod(
             Invocation.getter(#httpClientAdapter),
-            returnValue: _FakeHttpClientAdapter_13(
+            returnValue: _FakeHttpClientAdapter_14(
               this,
               Invocation.getter(#httpClientAdapter),
             ),
@@ -1114,7 +1123,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
   _i7.Transformer get transformer =>
       (super.noSuchMethod(
             Invocation.getter(#transformer),
-            returnValue: _FakeTransformer_14(
+            returnValue: _FakeTransformer_15(
               this,
               Invocation.getter(#transformer),
             ),
@@ -1131,7 +1140,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
   _i7.Interceptors get interceptors =>
       (super.noSuchMethod(
             Invocation.getter(#interceptors),
-            returnValue: _FakeInterceptors_15(
+            returnValue: _FakeInterceptors_16(
               this,
               Invocation.getter(#interceptors),
             ),
@@ -1164,7 +1173,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #head,
@@ -1195,7 +1204,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               {#data: data, #options: options, #cancelToken: cancelToken},
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #headUri,
@@ -1229,7 +1238,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #get,
@@ -1267,7 +1276,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #getUri,
@@ -1308,7 +1317,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #post,
@@ -1349,7 +1358,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #postUri,
@@ -1391,7 +1400,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #put,
@@ -1432,7 +1441,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #putUri,
@@ -1474,7 +1483,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #patch,
@@ -1515,7 +1524,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #patchUri,
@@ -1553,7 +1562,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #delete,
@@ -1584,7 +1593,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               {#data: data, #options: options, #cancelToken: cancelToken},
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #deleteUri,
@@ -1625,7 +1634,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<dynamic>>.value(
-              _FakeResponse_16<dynamic>(
+              _FakeResponse_17<dynamic>(
                 this,
                 Invocation.method(
                   #download,
@@ -1673,7 +1682,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<dynamic>>.value(
-              _FakeResponse_16<dynamic>(
+              _FakeResponse_17<dynamic>(
                 this,
                 Invocation.method(
                   #downloadUri,
@@ -1717,7 +1726,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #request,
@@ -1758,7 +1767,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               },
             ),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(
                   #requestUri,
@@ -1781,7 +1790,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
       (super.noSuchMethod(
             Invocation.method(#fetch, [requestOptions]),
             returnValue: _i6.Future<_i7.Response<T>>.value(
-              _FakeResponse_16<T>(
+              _FakeResponse_17<T>(
                 this,
                 Invocation.method(#fetch, [requestOptions]),
               ),
@@ -1803,7 +1812,7 @@ class MockDio extends _i1.Mock implements _i7.Dio {
               #httpClientAdapter: httpClientAdapter,
               #transformer: transformer,
             }),
-            returnValue: _FakeDio_17(
+            returnValue: _FakeDio_18(
               this,
               Invocation.method(#clone, [], {
                 #options: options,

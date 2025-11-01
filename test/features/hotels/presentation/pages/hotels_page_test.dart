@@ -28,12 +28,12 @@ void main() {
     getItTest.registerFactory<FetchHotelsCubit>(() => fetchHotelsCubit);
     getItTest.registerLazySingleton<FavoriteBloc>(() => favoriteBloc);
 
-    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
+    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
 
     when(
       fetchHotelsCubit.stream,
-    ).thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
+    ).thenAnswer((_) => Stream.value(const FetchHotelsState.loading()));
     when(
       favoriteBloc.stream,
     ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
@@ -42,7 +42,7 @@ void main() {
   });
 
   setUpAll(() {
-    provideDummy<FetchHotelsState>(const FetchHotelsLoading());
+    provideDummy<FetchHotelsState>(const FetchHotelsState.loading());
     provideDummy<FavoriteState>(FavoriteState.initial());
   });
 
@@ -74,10 +74,10 @@ void main() {
     testWidgets('shows HotelsPage when internet is connected', (
       WidgetTester tester,
     ) async {
-      when(internetCubit.state).thenReturn(const InternetConnected());
-      when(
-        internetCubit.stream,
-      ).thenAnswer((_) => Stream.fromIterable([const InternetConnected()]));
+      when(internetCubit.state).thenReturn(const InternetState.connected());
+      when(internetCubit.stream).thenAnswer(
+        (_) => Stream.fromIterable([const InternetState.connected()]),
+      );
 
       await tester.pumpWidget(createWidgetUnderTest());
       await tester.pump();
@@ -90,9 +90,11 @@ void main() {
     testWidgets(
       'shows NoConnectionHomeErrorLoading when internet is disconnected',
       (WidgetTester tester) async {
-        when(internetCubit.state).thenReturn(const InternetDisconnected());
+        when(
+          internetCubit.state,
+        ).thenReturn(const InternetState.disconnected());
         when(internetCubit.stream).thenAnswer(
-          (_) => Stream.fromIterable([const InternetDisconnected()]),
+          (_) => Stream.fromIterable([const InternetState.disconnected()]),
         );
 
         await tester.pumpWidget(createWidgetUnderTest());
@@ -108,10 +110,10 @@ void main() {
     testWidgets('shows LoadingWidget when internet is loading', (
       WidgetTester tester,
     ) async {
-      when(internetCubit.state).thenReturn(const InternetLoading());
+      when(internetCubit.state).thenReturn(const InternetState.loading());
       when(
         internetCubit.stream,
-      ).thenAnswer((_) => Stream.fromIterable([const InternetLoading()]));
+      ).thenAnswer((_) => Stream.fromIterable([const InternetState.loading()]));
 
       await tester.pumpWidget(createWidgetUnderTest());
       await tester.pump();
@@ -127,7 +129,7 @@ void main() {
       final streamController = StreamController<InternetState>.broadcast();
 
       when(internetCubit.stream).thenAnswer((_) => streamController.stream);
-      when(internetCubit.state).thenReturn(InternetDisconnected());
+      when(internetCubit.state).thenReturn(const InternetState.disconnected());
 
       await tester.pumpWidget(createWidgetUnderTest());
       await tester.pump();
@@ -136,8 +138,8 @@ void main() {
       expect(find.byType(HotelsView), findsNothing);
       expect(find.byType(LoadingWidget), findsNothing);
 
-      when(internetCubit.state).thenReturn(const InternetConnected());
-      streamController.add(const InternetConnected());
+      when(internetCubit.state).thenReturn(const InternetState.connected());
+      streamController.add(const InternetState.connected());
 
       await tester.pump();
 

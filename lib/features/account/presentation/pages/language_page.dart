@@ -9,6 +9,6 @@ class LanguagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: const LanguageView());
+    return const Scaffold(body: LanguageView());
   }
 }

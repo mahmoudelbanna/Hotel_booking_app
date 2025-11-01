@@ -15,23 +15,29 @@ void main() {
     repository = HotelsRepositoryImpl(remoteDataSource: mockRemoteDataSource);
   });
 
-  final List<HotelModel> tHotelModels = [TestHotelModelData.hotel];
+  final tHotelModels = [TestHotelModelData.hotel];
+  final tHotels = tHotelModels.map((model) => model.toEntity()).toList();
 
   group('getHotels', () {
     test(
-      'should return Right(List<HotelModel>) when the call is successful',
+      'should return Right(List<Hotel>) when the call is successful',
       () async {
         // Arrange
         when(
           mockRemoteDataSource.getHotels(),
         ).thenAnswer((_) async => tHotelModels);
 
-        // Act
+        // act
         final result = await repository.getHotels();
 
-        // Assert
-        verify(mockRemoteDataSource.getHotels()).called(1);
-        expect(result, Right(tHotelModels));
+        // assert
+        expect(result.isRight(), true);
+        result.fold(
+          (failure) => fail('Expected Right, got Left with $failure'),
+          (hotels) => expect(hotels, equals(tHotels)),
+        );
+        verify(mockRemoteDataSource.getHotels());
+        verifyNoMoreInteractions(mockRemoteDataSource);
       },
     );
 

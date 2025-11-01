@@ -1,57 +1,33 @@
-import 'package:equatable/equatable.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../hotel_booking_app.dart';
 
-class Hotel extends Equatable {
-  final String id;
-  final String name;
-  final String destination;
-  final int category;
-  final String categoryType;
-  final List<HotelImage> images;
-  final BestOffer bestOffer;
-  final RatingInfo ratingInfo;
+part 'hotel.freezed.dart';
 
-  const Hotel({
-    required this.id,
-    required this.name,
-    required this.destination,
-    required this.category,
-    required this.categoryType,
-    required this.images,
-    required this.bestOffer,
-    required this.ratingInfo,
-  });
+@freezed
+class Hotel with _$Hotel {
+  // ignore: unused_element
+  const Hotel._();
+  const factory Hotel({
+    required String id,
+    required String name,
+    required String destination,
+    required int category,
+    required String categoryType,
+    required List<HotelImage> images,
+    required BestOffer bestOffer,
+    required RatingInfo ratingInfo,
+  }) = _Hotel;
 
-  factory Hotel.empty() {
-    return Hotel(
-      id: '',
-      name: '',
-      destination: '',
-      category: 0,
-      categoryType: '',
-      images: [],
-      bestOffer: BestOffer.empty(),
-      ratingInfo: RatingInfo.empty(),
-    );
-  }
-
-  @override
-  List<Object?> get props => [
-    id,
-    name,
-    destination,
-    category,
-    categoryType,
-    images,
-    bestOffer,
-    ratingInfo,
-  ];
-
-  @override
-  String toString() {
-    return 'Hotel(id: $id, name: $name, destination: $destination, category: $category, categoryType: $categoryType, images: $images, bestOffer: $bestOffer, ratingInfo: $ratingInfo)';
-  }
+  factory Hotel.empty() => Hotel(
+    id: '',
+    name: '',
+    destination: '',
+    category: 0,
+    categoryType: '',
+    images: [],
+    bestOffer: BestOffer.empty(),
+    ratingInfo: RatingInfo.empty(),
+  );
 
   Map<String, dynamic> toMap() {
     return {
@@ -60,7 +36,7 @@ class Hotel extends Equatable {
       kDestination: destination,
       kCategory: category,
       kCategoryType: categoryType,
-      kImages: images.map((x) => x.toMap()).toList(),
+      kImages: images.map((image) => image.toMap()).toList(),
       kBestOffer: bestOffer.toMap(),
       kRatingInfo: ratingInfo.toMap(),
     };

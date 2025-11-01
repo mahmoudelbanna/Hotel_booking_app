@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - dev
+      - dev_freezed
 
   pull_request:
     branches:
       - main
       - dev
+      - dev_freezed
 
 jobs:
   build:
@@ -34,6 +36,9 @@ jobs:
 
       - name: Install Dependencies
         run: flutter pub get
+
+      - name: Run Build Runner
+        run: dart run build_runner build -d
 
       - name: Run Our Test
         run: flutter test

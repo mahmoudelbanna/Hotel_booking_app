@@ -15,7 +15,7 @@ class ProfileElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(leadingIcon),
-      trailing: Icon(Icons.arrow_forward_ios),
+      trailing: const Icon(Icons.arrow_forward_ios),
       title: Text(title),
       onTap: onTap,
       style: ListTileStyle.list,

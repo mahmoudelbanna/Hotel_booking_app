@@ -11,7 +11,7 @@ class HotelImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
       child:
           hotel.images.isEmpty
               ? Container(

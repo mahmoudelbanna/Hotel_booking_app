@@ -8,18 +8,11 @@ class HotelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchHotelsCubit, FetchHotelsState>(
-      builder: (context, state) {
-        if (state is FetchHotelsLoading) {
-          return const LoadingWidget();
-        } else if (state is FetchHotelsSuccess) {
-          return HotelCardsList(hotels: state.hotels);
-        } else if (state is FetchHotelsFailure) {
-          return const ErrorFetchHotelsWidget();
-        }
-
-        return const EmptyListWidget();
-      },
+    final state = context.watch<FetchHotelsCubit>().state;
+    return state.when(
+      loading: () => const LoadingWidget(),
+      success: (hotels) => HotelCardsList(hotels: hotels),
+      failure: (message) => ErrorFetchHotelsWidget(message: message),
     );
   }
 }

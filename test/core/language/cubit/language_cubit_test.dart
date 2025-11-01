@@ -6,9 +6,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   group('LanguageCubit', () {
     late LanguageCubit languageCubit;
@@ -54,10 +51,7 @@ void main() {
       });
 
       test('toJson returns correct map', () {
-        final state = const LanguageState(
-          languageCode: 'de',
-          countryCode: 'DE',
-        );
+        const state = LanguageState(languageCode: 'de', countryCode: 'DE');
         expect(languageCubit.toJson(state), {
           'languageCode': 'de',
           'countryCode': 'DE',

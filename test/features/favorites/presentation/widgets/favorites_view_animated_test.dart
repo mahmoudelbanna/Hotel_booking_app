@@ -10,9 +10,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_favorite_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockFavoriteBloc favoriteBloc;
   late MockLanguageCubit languageCubit;
@@ -33,17 +30,17 @@ void main() {
 
     when(
       languageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
-    when(internetCubit.state).thenReturn(const InternetConnected());
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
+    when(internetCubit.state).thenReturn(const InternetState.connected());
 
     when(
       internetCubit.stream,
-    ).thenAnswer((_) => Stream.value(const InternetConnected()));
+    ).thenAnswer((_) => Stream.value(const InternetState.connected()));
   });
 
   setUpAll(() {
     provideDummy<LanguageState>(
-      LanguageState(languageCode: 'en', countryCode: 'US'),
+      const LanguageState(languageCode: 'en', countryCode: 'US'),
     );
   });
 

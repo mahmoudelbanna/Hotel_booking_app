@@ -9,8 +9,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late FavoriteBloc favoriteBloc;
   late MockStorage mockStorage;
@@ -28,7 +26,7 @@ void main() {
   });
 
   final Map<String, dynamic> testEmptyHotel = {};
-  final testHotel = TestHotelData.hotel;
+  const testHotel = TestHotelData.hotel;
   final tHotelId = testHotel.id;
   final testHotelMap = testHotel.toMap();
 

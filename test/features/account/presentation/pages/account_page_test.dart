@@ -10,8 +10,6 @@ import '../../../../fixtures/fake_app_router.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 import '../../../../fixtures/test_utils.dart';
 
-
-
 void main() {
   late FakeAppRouter fakeAppRouter;
   late MockLanguageCubit languageCubit;
@@ -21,9 +19,11 @@ void main() {
     languageCubit = MockLanguageCubit();
     when(
       languageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(languageCubit.stream).thenAnswer(
-      (_) => Stream.value(LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
   });
 
@@ -40,7 +40,7 @@ void main() {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: fakeAppRouter.config(
-                deepLinkBuilder: (_) => DeepLink.single(AccountRoute()),
+                deepLinkBuilder: (_) => DeepLink.single(const AccountRoute()),
               ),
             ),
           ),

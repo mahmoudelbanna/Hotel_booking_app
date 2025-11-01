@@ -18,18 +18,7 @@ class HotelsPage extends StatelessWidget {
           ),
           BlocProvider.value(value: getIt<FavoriteBloc>()),
         ],
-        child: BlocBuilder<InternetCubit, InternetState>(
-          builder: (context, state) {
-            if (state is InternetLoading) {
-              return const LoadingWidget(
-                key: ValueKey(kLoadingInternetWidgetKey), // for testing
-              );
-            } else if (state is InternetDisconnected) {
-              return const NoConnectionHomeErrorLoading();
-            }
-            return const HotelsView();
-          },
-        ),
+        child: const InternetStateHandler(child: HotelsView()),
       ),
     );
   }

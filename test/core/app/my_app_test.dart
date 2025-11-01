@@ -8,9 +8,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockInternetCubit mockInternetCubit;
   late MockLanguageCubit mockLanguageCubit;
@@ -30,7 +27,7 @@ void main() {
         BlocProvider<InternetCubit>(create: (context) => mockInternetCubit),
         BlocProvider<LanguageCubit>(create: (context) => mockLanguageCubit),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 
@@ -38,11 +35,11 @@ void main() {
     // Arrange
     when(
       mockInternetCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const InternetConnected()]));
+    ).thenAnswer((_) => Stream.fromIterable([const InternetState.connected()]));
 
     when(mockLanguageCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([
-        LanguageState(languageCode: 'en', countryCode: 'EN'),
+        const LanguageState(languageCode: 'en', countryCode: 'EN'),
       ]),
     );
 

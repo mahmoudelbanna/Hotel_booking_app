@@ -1,18 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hotel_booking_app/hotel_booking_app.dart';
 
-import '../../../../hotel_booking_app.dart';
+part 'hotel_image.freezed.dart';
 
-class HotelImage extends Equatable {
-  final String large;
-  final String small;
-
-  const HotelImage({required this.large, required this.small});
-
-  @override
-  List<Object?> get props => [large, small];
-
-  @override
-  String toString() => 'HotelImage(large: $large, small: $small)';
+@freezed
+class HotelImage with _$HotelImage {
+  // ignore: unused_element
+  const HotelImage._();
+  const factory HotelImage({required String large, required String small}) =
+      _HotelImage;
 
   Map<String, dynamic> toMap() {
     return {kImageLarge: large, kImageSmall: small};

@@ -10,9 +10,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routes = [
-      OverviewRoute(),
-      HotelsRoute(),
-      FavoritesRoute(),
+      const OverviewRoute(),
+      const HotelsRoute(),
+      const FavoritesRoute(),
       AccountTab(),
     ];
     return AutoTabsScaffold(
@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
           (_, tabsRouter) => AppBar(
             title: Text(context.topRoute.title(context)),
             leading: AutoLeadingButton(
-              ignorePagelessRoutes: true,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),

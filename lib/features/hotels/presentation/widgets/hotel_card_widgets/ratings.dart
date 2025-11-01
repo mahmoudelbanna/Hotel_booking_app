@@ -12,7 +12,7 @@ class Ratings extends StatelessWidget {
     return Row(
       children: List.generate(
         hotel.category,
-        (_) => Icon(Icons.star, color: Colors.black, size: 18),
+        (_) => const Icon(Icons.star, color: Colors.black, size: 18),
       ),
     );
   }

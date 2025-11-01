@@ -30,26 +30,26 @@ void main() {
     when(favoriteBloc.state).thenReturn(FavoriteState.initial());
     when(
       languageCubit.state,
-    ).thenReturn(LanguageState(languageCode: 'en', countryCode: 'US'));
-    when(internetCubit.state).thenReturn(const InternetConnected());
-    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsLoading());
+    ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
+    when(internetCubit.state).thenReturn(const InternetState.connected());
+    when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
     when(
       favoriteBloc.stream,
     ).thenAnswer((_) => Stream.value(FavoriteState.initial()));
     when(
       internetCubit.stream,
-    ).thenAnswer((_) => Stream.value(const InternetConnected()));
+    ).thenAnswer((_) => Stream.value(const InternetState.connected()));
     when(
       fetchHotelsCubit.stream,
-    ).thenAnswer((_) => Stream.value(const FetchHotelsLoading()));
+    ).thenAnswer((_) => Stream.value(const FetchHotelsState.loading()));
   });
 
   setUpAll(() {
     provideDummy<FavoriteState>(FavoriteState.initial());
     provideDummy<LanguageState>(
-      LanguageState(languageCode: 'en', countryCode: 'US'),
+      const LanguageState(languageCode: 'en', countryCode: 'US'),
     );
-    provideDummy<FetchHotelsState>(const FetchHotelsLoading());
+    provideDummy<FetchHotelsState>(const FetchHotelsState.loading());
   });
 
   tearDown(() {

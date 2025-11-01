@@ -45,9 +45,13 @@ class _NoConnectionHomeErrorLoadingState
           children: [
             ScaleTransition(
               scale: _animation,
-              child: Icon(Icons.signal_wifi_off, size: 100, color: Colors.red),
+              child: const Icon(
+                Icons.signal_wifi_off,
+                size: 100,
+                color: Colors.red,
+              ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               context.l10n.noInternetConnection,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
