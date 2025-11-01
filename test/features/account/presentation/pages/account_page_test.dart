@@ -10,8 +10,6 @@ import '../../../../fixtures/fake_app_router.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 import '../../../../fixtures/test_utils.dart';
 
-
-
 void main() {
   late FakeAppRouter fakeAppRouter;
   late MockLanguageCubit languageCubit;
@@ -23,7 +21,9 @@ void main() {
       languageCubit.state,
     ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(languageCubit.stream).thenAnswer(
-      (_) => Stream.value(const LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
   });
 

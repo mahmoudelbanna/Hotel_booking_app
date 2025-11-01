@@ -7,7 +7,7 @@ part 'rating_info_model.g.dart';
 @freezed
 class RatingInfoModel
     with _$RatingInfoModel, EntityConvertible<RatingInfoModel, RatingInfo> {
-       // ignore: unused_element
+  // ignore: unused_element
   const RatingInfoModel._();
   const factory RatingInfoModel({
     @JsonKey(name: kScore) required num score,

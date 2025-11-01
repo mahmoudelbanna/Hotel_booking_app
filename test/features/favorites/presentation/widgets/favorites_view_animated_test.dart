@@ -10,9 +10,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_favorite_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockFavoriteBloc favoriteBloc;
   late MockLanguageCubit languageCubit;

@@ -8,9 +8,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 import '../../fixtures/test_mocks.mocks.dart';
 
-
-
-
 void main() {
   late MockInternetCubit mockInternetCubit;
   late MockLanguageCubit mockLanguageCubit;

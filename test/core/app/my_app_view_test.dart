@@ -8,8 +8,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import '../../fixtures/fake_app_router.dart';
 import '../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late MockLanguageCubit mockLanguageCubit;
   late FakeAppRouter fakeAppRouter;
@@ -33,7 +31,9 @@ void main() {
       mockLanguageCubit.state,
     ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(const LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -52,7 +52,9 @@ void main() {
       mockLanguageCubit.state,
     ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(const LanguageState(languageCode: 'de', countryCode: 'DE')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'de', countryCode: 'DE'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -75,7 +77,9 @@ void main() {
       mockLanguageCubit.state,
     ).thenReturn(const LanguageState(languageCode: 'en', countryCode: 'US'));
     when(mockLanguageCubit.stream).thenAnswer(
-      (_) => Stream.value(const LanguageState(languageCode: 'en', countryCode: 'US')),
+      (_) => Stream.value(
+        const LanguageState(languageCode: 'en', countryCode: 'US'),
+      ),
     );
 
     await tester.pumpWidget(createWidgetUnderTest());

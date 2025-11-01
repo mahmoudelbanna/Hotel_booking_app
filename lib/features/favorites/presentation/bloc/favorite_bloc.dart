@@ -2,7 +2,6 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../hotel_booking_app.dart';
 
-
 class FavoriteBloc extends HydratedBloc<FavoriteEvent, FavoriteState> {
   final ToggleFavoriteUseCase toggleFavoriteUseCase;
 

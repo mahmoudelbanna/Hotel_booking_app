@@ -21,26 +21,19 @@ void _initCore() {
         baseUrl: dotenv.env['BASE_URL'] ?? '',
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: {'Content-Type': 'application/json'},
       ),
     ),
   );
 
-  getIt.registerLazySingleton<Connectivity>(
-    () => Connectivity(),
-  );
+  getIt.registerLazySingleton<Connectivity>(() => Connectivity());
 
   getIt.registerLazySingleton<InternetConnectionChecker>(
     () => InternetConnectionChecker.instance,
   );
 
   getIt.registerFactory<InternetCubit>(
-    () => InternetCubit(
-      connectivity: getIt(),
-      connectionChecker: getIt(),
-    ),
+    () => InternetCubit(connectivity: getIt(), connectionChecker: getIt()),
   );
 }
 
@@ -53,9 +46,7 @@ void _initHotels() {
     () => HotelsRepositoryImpl(remoteDataSource: getIt()),
   );
 
-  getIt.registerLazySingleton<GetHotels>(
-    () => GetHotels(repository: getIt()),
-  );
+  getIt.registerLazySingleton<GetHotels>(() => GetHotels(repository: getIt()));
 
   getIt.registerFactory<FetchHotelsCubit>(
     () => FetchHotelsCubit(usecase: getIt()),

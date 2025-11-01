@@ -31,18 +31,15 @@ void main() {
 
         when(mockGetHotels()).thenAnswer((_) async => Right(tHotel));
 
-       
         cubit.fetchHotels();
 
-       
         expect(cubit.state, const FetchHotelsState.loading());
 
-    
         await expectLater(
           cubit.stream,
           emits(FetchHotelsState.success(hotels: tHotel)),
         );
-        
+
         expect(cubit.state, FetchHotelsState.success(hotels: tHotel));
       },
     );
@@ -50,12 +47,10 @@ void main() {
     test(
       'should emit [FetchHotelsLoading, FetchHotelsState.failure()] when failure',
       () async {
-
         when(
           mockGetHotels(),
         ).thenAnswer((_) async => const Left(ServerFailure()));
 
- 
         expectLater(
           cubit.stream,
           emitsInOrder([
@@ -64,11 +59,12 @@ void main() {
           ]),
         );
 
-     
         await cubit.fetchHotels();
 
-      
-        expect(cubit.state, const FetchHotelsState.failure(message: 'Server Error'));
+        expect(
+          cubit.state,
+          const FetchHotelsState.failure(message: 'Server Error'),
+        );
       },
     );
   });

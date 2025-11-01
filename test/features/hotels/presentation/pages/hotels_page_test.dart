@@ -75,9 +75,9 @@ void main() {
       WidgetTester tester,
     ) async {
       when(internetCubit.state).thenReturn(const InternetState.connected());
-      when(
-        internetCubit.stream,
-      ).thenAnswer((_) => Stream.fromIterable([const InternetState.connected()]));
+      when(internetCubit.stream).thenAnswer(
+        (_) => Stream.fromIterable([const InternetState.connected()]),
+      );
 
       await tester.pumpWidget(createWidgetUnderTest());
       await tester.pump();
@@ -90,7 +90,9 @@ void main() {
     testWidgets(
       'shows NoConnectionHomeErrorLoading when internet is disconnected',
       (WidgetTester tester) async {
-        when(internetCubit.state).thenReturn(const InternetState.disconnected());
+        when(
+          internetCubit.state,
+        ).thenReturn(const InternetState.disconnected());
         when(internetCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const InternetState.disconnected()]),
         );

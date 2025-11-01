@@ -41,7 +41,9 @@ class AppBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     if (kDebugMode) {
-      debugPrint('🔄 ${bloc.runtimeType} changed: ${change.currentState} -> ${change.nextState}');
+      debugPrint(
+        '🔄 ${bloc.runtimeType} changed: ${change.currentState} -> ${change.nextState}',
+      );
     }
   }
 
@@ -49,7 +51,9 @@ class AppBlocObserver extends BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     if (kDebugMode) {
-      debugPrint('⚡ ${bloc.runtimeType} transition: ${transition.event} -> ${transition.nextState}');
+      debugPrint(
+        '⚡ ${bloc.runtimeType} transition: ${transition.event} -> ${transition.nextState}',
+      );
     }
   }
 }

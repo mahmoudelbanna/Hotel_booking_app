@@ -4,7 +4,7 @@ import '../../../../hotel_booking_app.dart';
 
 class FetchHotelsCubit extends Cubit<FetchHotelsState> {
   FetchHotelsCubit({required this.usecase})
-      : super(const FetchHotelsState.loading());
+    : super(const FetchHotelsState.loading());
 
   final GetHotels usecase;
 

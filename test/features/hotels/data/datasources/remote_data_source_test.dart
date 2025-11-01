@@ -9,7 +9,6 @@ import 'package:hotel_booking_app/hotel_booking_app.dart';
 import '../../../../fixtures/actual_article_json.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");

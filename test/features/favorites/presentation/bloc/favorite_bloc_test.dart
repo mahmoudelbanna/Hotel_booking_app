@@ -9,8 +9,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late FavoriteBloc favoriteBloc;
   late MockStorage mockStorage;

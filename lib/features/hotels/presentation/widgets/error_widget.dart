@@ -57,9 +57,9 @@ class _ErrorFetchHotelsWidgetState extends State<ErrorFetchHotelsWidget>
             child: Text(
               widget.message ?? context.l10n.somethingWentWrong,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.center,
             ),
           ),

@@ -8,8 +8,6 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixtures/test_hotel_data.dart';
 import '../../../../fixtures/test_mocks.mocks.dart';
 
-
-
 void main() {
   late MockFetchHotelsCubit fetchHotelsCubit;
   late MockFavoriteBloc favoriteBloc;
@@ -61,9 +59,9 @@ void main() {
     WidgetTester tester,
   ) async {
     when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.loading());
-    when(
-      fetchHotelsCubit.stream,
-    ).thenAnswer((_) => Stream.fromIterable([const FetchHotelsState.loading()]));
+    when(fetchHotelsCubit.stream).thenAnswer(
+      (_) => Stream.fromIterable([const FetchHotelsState.loading()]),
+    );
 
     await tester.pumpWidget(createWidgetUnderTest());
 
@@ -78,7 +76,9 @@ void main() {
   ) async {
     final hotels = [TestHotelData.hotel];
 
-    when(fetchHotelsCubit.state).thenReturn(FetchHotelsState.success(hotels: hotels));
+    when(
+      fetchHotelsCubit.state,
+    ).thenReturn(FetchHotelsState.success(hotels: hotels));
     when(fetchHotelsCubit.stream).thenAnswer(
       (_) => Stream.fromIterable([FetchHotelsState.success(hotels: hotels)]),
     );
@@ -92,9 +92,9 @@ void main() {
     'displays ErrorFetchHotelsWidget when in FetchHotelsState.failure() state',
     (WidgetTester tester) async {
       when(fetchHotelsCubit.state).thenReturn(const FetchHotelsState.failure());
-      when(
-        fetchHotelsCubit.stream,
-      ).thenAnswer((_) => Stream.fromIterable([const FetchHotelsState.failure()]));
+      when(fetchHotelsCubit.stream).thenAnswer(
+        (_) => Stream.fromIterable([const FetchHotelsState.failure()]),
+      );
 
       await tester.pumpWidget(createWidgetUnderTest());
 

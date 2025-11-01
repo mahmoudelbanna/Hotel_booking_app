@@ -13,9 +13,10 @@ class HotelsRepositoryImpl implements HotelsRepository {
     try {
       final hotelModels = await remoteDataSource.getHotels();
 
-      final hotels = hotelModels
-          .map<Hotel>((hotelModel) => hotelModel.toEntity())
-          .toList();
+      final hotels =
+          hotelModels
+              .map<Hotel>((hotelModel) => hotelModel.toEntity())
+              .toList();
 
       return Right(hotels);
     } on ServerException catch (e) {
