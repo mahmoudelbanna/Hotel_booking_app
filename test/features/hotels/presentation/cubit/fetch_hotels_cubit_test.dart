@@ -31,18 +31,18 @@ void main() {
 
         when(mockGetHotels()).thenAnswer((_) async => Right(tHotel));
 
-        // act
+       
         cubit.fetchHotels();
 
-        // Assert that the initial state is correct.
+       
         expect(cubit.state, const FetchHotelsState.loading());
 
-        // assert later
+    
         await expectLater(
           cubit.stream,
           emits(FetchHotelsState.success(hotels: tHotel)),
         );
-        // Assert that the current state is in sync with the stubbed stream.
+        
         expect(cubit.state, FetchHotelsState.success(hotels: tHotel));
       },
     );
@@ -50,25 +50,25 @@ void main() {
     test(
       'should emit [FetchHotelsLoading, FetchHotelsState.failure()] when failure',
       () async {
-        // arrange
+
         when(
           mockGetHotels(),
         ).thenAnswer((_) async => const Left(ServerFailure()));
 
-        // act
-        cubit.fetchHotels(); // Ensure this is awaited
-
-        // Assert initial state
-        expect(cubit.state, const FetchHotelsState.loading());
-
-        // assert later
-        await expectLater(
+ 
+        expectLater(
           cubit.stream,
-          emits(const FetchHotelsState.failure()),
+          emitsInOrder([
+            const FetchHotelsState.loading(),
+            const FetchHotelsState.failure(message: 'Server Error'),
+          ]),
         );
 
-        // Assert final state
-        expect(cubit.state, const FetchHotelsState.failure());
+     
+        await cubit.fetchHotels();
+
+      
+        expect(cubit.state, const FetchHotelsState.failure(message: 'Server Error'));
       },
     );
   });

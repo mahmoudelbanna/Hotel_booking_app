@@ -4,16 +4,16 @@ class FailureToMessage {
   const FailureToMessage._();
 
   static String call({required Failure failure}) {
-    switch (failure.runtimeType) {
-      case ServerFailure _:
-        return failure.message ?? serverFailureMessage;
-      case NetworkFailure _:
-        return failure.message ?? networkFailureMessage;
-      case ParsingFailure _:
-        return failure.message ?? parsingFailureMessage;
-      default:
-        return 'Unexpected Error';
+    if (failure is ServerFailure) {
+      return failure.message ?? serverFailureMessage;
     }
+    if (failure is NetworkFailure) {
+      return failure.message ?? networkFailureMessage;
+    }
+    if (failure is ParsingFailure) {
+      return failure.message ?? parsingFailureMessage;
+    }
+    return 'Unexpected Error';
   }
 }
 
