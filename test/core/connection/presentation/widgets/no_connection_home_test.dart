@@ -42,7 +42,7 @@ void main() {
 
     // Assert
     expect(find.byIcon(Icons.signal_wifi_off), findsOneWidget);
-    expect(find.text("No internet connection"), findsOneWidget);
+    expect(find.text('No internet connection'), findsOneWidget);
   });
 
   testWidgets('animates the icon with ScaleTransition', (

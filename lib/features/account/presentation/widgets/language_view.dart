@@ -16,31 +16,27 @@ class LanguageView extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        spacing: 20,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          LanguageListTile(
-            text: context.l10n.german,
-            value: germanLocale.languageCode,
-            groupValue: languageCode,
-            onChanged:
-                (value) => context.read<LanguageCubit>().languageSelected(
-                  value,
-                  countryCode,
-                ),
-          ),
-          LanguageListTile(
-            text: context.l10n.english,
-            value: englishLocale.languageCode,
-            groupValue: languageCode,
-            onChanged:
-                (value) => context.read<LanguageCubit>().languageSelected(
-                  value,
-                  countryCode,
-                ),
-          ),
-        ],
+      child: RadioGroup<String>(
+        groupValue: languageCode,
+        onChanged: (value) {
+          if (value != null) {
+            context.read<LanguageCubit>().languageSelected(value, countryCode);
+          }
+        },
+        child: Column(
+          spacing: 20,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LanguageListTile(
+              text: context.l10n.german,
+              value: germanLocale.languageCode,
+            ),
+            LanguageListTile(
+              text: context.l10n.english,
+              value: englishLocale.languageCode,
+            ),
+          ],
+        ),
       ),
     );
   }

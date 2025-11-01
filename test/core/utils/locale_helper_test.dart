@@ -36,10 +36,7 @@ void main() {
     testWidgets(
       'returns locale from LanguageState if languageCode is not null',
       (WidgetTester tester) async {
-        final state = const LanguageState(
-          languageCode: 'de',
-          countryCode: 'DE',
-        );
+        const state = LanguageState(languageCode: 'de', countryCode: 'DE');
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -64,10 +61,7 @@ void main() {
     testWidgets(
       'matches deviceLocale language code with supportedLocales and updates LanguageCubit',
       (WidgetTester tester) async {
-        final state = const LanguageState(
-          languageCode: null,
-          countryCode: null,
-        );
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -93,10 +87,7 @@ void main() {
     testWidgets(
       'falls back to first supported locale when no language code matches',
       (WidgetTester tester) async {
-        final state = const LanguageState(
-          languageCode: null,
-          countryCode: null,
-        );
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(
@@ -123,10 +114,7 @@ void main() {
     testWidgets(
       'falls back to first supported locale if deviceLocale is null',
       (WidgetTester tester) async {
-        final state = const LanguageState(
-          languageCode: null,
-          countryCode: null,
-        );
+        const state = LanguageState(languageCode: null, countryCode: null);
 
         await tester.pumpWidget(
           createWidgetUnderTest(

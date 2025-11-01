@@ -26,7 +26,7 @@ void main() {
   });
 
   final Map<String, dynamic> testEmptyHotel = {};
-  final testHotel = TestHotelData.hotel;
+  const testHotel = TestHotelData.hotel;
   final tHotelId = testHotel.id;
   final testHotelMap = testHotel.toMap();
 

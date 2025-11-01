@@ -10,7 +10,7 @@ class PriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NumberFormat currencyFormat = NumberFormat("#,##0.00", "de_DE");
+    final currencyFormat = NumberFormat('#,##0.00', 'de_DE');
     final total = currencyFormat.format(hotel.bestOffer.total / 100);
     final simplePricePerPerson = currencyFormat.format(
       hotel.bestOffer.simplePricePerPerson / 100,

@@ -51,10 +51,7 @@ void main() {
       });
 
       test('toJson returns correct map', () {
-        final state = const LanguageState(
-          languageCode: 'de',
-          countryCode: 'DE',
-        );
+        const state = LanguageState(languageCode: 'de', countryCode: 'DE');
         expect(languageCubit.toJson(state), {
           'languageCode': 'de',
           'countryCode': 'DE',

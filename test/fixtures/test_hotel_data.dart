@@ -1,7 +1,7 @@
 import 'package:hotel_booking_app/hotel_booking_app.dart';
 
 class TestHotelData {
-  static final Hotel hotel = const Hotel(
+  static const Hotel hotel = Hotel(
     id: '1',
     name: 'Test Hotel',
     destination: 'Test City',

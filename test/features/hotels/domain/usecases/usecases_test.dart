@@ -34,16 +34,16 @@ void main() {
 
   test('should return Failure when repository fails', () async {
     // arrange
-    final tFailure = const ServerFailure();
+    const tFailure = ServerFailure();
     when(
       mockHotelsRepository.getHotels(),
-    ).thenAnswer((_) async => Left(tFailure));
+    ).thenAnswer((_) async => const Left(tFailure));
 
     // act
     final result = await usecase();
 
     // assert
-    expect(result, Left(tFailure));
+    expect(result, const Left(tFailure));
     verify(mockHotelsRepository.getHotels());
     verifyNoMoreInteractions(mockHotelsRepository);
   });

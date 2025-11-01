@@ -28,7 +28,7 @@ class _FavoritesViewAnimatedState extends State<FavoritesViewAnimated> {
   }
 
   void _handleAdditions(List<dynamic> newFavorites) {
-    for (var entry in newFavorites) {
+    for (final entry in newFavorites) {
       if (!_favoriteHotels.any((e) => e[kHotelId] == entry[kHotelId])) {
         final index = newFavorites.indexOf(entry);
         _favoriteHotels.insert(index, entry);
@@ -38,7 +38,7 @@ class _FavoritesViewAnimatedState extends State<FavoritesViewAnimated> {
   }
 
   void _handleRemovals(List<dynamic> newFavorites) {
-    for (var entry in List.of(_favoriteHotels)) {
+    for (final entry in List.of(_favoriteHotels)) {
       if (!newFavorites.any((e) => e[kHotelId] == entry[kHotelId])) {
         final index = _favoriteHotels.indexWhere(
           (e) => e[kHotelId] == entry[kHotelId],

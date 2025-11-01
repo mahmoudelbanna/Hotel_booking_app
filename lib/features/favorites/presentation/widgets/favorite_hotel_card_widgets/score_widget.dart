@@ -49,7 +49,7 @@ class FavoriteHotelScoreWidget extends StatelessWidget {
               children: [
                 Icon(getRatingIcon(rating), size: 25, color: Colors.white),
                 Text(
-                  "$rating / 5.0",
+                  '$rating / 5.0',
                   style: Theme.of(
                     context,
                   ).textTheme.titleMedium?.copyWith(color: Colors.white),
@@ -58,7 +58,7 @@ class FavoriteHotelScoreWidget extends StatelessWidget {
             ),
           ),
           Text(
-            "$scoreDescription\n ($reviewsCount ${context.l10n.reviews})",
+            '$scoreDescription\n ($reviewsCount ${context.l10n.reviews})',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.w900,
