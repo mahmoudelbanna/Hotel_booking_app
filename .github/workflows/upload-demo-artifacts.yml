@@ -3,19 +3,24 @@ name: Upload Demo Video and Screenshot
 on:
   push:
     branches:
+      - develop
+  pull_request:
+    branches-ignore:
       - main
+      - master
 
 jobs:
   capture-and-upload:
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      # Upload the generated files as artifacts
-      - name: Upload Demo Artifacts
+      - name: Upload Demo Screenshots
         uses: actions/upload-artifact@v4
         with:
           name: Demo-screenshots
-          path: assets/screenshots/ 
+          path: assets/screenshots/
+          if-no-files-found: ignore
+
+

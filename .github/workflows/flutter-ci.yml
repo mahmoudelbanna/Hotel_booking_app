@@ -1,0 +1,124 @@
+name: Flutter CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches-ignore:
+      - main
+      - master
+
+env:
+  FLUTTER_VERSION: ${{ vars.FLUTTER_VERSION }}
+
+jobs:
+  analyze_and_format:
+    name: "🧹 Analyze & Format"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create .env File (for analyzer)
+        run: echo "URL=" > .env
+
+      - name: Run Build Runner
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Run analyzer (fail if any issue)
+        run: dart analyze . || { echo "❌ Flutter analyze failed"; exit 1; }
+
+      - name: Check formatting (fail if changed)
+        run: |
+          dart format --set-exit-if-changed . || { echo "❌ Code not formatted properly"; exit 1; }
+
+  test:
+    name: "🧪 Run Tests"
+    runs-on: ubuntu-latest
+    needs: analyze_and_format
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env File
+        run: |
+          echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
+
+      - name: Check .env File Content
+        run: cat .env
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+
+      - name: Check Flutter Version
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run Build Runner
+        run: dart run build_runner build -d
+
+      - name: Run tests (fail on any failure)
+        run: |
+          flutter test --coverage || { echo "❌ Tests failed"; exit 1; }
+
+  build_branch_apk:
+    name: "📦 Build APK"
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env File
+        run: |
+          echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
+
+      - name: Check .env File Content
+        run: cat .env
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+
+      - name: Check Flutter Version
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run Build Runner
+        run: dart run build_runner build -d
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Set artifact name
+        id: artifact
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "name=app-release-apk-pr-${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          else
+            echo "name=app-release-apk-develop" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: build/app/outputs/flutter-apk/app-release.apk
