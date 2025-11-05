@@ -163,10 +163,14 @@ jobs:
       - name: Build Play Store App Bundle (.aab)
         run: flutter build appbundle --release
 
+      - name: Set artifact name
+        id: artifact
+        run: echo "name=app-release-apk-main-release" >> $GITHUB_OUTPUT
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-apk-main
+          name: ${{ steps.artifact.outputs.name }}
           path: build/app/outputs/flutter-apk/app-release.apk
 
       - name: Upload AAB artifact
